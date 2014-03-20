@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>TFS to GIT</h1>
+					<p>
+						<small>Adrian Nye / Paul Herrera</small>
+					</p>
+				</section>
+
+                <section>
+                    <h2>the plan</h2>
+                    <ul>
+                        <li>GIT Concepts</li>
+                        <li>TFS to GIT - Demo</li>
+                        <li>GIT Workflow</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Assumptions</h2>
+                    <ul>
+                        <li>GIT Extensions are installed</li>
+                        <li>We have a GIT repository on a remote server</li>
+                        <li>We have permissions to remote server</li>
+                        <li>We have a private key</li>
+                    </ul>
+                </section>
+
+				<section>
+					<h2>latest version from tfs</h2>
+					<p>
+						Get Specific Version and overwrite.
+					</p>
+				</section>
+
+                <section>
+                    <h2>Copy code</h2>
+                    <p>
+                        Use 'src' folder
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Open Solution</h2>
+                    <p>
+                        Choose no TFS bindings by selecting 'No' on both questions.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Made files read and write</h2>
+                    <p>
+                        It's going to complain.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>create git ignore file</h2>
+                    <p>
+                        We have a standard one you can use.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>initialize Local Repository</h2>
+                    <p>...and commit.</p>
+                </section>
+
+                <section>
+                    <h2>Start Authentication Agent</h2>
+                    <p>Cover more detail in a later session.</p>
+                </section>
+
+                <section>
+                    <h2>setup remote repository reference</h2>
+                    <p>We will help you setup a remote repository.</p>
+                </section>
+
+                <section>
+                    <h2>push</h2>
+                    <p>First push is the most tricky.</p>
+                </section>
+
+                <section>
+                    <h1>workflow</h1>
+                    <p>Step by step process of checking out / in, branching, merging, etc.</p>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>pull</h1>
+                        <p>Update your local repository.</p>
+                    </section>
+                    <section>
+                        <h2>run putty</h2>
+                        <p>Needed for security.</p>
+                    </section>
+                    <section>
+                        <h2>checkin local changes</h2>
+                        <p>Don't forget to do this!</p>
+                    </section>
+                    <section>
+                        <h2>Commands -> Pull</h2>
+                        <p>Do not merge!</p>
+                    </section>
+                    <section>
+                        <h2>Checkout desired revision</h2>
+                        <p>If needed.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <h1>branch</h1>
+                    <p>Always work off of a branch.</p>
+                </section>
+
+                <section>
+                    <h1>make some changes</h1>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>merge into master</h1>
+                        <p>Only do this with working code.</p>
+                    </section>
+                    <section>
+                        <h2>checkin local changes</h2>
+                        <p>Don't forget to do this!</p>
+                    </section>
+                    <section>
+                        <h2>checkout master</h2>
+                    </section>
+                    <section>
+                        <h2>merge in your branch</h2>
+                        <p>Watch out for conflicts.</p>
+                    </section>
+                    <section>
+                        <h2>Checkout your original branch</h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>push</h1>
+                        <p>Will update your remote repository.</p>
+                    </section>
+                    <section>
+                        <h2>run putty</h2>
+                        <p>Needed for security.</p>
+                    </section>
+                    <section>
+                        <h2>Commands -> Push</h2>
+                        <p>Push the master branch.</p>
+                    </section>
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

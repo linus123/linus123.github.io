@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>Automated Builds</h1>
+					<h3>Best Practices</h3>
+				</section>
+
+				<section>
+					<h2>The Plan</h2>
+                    <ul>
+                        <li>Short Overview</li>
+                        <li>Local Build</li>
+                        <li>Database Versioning</li>
+                        <li>Artifacts</li>
+                    </ul>
+				</section>
+
+                <section>
+                    <h4>Sample Project</h4>
+                    <h2>Platinum Reporting</h2>
+                    <ul>
+                        <li>1 Web Site</li>
+                        <li>1 Console Application</li>
+                        <li>2 Databases</li>
+                        <li>3 Windows Services</li>
+                        <li>1 Global Scape Job</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Automated Builds</h2>
+                    <h2>=</h2>
+                    <h2>Continuous Integration</h2>
+                </section>
+
+                <section>
+                    <h2>The Book</h2>
+
+                    <img src="images/CIBook.jpg" />
+
+                    <aside class="notes">
+                        None of this is news.  It is simply industry best practice.
+                    </aside>
+
+                </section>
+
+                <section>
+
+                    <section>
+                        <h2>Continuous Integration?</h2>
+                    </section>
+
+                    <section>
+                        <h3>Continuous Integration</h3>
+
+                        <img src="images/AutoBuildDiagram.png" />
+                    </section>
+
+                    <section>
+                        <h2>Why do all this work?</h2>
+
+                        <ul>
+                            <li class="fragment">Reduce risks</li>
+                            <li class="fragment">Reduce repetitive manual processes</li>
+                            <li class="fragment">Generate deployable software at any time and at any place</li>
+                            <li class="fragment">Enable better project visibility</li>
+                            <li class="fragment">Establish greater confidence in the software product from the development team</li>
+                        </ul>
+
+                        <p class="fragment"><small>(Duvall, 29)</small></p>
+
+                    </section>
+
+                    <section>
+                        <h2>Deployment Day</h2>
+                        <img src="images/I-got-this.gif" />
+                    </section>
+
+                    <section>
+                        <h2>Becomes a Fixed Cost</h2>
+                        <h4>Just not at first.</h4>
+                    </section>
+
+                    <section>
+                        <h3>Accentuates Poor Architecture</h3>
+                    </section>
+
+                    <section>
+                        <h3>Avoid These...</h3>
+                        <ul>
+                            <li>Zero Automated Tests</li>
+                            <li>Large Swaths of SQL Code</li>
+                            <li>Over Use of SSIS, Biztalk, or WWF</li>
+                            <li>Dependencies on Ancient / Lost Libraries</li>
+                            <li>Large UC4 Jobs</li>
+                        </ul>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>The Local Build</h2>
+                    </section>
+
+                    <section>
+                        <p style="color: gray;">* Best Practice</p>
+                        <h2>Have a Local Build</h2>
+                        <h4>Run Before Every Checkin</h4>
+                    </section>
+
+                    <section>
+                        <p style="color: gray;">* Best Practice</p>
+                        <h3>Run Local Build Before Every Checkin</h3>
+
+                        <aside class="notes">
+                            <p>No one gets a broken system.</p>
+                            <p>Reduce Build Failures.</p>
+                            <p>** Run Platinum Local Build **</p>
+                        </aside>
+
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Database Versioning</h2>
+                    </section>
+
+                    <section>
+                        <h2>The Anti-Pattern</h2>
+                        <h4>Centralized DB Development</h4>
+                        <img src="images/centraldev.png" />
+                    </section>
+
+                    <section>
+                        <p style="color: gray;">* Best Practice</p>
+                        <h2>Developer Sandboxes</h2>
+                        <img src="images/SandBox.png" />
+                    </section>
+
+                    <section>
+                        <p style="color: gray;">* Best Practice</p>
+                        <h2>Include Database with Code</h2>
+                        <h4>Where appropriate.</h4>
+                    </section>
+
+                    <section>
+                        <h3>But your database is too complicated</h3>
+                        <h4>or too big</h4>
+                        <img src="images/TooComplicated.jpg" />
+                    </section>
+
+                    <section>
+                        <h2>It CAN be done!</h2>
+
+                        <aside class="notes">
+                            Tribune "It can't be done" story.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <p style="color: gray;">* Best Practice</p>
+                        <h2>Test Database Scripts with Build</h2>
+
+                        <aside class="notes">
+                            ** Show database scripts and scheme **
+                            ** Upgrade Dev Database **
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>The Build Server</h2>
+                        <h4>Team City</h4>
+                    </section>
+
+                    <section>
+                        <p style="color: gray;">* Best Practice</p>
+                        <h3>Everyone Should See Build the Status</h3>
+
+                        <img src="images/BuildStatus.jpg" />
+
+                        <h4>Even Managers</h4>
+
+                        <aside class="notes">
+                            ** Team City Status page **
+                        </aside>
+
+                    </section>
+
+                    <section>
+                        <h3>Build should Fail when...</h3>
+                        <ul>
+                            <li>Code does not Compile</li>
+                            <li>Any Test Fails</li>
+                            <li>Code Inspection Falls Outside of Parameters</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <p style="color: gray;">* Best Practice</p>
+                        <h3>Build Should Run All Tests</h3>
+                        <h4>But I don't got any tests :(</h4>
+                    </section>
+
+                    <section>
+                        <p style="color: gray;">* Best Practice</p>
+                        <h2>Fix Broken Builds</h2>
+                        <h4>Don't Let them Be Broken for too Long</h4>
+
+                        <aside class="notes">
+                            <p>A break is a good thing</p>
+                            What is too long
+                            <ul>
+                                <li>1 - 2 hours OK</li>
+                                <li>1 day we should be worried</li>
+                                <li>> 1 day something is wrong</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <p style="color: gray;">* Best Practice</p>
+                        <h3>Build on Every Checkin</h3>
+                        <h4>Trigger in Team City</h4>
+
+                        <aside class="notes">
+                            ** Show team city trigger **
+                        </aside>
+                    </section>
+
+                    <section>
+                        <p style="color: gray;">* Best Practice</p>
+                        <h3>Keep Build Fast</h3>
+                        <h4>Separate Slow Tests from Fast Tests</h4>
+                    </section>
+
+                    <section>
+                        <p style="color: gray;">* Best Practice</p>
+                        <h3>Label Code on Successful Build</h3>
+
+                        <aside class="notes">
+                            ** Show GIT Build Label **
+                            <p>We can work on any pervious version</p>
+                        </aside>
+                    </section>
+
+                    <!--<section>-->
+                        <!--<p style="color: gray;">* Best Practice</p>-->
+                        <!--<h3>Collect Code Metrics</h3>-->
+                        <!--<h4>Code Coverage, Cyclomatic Complexity, etc</h4>-->
+                    <!--</section>-->
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Artifacts</h2>
+                        <h4>The stuff that gets deployed.</h4>
+                    </section>
+
+                    <section>
+                        <p style="color: gray;">* Best Practice</p>
+                        <h3>Create Artifacts</h3>
+                    </section>
+
+                    <section>
+                        <p style="color: gray;">* Best Practice</p>
+                        <h3>Automate Deployments</h3>
+                        <h4>One to Zero Clicks</h4>
+
+                        <aside class="notes">
+                            ** Deploy Platinum **
+                            ** Show Show Database **
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Deployments become...</h3>
+                        <img src="images/nobigdeal.gif" />
+                        <h3>No Big Deal</h3>
+                    </section>
+
+                    <section>
+                        <p style="color: gray;">* Best Practice</p>
+                        <h2>Label Software Artifacts</h2>
+                        <h4>Zip and DLLs</h4>
+
+                        <aside class="notes">
+                            ** Show Zip File Name **
+                            ** Show DLL version **
+                        </aside>
+                    </section>
+
+                </section>
+
+                <section>
+                    <p style="color: gray;">* Best Practice</p>
+                    <h2>Health Checks</h2>
+                    <h4>Is your system ok?</h4>
+
+                    <aside class="notes">
+                        ** Show Investor Reporting Health Checks **
+                    </aside>
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

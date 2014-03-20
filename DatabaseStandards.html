@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>Database Standards</h1>
+				</section>
+
+				<section>
+					<h2>The Plan</h2>
+
+                    <ul>
+                        <li>Naming Standards</li>
+                        <li>Linked Servers / Replication ... etc.</li>
+                        <li>Integration with ServiceNow</li>
+                    </ul>
+				</section>
+
+                <section>
+                    <h2>Table Names</h2>
+
+                    <h4>Good</h4>
+
+                    <pre><code style="font-size: 20px; margin-top: 20px;">Customer
+EquityHolding
+Holiday</code></pre>
+
+                    <h4>Bad</h4>
+
+                    <pre><code style="font-size: 20px; margin-top: 20px;">Holidays
+tblCustomer
+Equity_Holding
+EmployeeADP
+Last Name</code></pre>
+                </section>
+
+                <section>
+                    <h2>Column Names</h2>
+
+                    <h4>Good</h4>
+
+                    <pre><code style="font-size: 20px; margin-top: 20px;">CustomerId
+EquityHolding
+Holiday</code></pre>
+
+                    <h4>Bad</h4>
+
+                    <pre><code style="font-size: 20px; margin-top: 20px;">Holidays
+fldName
+intCustomerCount
+EmployeeADP</code></pre>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Constraints</h2>
+
+                        <p>SSMS does crazy things.</p>
+
+                    </section>
+
+                    <section>
+                        <h3>Primary Key</h3>
+
+                        <p>'PK_' + 'TableName_' + 'ColumnName(s)'</p>
+
+                        <p>&nbsp;</p>
+
+                        <h4>Examples</h4>
+
+                    <pre><code style="font-size: 20px; margin-top: 20px;">PK_Customer_CustomerId
+PK_Trade_AccountIdBusinessDate</code></pre>
+
+                    </section>
+
+                    <section>
+                        <h3>Foreign Key</h3>
+
+                        <p>'FK_' + 'TableName where constraint exists_' + 'TableName of parent table_' + 'ColumnName(s) in referencing tables'</p>
+
+                        <p>&nbsp;</p>
+
+                        <h4>Examples</h4>
+
+                        <pre><code style="font-size: 20px; margin-top: 20px;">FK_Account_Customer_CustomerId</code></pre>
+
+                    </section>
+
+                    <section>
+                        <h3>Unique Constraint</h3>
+
+                        <p>'UC_' + 'TableName_' + 'ColumnName(s)' </p>
+
+                        <p>&nbsp;</p>
+
+                        <h4>Examples</h4>
+
+                        <pre><code style="font-size: 20px; margin-top: 20px;">UC_Customer_CustomerAccount</code></pre>
+
+                    </section>
+
+                    <section>
+                        <h3>Check Constraint</h3>
+
+                        <p>'CK_' + 'TableName_' + 'ColumnName'</p>
+
+                        <p>&nbsp;</p>
+
+                        <h4>Examples</h4>
+
+                        <pre><code style="font-size: 20px; margin-top: 20px;">CK_Sale_SaleAmount</code></pre>
+
+                    </section>
+
+                    <section>
+                        <h3>Default Constraint</h3>
+
+                        <p>'DF_' + 'TableName_' + 'ColumnName'</p>
+
+                        <p>&nbsp;</p>
+
+                        <h4>Examples</h4>
+
+                        <pre><code style="font-size: 20px; margin-top: 20px;">DF_Sale_CreateDate</code></pre>
+
+                    </section>
+
+                </section>
+
+                <section>
+                    <h2>Indexes</h2>
+
+                    <p>'IX_' + 'TableName_' + 'ColumnName(s) '</p>
+
+                    <p>&nbsp;</p>
+
+                    <h4>Examples</h4>
+
+                    <pre><code style="font-size: 20px; margin-top: 20px;">IX_Sale_AccountId</code></pre>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Views</h2>
+
+                        <p>'vw_' + 'Name'</p>
+
+                        <p>&nbsp;</p>
+
+                        <h4>Examples</h4>
+
+                        <pre><code style="font-size: 20px; margin-top: 20px;">vw_Customer</code></pre>
+
+                    </section>
+
+                    <section>
+                        <h3>Creating a View</h3>
+
+                        <pre><code style="font-size: 14px; margin-top: 20px;">CREATE VIEW [dbo].[vw_BenchmarkMaster]
+/* ########################################################################################
+###########################################################################################
+
+    Description                : ALL Records FROM table [dbo].[BenchmarkMaster]
+
+    Recordset Columns          :
+    [BenchmarkID] INT,
+    [BenchmarkCode] VARCHAR(10),
+    [BenchmarkName] VARCHAR(100),
+    [BenchmarkBaseCurrencyID] INT,
+    [Active] BIT
+
+    ---------------------------------------------------------------------------------------------------------------------
+    Change Date		Change Author        Description
+    ---------------------------------------------------------------------------------------------------------------------
+    09/20/2012		Stephen Norrod		Initial creation
+
+/* ########################################################################################
+###########################################################################################
+AS
+
+SELECT
+        BenchmarkID,
+        BenchmarkCode,
+        BenchmarkName,
+        Active
+    FROM [dbo].[BenchmarkMaster]</code></pre>
+
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Stored Procedures</h2>
+
+                        <p>'usp_' + 'ActionVerb(optional)' + 'BusinessFunction'</p>
+
+                        <p>&nbsp;</p>
+
+                        <h4>Examples</h4>
+
+                        <pre><code style="font-size: 20px; margin-top: 20px;">usp_GetCustomerTrade
+usp_CreateCustomerTrade
+usp_DeleteCustomerTrade</code></pre>
+
+                    </section>
+
+                    <section>
+                        <h3>Creating a Proc</h3>
+
+                        <pre><code style="font-size: 14px; margin-top: 20px;">ALTER PROCEDURE [dbo].[usp_GetNewLoadId]
+(
+@FileLoadDate DATETIME = NULL,
+@FileDescription VARCHAR(250),
+@NewLoadID INT = NULL OUTPUT
+)
+/* #############################################################################################################################################
+#############################################################################################################################################
+
+    Description                : Inserts a new row into table [FileLoadControl] and returns that [FileLoadID] to the called
+
+    Input/Output Parameters    :
+    Recordset Columns          :
+    Return Codes / Value       : 0           int
+
+    ---------------------------------------------------------------------------------------------------------------------
+    Change Date		Change Author        Description
+    ---------------------------------------------------------------------------------------------------------------------
+
+    09/20/2012		Stephen Norrod		Initial creation
+    10/05/2012		Paul Herrera		Replacing GETUTCDATE with GETDATE - Fixing a problem with time zones
+
+#############################################################################################################################################
+############################################################################################################################################# */
+AS
+BEGIN
+
+    DECLARE @SPName			nvarchar(128)
+    DECLARE @StartDate		datetime
+    DECLARE @EndDate		datetime
+    DECLARE @RowCount		int
+
+    -- initialize local variable(s)/object(s)
+    SET @SPName = OBJECT_NAME(@@PROCID)
+    SET @StartDate = GETDATE()
+
+
+    IF @FileLoadDate IS NULL
+    BEGIN
+    SET @FileLoadDate = GETDATE();
+    END
+
+    IF @FileDescription IS NOT NULL
+    BEGIN
+
+        BEGIN TRY
+        INSERT INTO [dbo].[FileLoadControl] VALUES(@FileLoadDate, @FileDescription);
+
+        SET @NewLoadID =  SCOPE_IDENTITY();
+
+        -- log successful procedure execution
+        SET @EndDate = GETDATE()
+
+        EXECUTE dbo.usp_Log_SP_Exec_Time
+        @SP_Name				= @SPName
+        , @Start_Time			= @StartDate
+        , @End_Time				= @EndDate
+
+        END TRY
+        BEGIN CATCH
+
+        DECLARE @ErrorMessage			nvarchar(4000)
+        DECLARE @ErrorSeverity			int
+        DECLARE @ErrorState				int
+
+        SELECT   @ErrorMessage			= ERROR_MESSAGE()
+        , @ErrorSeverity			= ERROR_SEVERITY()
+        , @ErrorState				= ERROR_STATE()
+
+        RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState)
+        RETURN -2
+        END CATCH
+    END
+    ELSE
+    BEGIN
+        RETURN -1
+    END
+
+END</code></pre>
+
+                    </section>
+
+                    <section>
+                        <h3>usp_Log_SP_Exec_Time</h3>
+                        <h4>Don't forget to call it.</h4>
+                    </section>
+
+                </section>
+
+                <section>
+                    <h2>User Defined Functions</h2>
+
+                    <p>'udf_' + 'ActionVerbs(optional)' + 'BusinessFunction'</p>
+
+                    <p>&nbsp;</p>
+
+                    <h4>Example</h4>
+
+                        <pre><code style="font-size: 20px; margin-top: 20px;">udf_CalculateConversionRate</code></pre>
+
+                </section>
+
+                <section>
+
+                    <section>
+                        <h2>Triggers</h2>
+
+                        <img src="images/bush_doing_it_wrong_1.jpg" />
+
+                    </section>
+
+                    <section>
+                        <h3>Triggers</h3>
+
+                        <p>'tr_' + 'TableName/BusinessFunction' + 'Action'</p>
+
+                        <p>&nbsp;</p>
+
+                        <h4>Examples</h4>
+
+                        <pre><code style="font-size: 20px; margin-top: 20px;">tr_CustomerTrade_Insert
+tr_CustomerTrade_Update
+tr_CustomerTrade_Delete</code></pre>
+
+                    </section>
+
+                </section>
+
+                <section>
+                    <h2>Business Rules in the Database</h2>
+                    <img src="images/BadTime.jpg" />
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Linked Servers</h2>
+                        <img src="images/5c1.jpg" />
+                    </section>
+
+                    <section>
+                        <h3>Linked Server Alternatives</h3>
+                        <ul>
+                            <li>SSIS</li>
+                            <li>.NET Framework</li>
+                            <li>Ask for Help</li>
+                        </ul>
+                    </section>
+
+                </section>
+
+                <section>
+                    <h2>SSRS</h2>
+                    <p>We have it now. Let's use it!</p>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Replication</h2>
+                        <img src="images/youre_doing_it_wrong.jpg" />
+                    </section>
+
+                    <section>
+                        <h3>Replication should not be used, recommended or provided as a solution without thorough discussion with the Database team.</h3>
+                    </section>
+
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

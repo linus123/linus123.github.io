@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>C#</h1>
+					<h3>An SSIS Alternative</h3>
+				</section>
+
+				<section>
+					<h2>The Plan</h2>
+                    <ul>
+                        <li>Some Talking / Eat Pizza</li>
+                        <li>Look at Some Code</li>
+                        <li>More Talking / Eat More Pizza</li>
+                        <li>More Code</li>
+                    </ul>
+				</section>
+
+                <section>
+                    <h2>SSIS</h2>
+                    <h4>SQL Server Integration Services</h4>
+
+                    <aside class="notes">
+                        Everyone know what SSIS is?<br/>
+                        Who uses SSIS?<br/>
+                        How many packages?<br/>
+                    </aside>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>SSIS</h2>
+                        <h3>What is good about it?</h3>
+                    </section>
+
+                    <section>
+                        <img src="images/SsisFast.jpg"/>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <img src="images/WorkingEffectivelyWithLegacyCode.jpg"/>
+
+                        <aside class="notes">
+                            Who has heard of this book?<br/>
+                            Who works with legacy code?<br/>
+                            How do you define legacy code?<br/>
+                        </aside>
+
+                    </section>
+
+                    <section>
+                        <h3><em>legacy code</em> is simply code without tests</h3>
+                        <p>-Michael Feathers</p>
+                    </section>
+
+                    <section>
+                        <img src="images/ImportantTests.jpg" />
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>SSIS</h2>
+                        <h3>What is bad about it?</h3>
+                    </section>
+
+                    <section>
+                        <h3>Hard to write automated tests.</h3>
+                    </section>
+
+                    <section>
+                        <h3>Bigfoot</h3>
+                        <img src="images/BigFoot.jpg"/>
+                    </section>
+
+                    <section>
+                        <h3>Procedural Language</h3>
+                    </section>
+
+                    <section>
+                        <h3>No Refactoring Tools</h3>
+                    </section>
+
+                    <section>
+                        <h3><a href="http://ayende.com/blog/2637/ssis-15-faults">More complaining...</a></h3>
+                    </section>
+
+                </section>
+
+                <section>
+                    <h2>Code Example</h2>
+                    <h4>The Austin Checkbook</h4>
+                </section>
+
+                <section>
+                    <h2>We can do better...</h2>
+                </section>
+
+                <section>
+                    <h2>Physical Layout</h2>
+                    <em>[Awesome Visio Diagram Goes Here]</em>
+                </section>
+
+                <section>
+                    <h2>Code Layout</h2>
+                    <em>[Awesome Visio Diagram Goes Here]</em>
+                </section>
+
+                <section>
+                    <h2>To the code...</h2>
+
+                    <aside class="notes">
+                        3 Projects<br/>
+                        Start with console<br/>
+                        Take a look at the tests<br/>
+                        Can test every part in isolation<br/>
+                    </aside>
+
+                </section>
+
+                <section>
+                    <img src="images/SolvedIt.jpg" />
+                </section>
+
+                <section>
+                    <h2>What is wrong with this approach?</h2>
+                </section>
+
+                <section>
+                    <h3>Goal:</h3>
+                    <h2>Stream the Records</h2>
+                </section>
+
+                <section>
+                    <h2>Deferred Loading</h2>
+                    <pre><code style="font-size: 20px; margin-top: 20px;">db.Log = Console.Out;
+
+var ordersQuery = from o in db.Orders
+    select o;
+
+Console.WriteLine("Iterating over orders.");
+
+foreach (var order in ordersQuery)
+{
+    // do something
+}</code></pre>
+
+                    <h4>Output</h4>
+                    <pre><code style="font-size: 20px; margin-top: 20px;">Iterating over orders.
+
+SELECT [t0].[OrderID], [t0].[ProductID], [t0].[UnitPrice]
+FROM [dbo].[OrderDetails] AS [t0]</code></pre>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>IEnumerable</h2>
+                        <h3>&</h3>
+                        <h2>yield return</h2>
+                    </section>
+                    <section>
+
+                        <h3>Eh?</h3>
+
+                        <pre><code style="font-size: 20px; margin-top: 20px;">static int SimpleReturn()
+{
+    return 1;
+    return 2;
+    return 3;
+}
+
+static void Main(string[] args)
+{
+    Console.WriteLine(SimpleReturn());
+    Console.WriteLine(SimpleReturn());
+    Console.WriteLine(SimpleReturn());
+}</code></pre>
+
+                    </section>
+
+                    <section>
+
+                        <h3>Better</h3>
+
+                        <pre><code style="font-size: 20px; margin-top: 20px;">static IEnumerable&lt;int&gt; YieldReturn()
+{
+    yield return 1;
+    yield return 2;
+    yield return 3;
+}
+
+static void Main(string[] args)
+{
+    // Lets see how yield return works
+    foreach (int i in YieldReturn())
+    {
+        Console.WriteLine(i);
+    }
+}</code></pre>
+
+                    </section>
+
+                    <section>
+                        <h2>IEnumerable</h2>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.collections.ienumerable(v=vs.100).aspx" target="_blank">To the web...</a>
+                    </section>
+
+                </section>
+
+                <section>
+                    <h3>Sql Bulk Copy / Loading</h3>
+                    <a href="http://www.morgantechspace.com/2013/08/bulk-insert-records-into-sql-server.html" target="_blank">To the web...</a>
+                </section>
+
+                <section>
+                    <h2>Back to the code...</h2>
+                </section>
+
+            </div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
