@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>.NET Workshop</h1>
+					<h3>Testing and Architecture</h3>
+				</section>
+
+				<section>
+					<h2>Goals</h2>
+				</section>
+
+                <section>
+                    <p>Goal 1</p>
+                    <h3>To gain experience working with a tested code base as well as to write tests</h3>
+                </section>
+
+                <section>
+                    <p>Goal 2</p>
+                    <h3>To gain experience working with well architected code base</h3>
+                    <h4>(Dependency Inversion Principal)</h4>
+                </section>
+
+                <section>
+                    <h2>Plan</h2>
+                    <ul>
+                        <li>Into</li>
+                        <li>Coding Exercise 1</li>
+                        <li>Testing and TDD</li>
+                        <li>Coding Exercise 2</li>
+                        <li>Good Architecture</li>
+                        <li>Coding Exercise 3</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>A Coding Workshop</h2>
+                    <p>We want about half the time spending coding on the code base.</p>
+                </section>
+
+                <section>
+                    <h2>Sample Code Base</h2>
+                    <ul>
+                        <li class="fragment">Tiny Returns</li>
+                        <li class="fragment">Calculates Portfolio / Benchmark Performance (Returns)</li>
+                        <li class="fragment">Subset of Return Lite</li>
+                        <li class="fragment">Net vs. Fees</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Physical Layout</h2>
+                    <p>Database, Console, Web Service, Excel Report</p>
+                </section>
+
+                <section>
+                    <h2>System Overview</h2>
+                    <aside class="notes">
+                        <ul>
+                            <li>Run the excel report</li>
+                            <li>Run web tester</li>
+                            <li>Run text file output</li>
+                            <li>Show file loader</li>
+                            <li>Show database</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Click to Build</h2>
+                    <p>ClickToBuild.bat</p>
+                </section>
+
+                <section>
+                    <h2>Team Guide Lines</h2>
+                    <ul>
+                        <li class="fragment">Work as a Pair</li>
+                        <li class="fragment">Exercise is not complete until build works and code is reviewed.</li>
+                        <li class="fragment">When one team is done OFFER help to the other working teams.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <p>Coding Exercise 1</p>
+                    <h3>Add 6 Month Return to Excel Report</h3>
+                    <p>Story: As an Excel Report User, I want to see a 6 month return for both portfolios and benchmarks on the Excel report so we can win a new Australian client.</p>
+                    <aside class="notes">
+                        <ul>
+                            <li>Run the excel report</li>
+                            <li>Give them a chance to review the code</li>
+                            <li>Let someone suggest a sequence diagram</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Sequence Diagram</h2>
+                    <a href="http://www.websequencediagrams.com/?lz=dGl0bGUgQXV0aGVudGljYXRpb24gU2VxdWVuY2UKClByb2dyYW0gLT4gUGVyZm9ybWFuY2VSZXBvcnRFeGNlbAAFBkNyZWF0b3IgOgoKAAMkLT4gSW52ZXN0bWVudFZlaGljbGVSZXR1cm5zUmVwb3NpdG9yeSA6CgoAAyMAcigAYBJbXQB0OiA6IENhbGN1bGF0ZSAAgTUGCgpub3RlIHJpZ2h0IG9mAB8VRG9uZSBTZXJ2ZXJhbCBUaW1lcwCBUhMAgSoqAHwIaW9uIFJlc3VsdACCWyYAgzAgVmlldyA6IFJlbmRlciAAg2kGAIM9HgAtBQAwJgCEKAVlIACEOgUgRmlsZQAYQgCETjIAhVEIOgo&s=rose" target="_blank">Diagram</a>
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
