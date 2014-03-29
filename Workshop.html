@@ -58,8 +58,13 @@
 
                 <section>
                     <p>Goal 2</p>
-                    <h3>To gain experience working with well architected code base</h3>
+                    <h3>To gain experience working with a well architected code base</h3>
                     <h4>(Dependency Inversion Principal)</h4>
+                </section>
+
+                <section>
+                    <p>Goal 3</p>
+                    <h3>To expose you to the latest programming technologies and techniques</h3>
                 </section>
 
                 <section>
@@ -117,7 +122,7 @@
                     <h2>Team Guide Lines</h2>
                     <ul>
                         <li class="fragment">Work as a Pair</li>
-                        <li class="fragment">Exercise is not complete until build works and code is reviewed.</li>
+                        <li class="fragment">Exercise is not complete until build passes and code is reviewed.</li>
                         <li class="fragment">When one team is done OFFER help to the other working teams.</li>
                     </ul>
                 </section>
@@ -151,10 +156,74 @@
                 </section>
 
                 <section>
-                    <h2>Let's add tests for the new changes.</h2>
+                    <h2>Let's add tests for the changes.</h2>
+                    <p>But first...</p>
                 </section>
 
-			</div>
+                <section>
+                    <h2>We Must Understand...</h2>
+                    <ol>
+                        <li>Test Types</li>
+                        <li>Testing Framework (XUnit.NET)</li>
+                        <li>Polymorphism</li>
+                        <li>Testing Doubles: Spies &amp; Stubs</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h2>Test Types</h2>
+                    <ul>
+                        <li>Unit Test</li>
+                        <li>Integration Test</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Unit Test</h2>
+                    <blockquote>
+                        &ldquo;A unit test is a piece of a code (usually a method) that invokes another piece of code and checks the correctness of some assumptions afterward. If the assumptions turn out to be wrong, the unit test has failed. A unit is a method or function.&rdquo;
+                    </blockquote>
+                    <p style="font-size: 60%; margin-top: 30px;"><a href="http://www.manning.com/osherove2/">Roy Osherove - Art of Unit Testing</a></p>
+                </section>
+
+                <section>
+                    <h2>Unit Test Example</h2>
+                    <pre><code class="cs">
+[Fact]
+public void IsValidFileName_BadExtension_ReturnsFalse()
+{
+    LogAnalyzer analyzer = new LogAnalyzer();
+    bool result = analyzer.IsValidLogFileName("filewithbadextension.foo");
+    Assert.False(result);
+}
+                    </code></pre>
+                    <p>
+                </section>
+
+                <section>
+                    <h2>Unit Test</h2>
+
+                    <table class="reveal">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h4>Pros</h4>
+                                    <ul>
+                                        <li>FooBar</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <h4>Cons</h4>
+                                    <ul>
+                                        <li>FooBar</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+            </div>
 
 		</div>
 
