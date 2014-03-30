@@ -34,6 +34,12 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
+
+        <style>
+            .reveal table td {
+                background: rgba(255,255,255,.05);
+            }
+        </style>
 	</head>
 
 	<body>
@@ -171,24 +177,27 @@
                 </section>
 
                 <section>
-                    <h2>Test Types</h2>
-                    <ul>
-                        <li>Unit Test</li>
-                        <li>Integration Test</li>
-                    </ul>
-                </section>
 
-                <section>
-                    <h2>Unit Test</h2>
-                    <blockquote>
-                        &ldquo;A unit test is a piece of a code (usually a method) that invokes another piece of code and checks the correctness of some assumptions afterward. If the assumptions turn out to be wrong, the unit test has failed. A unit is a method or function.&rdquo;
-                    </blockquote>
-                    <p style="font-size: 60%; margin-top: 30px;"><a href="http://www.manning.com/osherove2/">Roy Osherove - Art of Unit Testing</a></p>
-                </section>
 
-                <section>
-                    <h2>Unit Test Example</h2>
-                    <pre><code class="cs">
+                    <section>
+                        <h2>Test Types</h2>
+                        <ul>
+                            <li>Unit Test</li>
+                            <li>Integration Test</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Unit Test</h2>
+                        <blockquote>
+                            &ldquo;A unit test is a piece of a code (usually a method) that invokes another piece of code and checks the correctness of some assumptions afterward. If the assumptions turn out to be wrong, the unit test has failed. A unit is a method or function.&rdquo;
+                        </blockquote>
+                        <p style="font-size: 60%; margin-top: 30px;"><a href="http://www.manning.com/osherove2/">Roy Osherove - Art of Unit Testing</a></p>
+                    </section>
+
+                    <section>
+                        <h2>Unit Test Example</h2>
+                        <pre><code class="cs">
 [Fact]
 public void IsValidFileName_BadExtension_ReturnsFalse()
 {
@@ -196,31 +205,100 @@ public void IsValidFileName_BadExtension_ReturnsFalse()
     bool result = analyzer.IsValidLogFileName("filewithbadextension.foo");
     Assert.False(result);
 }
-                    </code></pre>
-                    <p>
-                </section>
+                        </code></pre>
+                    </section>
 
-                <section>
-                    <h2>Unit Test</h2>
+                    <section>
+                        <h2>Unit Tests</h2>
 
-                    <table class="reveal">
-                        <tbody>
+                        <table class="reveal">
+                            <tbody>
                             <tr>
                                 <td>
                                     <h4>Pros</h4>
                                     <ul>
-                                        <li>FooBar</li>
+                                        <li>Executes Quickly</li>
+                                        <li>Quickly Identifies Problem</li>
                                     </ul>
                                 </td>
                                 <td>
                                     <h4>Cons</h4>
                                     <ul>
-                                        <li>FooBar</li>
+                                        <li>Takes Practice to Create</li>
+                                        <li>Must Mock Dependencies</li>
                                     </ul>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+
+                    </section>
+
+                    <section>
+                        <h2>Integration</h2>
+                        <blockquote>
+                            &ldquo;Integration testing is testing a unit of work without having full control
+                            over all of it and using one or more of its real dependencies, such as time,
+                            network, database, threads, random number generators, and so on.&rdquo;
+                        </blockquote>
+                        <p style="font-size: 60%; margin-top: 30px;"><a href="http://www.manning.com/osherove2/">Roy Osherove - Art of Unit Testing</a></p>
+                    </section>
+
+                    <section>
+                        <h2>Integration Tests</h2>
+
+                        <table class="reveal">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <h4>Pros</h4>
+                                    <ul>
+                                        <li>Easy to Create</li>
+                                        <li>More True to Life</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <h4>Cons</h4>
+                                    <ul>
+                                        <li>Harder to Pinpoint Failures</li>
+                                        <li>Executes Slowly</li>
+                                        <li>Known State Problem</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </section>
+
+
+                    <section>
+                        <h2>Integration Test Example</h2>
+                        <pre><code class="cs">
+[Fact]
+public void GetAllEntitiesShouldReturnCorrectNumberOfEntities()
+{
+    var entityDataRepository = MasterFactory.GetInvestmentVehicleDataRepository();
+
+    var results = entityDataRepository.GetAllEntities();
+
+    Assert.Equal(results.Length, 5);
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Which one is better?</h2>
+                        <aside class="notes">
+                            <p>The goal is to get them to think about which one is better to user under the given circumstance</p>
+                            <p>Show an example of each</p>
+                        </aside>
+                    </section>
+
+                </section>
+
+                <section>
+                    <h2>Testing Framework (XUnit.NET)</h2>
                 </section>
 
             </div>
