@@ -298,7 +298,108 @@ public void GetAllEntitiesShouldReturnCorrectNumberOfEntities()
                 </section>
 
                 <section>
-                    <h2>Testing Framework (XUnit.NET)</h2>
+                    <section>
+                        <h2>Testing Framework (XUnit.NET)</h2>
+                    </section>
+
+                    <section>
+                        <h2>Fact Attribute</h2>
+                        <pre><code class="cs">
+[Fact]
+public void GetAllEntitiesShouldReturnCorrectNumberOfEntities()
+{
+    var entityDataRepository = MasterFactory.GetInvestmentVehicleDataRepository();
+
+    var results = entityDataRepository.GetAllEntities();
+
+    Assert.Equal(results.Length, 5);
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Running the Tests</h2>
+                        <img src="images/RunXunitTest.png"/>
+                    </section>
+
+                    <section>
+                        <h2>Validating the Results</h2>
+                        <pre><code class="cs">
+Assert.Equal(result, 5);
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>One Class Per Test</h2>
+                        <p>Use Constructor and IDisposable</p>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Polymorphism</h2>
+                    </section>
+
+                    <section>
+                        <h2>Cats and Dogs</h2>
+
+                        <pre><code class="cs">
+abstract class Animal {
+    string Talk();
+}
+
+class Cat extends Animal {
+    string Talk() { return "Meow!"; }
+}
+
+class Dog extends Animal {
+    string Talk() { return "Woof!"; }
+}
+
+void LetsHear(Animal a) {
+    Console.WriteLine(a.Talk());
+}
+
+void main() {
+    LetsHear(new Cat());
+    LetsHear(new Dog());
+}
+                        </code></pre>
+
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Questions...</h2>
+                    <ul>
+                        <li class="fragment">What file contains the tests for the change?</li>
+                        <li class="fragment">Are they a unit or integration tests?</li>
+                        <li class="fragment">How is Polymorphism used?</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Test Doubles</h2>
+                        <p>AKA: Mocks</p>
+                    </section>
+
+                    <section>
+                        <h2>Spy</h2>
+                        <p>Saves the values of called methods.</p>
+                        <img src="images/ViewSpyUml.png" style="background-color: #ffffff">
+                    </section>
+
+                    <section>
+                        <h2>Stub</h2>
+                        <p>Returns hard coded or "setup" values.</p>
+                        <img src="images/RepositoryStubUml.png" style="background-color: #ffffff">
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Now ... Let's Add Tests</h2>
                 </section>
 
             </div>
