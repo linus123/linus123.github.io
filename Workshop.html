@@ -82,11 +82,13 @@
                     <h2>Plan</h2>
                     <ul>
                         <li>Into</li>
-                        <li>Coding Exercise 1</li>
+                        <li>Coding Exercise 1 (Part 1)</li>
+                        <li>Fundamentals Review</li>
+                        <li>Coding Exercise 1 (Part2)</li>
                         <li>Testing and TDD</li>
-                        <li>Coding Exercise 2</li>
-                        <li>Good Architecture</li>
-                        <li>Coding Exercise 3</li>
+                        <li>Coding Exercise 2 (Part 1)</li>
+                        <li>Good Architecture (Video)</li>
+                        <li>Coding Exercise 2 (Part 2)</li>
                     </ul>
                 </section>
 
@@ -149,7 +151,7 @@
 
                 <section>
                     <section>
-                        <p>Coding Exercise 1</p>
+                        <p>Coding Exercise 1 (Part 1)</p>
                         <h3>Add 6 Month Return to Excel Report</h3>
                         <p>Story: As an Excel Report User, I want to see a 6 month return for both portfolios and benchmarks on the Excel report so we can win a new Australian client.</p>
                         <aside class="notes">
@@ -317,6 +319,11 @@ public void GetAllEntitiesShouldReturnCorrectNumberOfEntities()
                         </aside>
                     </section>
 
+                    <section>
+                        <h3>Pro Tip:</h3>
+                        <h2>Separate Unit and Integration Tests</h2>
+                    </section>
+
                 </section>
 
                 <section>
@@ -365,6 +372,10 @@ Assert.Equal(result, 5);
                 <section>
                     <section>
                         <h2>Polymorphism</h2>
+                        <p>Objects of a derived class may be treated as objects of a base class.</p>
+                        <aside class="notes">
+                            <p>Best way to show this is by example.</p>
+                        </aside>
                     </section>
 
                     <section>
@@ -394,6 +405,12 @@ void main() {
                         </code></pre>
 
                     </section>
+
+                    <section>
+                        <h2>Saving Customers</h2>
+                        <p><a href="https://gist.github.com/linus123/11389478" target="_blank">Example</a></p>
+                    </section>
+
                 </section>
 
                 <section>
@@ -421,22 +438,46 @@ void main() {
                         <h2>Spy</h2>
                         <p>Saves the values of called methods.</p>
                         <img src="images/ViewSpyUml.png" style="background-color: #ffffff">
+                        <aside class="notes">
+                            <ul>
+                                <li>IPerformanceReportExcelReportView</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <section>
                         <h2>Stub</h2>
                         <p>Returns hard coded or "setup" values.</p>
+                        <p>Is a spy.</p>
                         <img src="images/RepositoryStubUml.png" style="background-color: #ffffff">
+                        <aside class="notes">
+                            <ul>
+                                <li>InvestmentVehicleReturnsRepository</li>
+                            </ul>
+                        </aside>
                     </section>
                 </section>
 
                 <section>
+                    <h2>Summary</h2>
+                    <ul>
+                        <li class="fragment">Unit Tests - Run Quickly, ID Problems Fast</li>
+                        <li class="fragment">Integration Tests - Easier to Write, More True to Life</li>
+                        <li class="fragment">Xunt.NET - "Fact" Denotes a Test</li>
+                        <li class="fragment">Polymorphism - Objects of a derived class...</li>
+                        <li class="fragment">Spy - Save Calls</li>
+                        <li class="fragment">Stub - Return Hardcoded Value</li>
+                    </ul>
+                </section>
+
+                <section>
                     <h2>Now ... Let's Add Tests</h2>
-                    <aside class="notes">
-                        <ul>
-                            <li>Que next coding exercise.</li>
-                        <ul>
-                    </aside>
+                </section>
+
+                <section>
+                    <p>Coding Exercise 1 (Part 2)</p>
+                    <h3>Add 6 Month Return to Excel Report</h3>
+                    <p>Story: As an Excel Report User, I want to see a 6 month return for both portfolios and benchmarks on the Excel report so we can win a new Australian client.</p>
                 </section>
 
                 <section>
@@ -497,7 +538,6 @@ void main() {
                             <p>Assume only invalid inputs.</p>
                         </aside>
                     </section>
-
                 </section>
 
                 <section>
@@ -566,14 +606,15 @@ void main() {
                                 <li>Other terms for this architecture</li>
                                 <li>Each Layer points to the once inside</li>
                                 <li>Technologies are on the outside.</li>
-                                <li>The core knows nothing about the database or thrid party sofware</li>
+                                <li>The core knows nothing about the database or third party software</li>
                                 <li>Third party software must be on the outside.</li>
                                 <li>Technologies MUST BE KEPT THIN.</li>
                                 <li>Data Access Problem: ADO, Code Blocks, Strongly Type Datasets, Link to SQL, Entity Framework</li>
-                                <li>How much deployment is a database colum name change?</li>
+                                <li>How much deployment is a database column name change?</li>
                                 <li>How hard is it to test?</li>
                                 <li>How hard is it to change technologies?</li>
-                                <li>How hard is it to change thrid parties?</li>
+                                <li>How hard is it to change third parties?</li>
+                                <li>Can you create Clear Architecture with SSIS?</li>
 
                                 <li>Story:  iQC third party story</li>
                             </ul>
@@ -586,6 +627,7 @@ void main() {
                         <aside class="notes">
                             <ul>
                                 <li>GOTO the code...</li>
+                                <li>Since this is a smaller project I will have less layers. (Avoid over engineering)</li>
                                 <li>Hight level folders.  Folders by layer</li>
                                 <li>Database: How small the database code is. How hard to change?</li>
                                 <li>Web: How small the database code is. How hard to change?</li>
@@ -613,8 +655,10 @@ void main() {
                                 <li>CitiReturnSeriesImporter line 29</li>
                                 <li>Review a class with constructor injection.</li>
                                 <li>Supports Open Closed Principal.</li>
-                                <li>Draw Diagram for the Dependencies</li>
-                                <li>FLOW OF CONTROL</li>
+                                <li>Review the Diagram</li>
+                                <li>Note the direction of dependencies.</li>
+                                <li>Mention the old layered architecture.</li>
+                                <li>Mention the boundaries.</li>
                             </ul>
                         </aside>
                     </section>
@@ -649,6 +693,18 @@ void main() {
                 </section>
 
                 <section>
+                    <h2>Summary</h2>
+                    <ul>
+                        <li class="fragment">Architecture is NOT a set of Technologies</li>
+                        <li class="fragment">Organize Project by Use Cases</li>
+                        <li class="fragment">Make the Use Cases the Central Abstraction</li>
+                        <li class="fragment">Minimize References on the Core</li>
+                        <li class="fragment">Dependency Inversion Principal - Heart of Good Architecture</li>
+                        <li class="fragment">Inversion of Control (IOC) containers help with Dependency Management</li>
+                    </ul>
+                </section>
+
+                <section>
                     <p>Coding Exercise 2 (Part 2)</p>
                     <h3>Add Standard Deviation to Excel</h3>
                     <p>Story: As an Excel Report User, I would like standard deviation calculated for one year added to the report.</p>
@@ -657,6 +713,16 @@ void main() {
                             <li>Review sequence diagram.</li>
                         </ul>
                     </aside>
+                </section>
+
+                <section>
+                    <p>You have been doing...</p>
+                    <h2><a href="http://www.amazon.com/Extreme-Programming-Explained-Embrace-Edition/dp/0321278658" target="_blank">Extreme Programming</a></h2>
+                </section>
+
+                <section>
+                    <h2>Feed Back</h2>
+                    <img src="http://sticksandgreens.com/wp-content/uploads/2014/04/Thats-All-folks.jpg"/>
                 </section>
 
             </div>
