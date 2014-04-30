@@ -66,29 +66,107 @@
                 </section>
 
                 <section>
-                    <h2>The Problem</h2>
-                    <h4>Centralized Development</h4>
-                    <img src="images/centraldev.png" />
-                    <p>Anti-Pattern</p>
-                    <aside class="notes">
-                        <ul>
-                            <li>Using the same tables problem.</li>
-                            <li>Who changed what is impossible.</li>
-                            <li>Easy for dev, stg, and prod to fall out of sync.</li>
-                        </ul>
-                    </aside>
+                    <h4>Motivation</h4>
+                    <h3>80% of the Dimensional's business critical code is in the database.</h3>
+                    <p>NOT UNDER SOURCE CONTROL</p>
                 </section>
 
                 <section>
-                    <h2>The Solution</h2>
-                    <h4>Development Sandboxes</h4>
-                    <img src="images/SandBox.png" />
-                    <p>Best Practice</p>
+
+                    <section>
+                        <h2>The Problem</h2>
+                    </section>
+
+                    <section>
+                        <h3>Centralized Development</h3>
+                        <img src="images/centraldev.png" />
+                        <p>Anti-Pattern</p>
+                        <aside class="notes">
+                            <ul>
+                                <li>Using the same tables problem.</li>
+                                <li>Who changed what is impossible.</li>
+                                <li>Easy for dev, stg, and prod to fall out of sync.</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>High Fear of Change</h3>
+                    </section>
+
+                    <section>
+                        <h3>Automated Testing it NOT a Option</h3>
+                    </section>
+
                 </section>
 
                 <section>
-                    <h2>SQL Code Flow</h2>
-                    <img src="images/AutoBuildDiagramForDb.png">
+
+                    <section>
+                        <h2>The Proposed Solution</h2>
+                    </section>
+
+                    <section>
+                        <h3>Development Sandboxes</h3>
+                        <img src="images/SandBox.png" />
+                        <p>Best Practice</p>
+                    </section>
+
+                    <section>
+                        <h3>Work Flow</h3>
+                        <img src="images/Players.png" />
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Benefits</h2>
+                    </section>
+
+                    <section>
+                        <h3>Forces all Object Changes Thorough Source Control</h3>
+                    </section>
+
+                    <section>
+                        <h3>Encourages all Enviornments to be in Sync</h3>
+                        <p>Dev / Stage / Prod</p>
+                    </section>
+
+                    <section>
+                        <h3>Brings DB in line with SCM Effor</h3>
+                        <img src="images/AutoBuildDiagramForDb.png">
+                    </section>
+
+                    <section>
+                        <h3>Integration Testing is Supported</h3>
+                    </section>
+
+                    <section>
+                        <h3>Processes Scripts for Easy Deployment</h3>
+                        <aside class="notes">
+                            <ul>
+                                <li>Takes care of renaming linked servers</li>
+                            </ul>
+                        </aside>
+
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Concerns / Questions / Ideas</h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Who are the players?</h2>
+                    </section>
+
+                    <section>
+                        <h3>We need to train them.</h3>
+                    </section>
                 </section>
 
 			</div>
