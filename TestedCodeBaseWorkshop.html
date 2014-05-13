@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+        <style>
+            .reveal table td {
+                background: rgba(255,255,255,.05);
+            }
+        </style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>.NET Workshop</h1>
+					<h3>A Tested Codebase</h3>
+                    <aside class="notes">
+                        <ul>
+                            <li>I would much rather go slower and have more people understand than finish</li>
+                            <li>Write down your feed back</li>
+                        </ul>
+                    </aside>
+				</section>
+
+				<section>
+					<h2>Goals</h2>
+				</section>
+
+                <section>
+                    <p>Goal 1</p>
+                    <h3>To gain experience working with a tested code base as well as to write tests</h3>
+                </section>
+
+                <section>
+                    <p>Goal 2</p>
+                    <h3>To gain experience working with a well architected code base</h3>
+                </section>
+
+                <section>
+                    <p>Goal 3</p>
+                    <h3>To expose you to the latest programming technologies and techniques</h3>
+                    <aside class="notes">
+                        <ul>
+                            <li>Move to small light weight open source package and less from BIG enterprise microsoft</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Plan</h2>
+                    <ul>
+                        <li>Into</li>
+                        <li>Coding Exercise 1 (Part 1)</li>
+                        <li>Fundamentals Review</li>
+                        <li>Coding Exercise 1 (Part2)</li>
+                        <li>Testing and TDD</li>
+                        <li>Coding Exercise 2 (Part 1)</li>
+                        <li>Good Architecture (Video)</li>
+                        <li>Coding Exercise 2 (Part 2)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>A Coding Workshop</h2>
+                    <p>We want about half the time spending coding on the code base.</p>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Sample Code Base</h2>
+                        <ul>
+                            <li class="fragment">Tiny Returns</li>
+                            <li class="fragment">Calculates Portfolio / Benchmark Performance (Returns)</li>
+                            <li class="fragment">Subset of Return Lite</li>
+                            <li class="fragment">Net vs. Fees</li>
+                        </ul>
+                        <aside class="notes">
+                            <ul>
+                                <li>Tiny Returns</li>
+                                <li>Calculates Portfolio / Benchmark Performance (Returns)</li>
+                                <li>Subset of Return Lite</li>
+                                <li>Net vs. Fees</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Physical Layout</h2>
+                        <img src="images/TinyReturnsPhysicalLayout.png"/>
+                    </section>
+
+                    <section>
+                        <h2>System Overview</h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>Run the excel report</li>
+                                <li>Run web tester</li>
+                                <li>Run text file output</li>
+                                <li>Show file loader</li>
+                                <li>Show database</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Click to Build</h2>
+                        <p>ClickToBuild.bat</p>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Coding Exercises</h2>
+                        <ul>
+                            <li class="fragment">Work as a Pair</li>
+                            <li class="fragment">Exercise is not complete until build passes and code is reviewed.</li>
+                            <li class="fragment">When one team is done OFFER help to the other working teams.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Continuous Integration</h2>
+                        <h4><a href="http://teamcity.dimensional.com" target="_blank">Team City</a></h4>
+                    </section>
+
+                    <section>
+                        <h2>GIT for Source Control</h2>
+                        <p><a href="http://docs.joomla.org/Dvcs">Distributed Source Control</a></p>
+                        <aside class="notes">
+                            <ul>
+                                <li>Talk about distribution source control</li>
+                                <li>Show GIT extensions</li>
+                                <li>Commiting only goes locally</li>
+                                <li>You must push for team city to build.</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <p>Coding Exercise 1 (Part 1)</p>
+                        <h3>Add 6 Month Return to Excel Report</h3>
+                        <p>Story: As an Excel Report User, I want to see a 6 month return for both portfolios and benchmarks on the Excel report so we can win a new Australian client.</p>
+                        <aside class="notes">
+                            <ul>
+                                <li>Run the excel report</li>
+                                <li>Give them a chance to review the code</li>
+                                <li>Let someone suggest a sequence diagram</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Sequence Diagram</h2>
+                        <a href="http://www.websequencediagrams.com/?lz=dGl0bGUgQXV0aGVudGljYXRpb24gU2VxdWVuY2UKClByb2dyYW0gLT4gUGVyZm9ybWFuY2VSZXBvcnRFeGNlbAAFBkNyZWF0b3IgOgoKAAMkLT4gSW52ZXN0bWVudFZlaGljbGVSZXR1cm5zUmVwb3NpdG9yeSA6CgoAAyMAcigAYBJbXQB0OiA6IENhbGN1bGF0ZSAAgTUGCgpub3RlIHJpZ2h0IG9mAB8VRG9uZSBTZXJ2ZXJhbCBUaW1lcwCBUhMAgSoqAHwIaW9uIFJlc3VsdACCWyYAgzAgVmlldyA6IFJlbmRlciAAg2kGAIM9HgAtBQAwJgCEKAVlIACEOgUgRmlsZQAYQgCETjIAhVEIOgo&s=rose" target="_blank">Diagram</a>
+                        <aside class="notes">
+                            <ul>
+                                <li>Don't go to the next slide until they are done.</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Questions</h2>
+                        <ul>
+                            <li class="fragment">How difficult was it to make the change?</li>
+                            <li class="fragment">Did the change you made break the system?</li>
+                            <li class="fragment">How confident where you that you did not break the system?</li>
+                            <li class="fragment">How long was it before you could make the first change on your system?</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Let's add tests for the changes.</h2>
+                        <p>But first...</p>
+                    </section>
+
+                </section>
+
+                <section>
+                    <h2>We Must Understand...</h2>
+                    <ol>
+                        <li>Test Types</li>
+                        <li>Testing Framework (XUnit.NET)</li>
+                        <li>Polymorphism</li>
+                        <li>Testing Doubles: Spies &amp; Stubs</li>
+                    </ol>
+                </section>
+
+                <section>
+
+                    <section>
+                        <h2>Test Types</h2>
+                        <ul>
+                            <li>Unit Test</li>
+                            <li>Integration Test</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Unit Test</h2>
+                        <blockquote>
+                            &ldquo;A unit test is a piece of a code (usually a method) that invokes another piece of code and checks the correctness of some assumptions afterward. If the assumptions turn out to be wrong, the unit test has failed. A unit is a method or function.&rdquo;
+                        </blockquote>
+                        <p style="font-size: 60%; margin-top: 30px;"><a href="http://www.manning.com/osherove2/">Roy Osherove - Art of Unit Testing</a></p>
+                    </section>
+
+                    <section>
+                        <h2>Unit Test Example</h2>
+                        <pre><code class="cs">
+[Fact]
+public void IsValidFileName_BadExtension_ReturnsFalse()
+{
+    LogAnalyzer analyzer = new LogAnalyzer();
+    bool result = analyzer.IsValidLogFileName("filewithbadextension.foo");
+    Assert.False(result);
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Unit Tests</h2>
+
+                        <table class="reveal">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <h4>Pros</h4>
+                                    <ul>
+                                        <li>Executes Quickly</li>
+                                        <li>Quickly Identifies Problem</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <h4>Cons</h4>
+                                    <ul>
+                                        <li>Takes Practice to Create</li>
+                                        <li>Must Mock Dependencies</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </section>
+
+                    <section>
+                        <h2>Integration</h2>
+                        <blockquote>
+                            &ldquo;Integration testing is testing a unit of work without having full control
+                            over all of it and using one or more of its real dependencies, such as time,
+                            network, database, threads, random number generators, and so on.&rdquo;
+                        </blockquote>
+                        <p style="font-size: 60%; margin-top: 30px;"><a href="http://www.manning.com/osherove2/">Roy Osherove - Art of Unit Testing</a></p>
+                    </section>
+
+                    <section>
+                        <h2>Integration Tests</h2>
+
+                        <table class="reveal">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <h4>Pros</h4>
+                                    <ul>
+                                        <li>Easy to Create</li>
+                                        <li>More True to Life</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <h4>Cons</h4>
+                                    <ul>
+                                        <li>Harder to Pinpoint Failures</li>
+                                        <li>Executes Slowly</li>
+                                        <li>Known State Problem</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </section>
+
+
+                    <section>
+                        <h2>Integration Test Example</h2>
+                        <pre><code class="cs">
+[Fact]
+public void GetAllEntitiesShouldReturnCorrectNumberOfEntities()
+{
+    var entityDataRepository = MasterFactory.GetInvestmentVehicleDataRepository();
+
+    var results = entityDataRepository.GetAllEntities();
+
+    Assert.Equal(results.Length, 5);
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Which one is better?</h2>
+                        <p>Unit Tests or Integration Tests</p>
+                        <aside class="notes">
+                            <p>The goal is to get them to think about which one is better to user under the given circumstance</p>
+                            <p>TO THE CODE: Show an example of each</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Pro Tip:</h3>
+                        <h2>Separate Unit and Integration Tests</h2>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Testing Framework (XUnit.NET)</h2>
+                    </section>
+
+                    <section>
+                        <h2>Fact Attribute</h2>
+                        <pre><code class="cs">
+[Fact]
+public void GetAllEntitiesShouldReturnCorrectNumberOfEntities()
+{
+    var entityDataRepository = MasterFactory.GetInvestmentVehicleDataRepository();
+
+    var results = entityDataRepository.GetAllEntities();
+
+    Assert.Equal(results.Length, 5);
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Running the Tests</h2>
+                        <img src="images/RunXunitTest.png"/>
+                    </section>
+
+                    <section>
+                        <h2>Validating the Results</h2>
+                        <pre><code class="cs">
+Assert.Equal(result, 5);
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>One Class Per Test</h2>
+                        <p>Use Constructor and IDisposable</p>
+                        <aside class="notes">
+                            <p>A new class is created for every test</p>
+                            <p>The old one is destroyed</p>
+                        </aside>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Polymorphism</h2>
+                        <p>Objects of a derived class may be treated as objects of a base class.</p>
+                        <aside class="notes">
+                            <p>Best way to show this is by example.</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Cats and Dogs</h2>
+
+                        <pre><code class="cs">
+abstract class Animal {
+    string Talk();
+}
+
+class Cat extends Animal {
+    string Talk() { return "Meow!"; }
+}
+
+class Dog extends Animal {
+    string Talk() { return "Woof!"; }
+}
+
+void LetsHear(Animal a) {
+    Console.WriteLine(a.Talk());
+}
+
+void main() {
+    LetsHear(new Cat());
+    LetsHear(new Dog());
+}
+                        </code></pre>
+
+                    </section>
+
+                    <section>
+                        <h2>Saving Customers</h2>
+                        <p><a href="https://gist.github.com/linus123/11389478" target="_blank">Example</a></p>
+                    </section>
+
+                </section>
+
+                <section>
+                    <h2>Questions...</h2>
+                    <ul>
+                        <li class="fragment">What file contains the tests for the modified class?</li>
+                        <li class="fragment">Are they a unit or integration tests?</li>
+                        <li class="fragment">How is Polymorphism used?</li>
+                    </ul>
+                    <aside class="notes">
+                        <ul>
+                            <li>File: PerformanceReportExcelReportCreatorTests.cs</li>
+                            <li>Polymorphism: PerformanceReportExcelReportViewSpy and InvestmentVehicleReturnsRepositoryStub</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Test Doubles</h2>
+                        <p>AKA: Mocks</p>
+                    </section>
+
+                    <section>
+                        <h2>Spy</h2>
+                        <p>Saves the values of called methods.</p>
+                        <img src="images/ViewSpyUml.png" style="background-color: #ffffff">
+                        <aside class="notes">
+                            <ul>
+                                <li>IPerformanceReportExcelReportView</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Stub</h2>
+                        <p>Returns hard coded or "setup" values.</p>
+                        <p>Is a spy.</p>
+                        <img src="images/RepositoryStubUml.png" style="background-color: #ffffff">
+                        <aside class="notes">
+                            <ul>
+                                <li>InvestmentVehicleReturnsRepository</li>
+                            </ul>
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Summary</h2>
+                    <ul>
+                        <li class="fragment">Unit Tests - Run Quickly, ID Problems Fast</li>
+                        <li class="fragment">Integration Tests - Easier to Write, More True to Life</li>
+                        <li class="fragment">Xunt.NET - "Fact" Denotes a Test</li>
+                        <li class="fragment">Polymorphism - Objects of a derived class...</li>
+                        <li class="fragment">Spy - Save Calls</li>
+                        <li class="fragment">Stub - Return Hardcoded Value</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Now ... Let's Add Tests</h2>
+                </section>
+
+                <section>
+                    <p>Coding Exercise 1 (Part 2)</p>
+                    <h3>Add 6 Month Return to Excel Report</h3>
+                    <p>Story: As an Excel Report User, I want to see a 6 month return for both portfolios and benchmarks on the Excel report so we can win a new Australian client.</p>
+                </section>
+
+                <section>
+                    <h2>Test Last</h2>
+                    <aside class="notes">
+                        <p>I have never seen this work.</p>
+                        <p>There is a better way.</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Test Driven Development</h2>
+                        <h4>(TDD)</h4>
+                    </section>
+
+                    <section>
+                        <h2><a href="http://blog.spec-india.com/spec-india-implemented-test-driven-developmenttdd" target="_blank">Red, Green, Refactor</a></h2>
+                        <aside class="notes">
+                            <p>Review how it works.</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Why do this?</h2>
+                    </section>
+
+                    <section>
+                        <a href="http://www.infoq.com/news/2009/03/TDD-Improves-Quality" target="_blank">Improved quality and less defects without significantly affecting productivity.</a>
+                    </section>
+
+                    <section>
+                        <h3>No Tests...</h3>
+                        <img src="images/costOfChangeTraditional.gif"/>
+                    </section>
+
+                    <section>
+                        <h3>With Tests...</h3>
+                        <img src="images/costOfChangeBeck.gif"/>
+                    </section>
+
+                    <section>
+                        <h2>String Calculator Example</h2>
+                        <ul>
+                            <li>Create a simple String calculator with a method int Add(string numbers)</li>
+                            <ol>
+                                <li>The method can take 0, 1 or 2 numbers, and will return their sum (for an empty string it will return 0) for example "" or "1" or "1,2"</li>
+                                <li>Start with the simplest test case of an empty string and move to 1 and two numbers</li>
+                                <li>Remember to solve things as simply as possible so that you force yourself to write tests you did not think about</li>
+                                <li>Remember to refactor after each passing test</li>
+                            </ol>
+                        </ul>
+
+                        <p style="padding-top: 20px;">
+                            <a href="http://osherove.com/tdd-kata-1/" target="_blank">Source: osherove.com</a>
+                        </p>
+                        <aside class="notes">
+                            <p>Assume only invalid inputs.</p>
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <p>Coding Exercise 2 (Part 1)</p>
+                    <h3>Add Standard Deviation to Excel</h3>
+                    <p>Story: As an Excel Report User, I would like standard deviation calculated for one year added to the report.</p>
+                    <aside class="notes">
+                        <ul>
+                            <li>GOAL: Get the to make just the calculation first.</li>
+                            <li>Run the excel report</li>
+                            <li>Give them a chance to review the code</li>
+                            <li>Let someone suggest a sequence diagram</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Use TDD</h2>
+                    <ul>
+                        <li>Write a test.</li>
+                        <li>Watch it fail</li>
+                        <li>Make the test pass.</li>
+                        <li>Improve the production code quality.</li>
+                    </ul>
+                    <p style="padding-top: 20px;">
+                        <a href="https://gist.github.com/linus123/10948217" target="_blank">* Use these Tests *</a>
+                    </p>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Untested Code</h2>
+                        <p>What if my code has no tests?</p>
+                    </section>
+                </section>
+
+                <section>
+                    <p>Coding Exercise 2 (Part 2)</p>
+                    <h3>Add Standard Deviation to Excel</h3>
+                    <p>Story: As an Excel Report User, I would like standard deviation calculated for one year added to the report.</p>
+                    <aside class="notes">
+                        <ul>
+                            <li>Review sequence diagram.</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <p>You have been doing...</p>
+                    <h2><a href="http://www.amazon.com/Extreme-Programming-Explained-Embrace-Edition/dp/0321278658" target="_blank">Extreme Programming</a></h2>
+                </section>
+
+                <section>
+                    <h2>Feed Back</h2>
+                    <img src="http://sticksandgreens.com/wp-content/uploads/2014/04/Thats-All-folks.jpg"/>
+                </section>
+
+            </div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
