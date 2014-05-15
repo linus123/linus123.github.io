@@ -611,12 +611,215 @@ void main() {
                         <aside class="notes">
                             <ul>
                                 <li>We are going to look at some code samples that are good and not so good.</li>
-                                <li>Testable code is ustuall good code.  Kind of strange how that works.</li>
+                                <li>When your code is not testable then usually something is wrong.  Kind of strange how that works.</li>
                             </ul>
                         </aside>
                     </section>
 
-                    
+                    <section>
+                        <h2>Testable?</h2>
+                        <pre><code class="cs">public decimal GeometricallyLink(decimal[] values)
+{
+    var returnValue = values[0];
+
+    for (int index = 1; index < values.Length; ++index)
+        returnValue = (1 + returnValue) * (1 + values[index]) - 1;
+
+    return returnValue;
+}
+                        </code></pre>
+                        <p>It it testable?</p>
+                        <p class="fragment">Yes</p>
+                        <p class="fragment">Unit Test?</p>
+                        <p class="fragment">Yes</p>
+                        <p class="fragment">Integration Test?</p>
+                        <p class="fragment">Not Needed</p>
+                    </section>
+
+                    <section>
+                        <h2>Testable?</h2>
+                        <pre><code class="cs">public bool IsLastDayOfMonth()
+{
+    var firstOfDayCurrentMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+
+    var firstDayOfNextMonth = firstOfDayCurrentMonth.AddMonths(1);
+    var lastDayOfCurrentMonth = firstDayOfNextMonth.AddDays(-1);
+
+    return lastDayOfCurrentMonth == new DateTime(
+        DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+}
+                        </code></pre>
+                        <p>It it testable?</p>
+                        <p class="fragment">Not Really</p>
+                        <p class="fragment">Unit Test?</p>
+                        <p class="fragment">Not a good one</p>
+                        <p class="fragment">Integration Test?</p>
+                        <p class="fragment">Not Needed</p>
+                    </section>
+
+                    <section>
+                        <h2>Indeterminate Functions</h2>
+                        <p>Hard to Test</p>
+                    </section>
+
+                    <section>
+                        <h2>Testable?</h2>
+                        <pre><code class="cs">public class MyStack
+{
+    private readonly List&lt;string&gt; _list;
+
+        public MyStack()
+        {
+            _list = new List&lt;string&gt;();
+        }
+
+        public void Push(string val)
+        {
+            _list.Add(val);
+        }
+
+        public string Pop()
+        {
+            var last = _list.Last();
+            _list.Remove(last);
+
+            return last;
+        }
+    }
+}
+                        </code></pre>
+                        <p>It it testable?</p>
+                        <p class="fragment">Yes</p>
+                        <p class="fragment">Unit Test?</p>
+                        <p class="fragment">Yes</p>
+                        <p class="fragment">Integration Test?</p>
+                        <p class="fragment">Not Needed</p>
+                        <aside class="notes">
+                            <ul>
+                                <li>We must new up the object to test it.</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Testable?</h2>
+                        <pre><code class="cs">public class CodeBehind : System.Web.UI.Page {
+    public void btnFindUser_Click(Object obj,  EventArgs e) {
+        if (Page.IsValid) {
+            // Do some user interface stuff
+        }
+    }
+                        </code></pre>
+                        <p>It it testable?</p>
+                        <p class="fragment">No</p>
+                        <aside class="notes">
+                            <ul>
+                                <li>This was one of the reasons to create MVC.</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Program to an Interface, not an Implementation</h2>
+                        <p>Bad Microsoft</p>
+                    </section>
+
+                    <section>
+                        <h2>Testable?</h2>
+                        <pre><code class="cs">public string GetTenMostExpensiveProductsSummary()
+{
+    var conn = new SqlConnection("Server=(local);DataBase=Northwind;Integrated Security=SSPI");
+    conn.Open();
+
+    var cmd = new SqlCommand("sp_GetTenMostExpensiveProducts", conn);
+    cmd.CommandType = CommandType.StoredProcedure;
+    var rdr = cmd.ExecuteReader();
+
+    var stringBuilder = new StringBuilder();
+
+    while (rdr.Read())
+    {
+        stringBuilder.Append(
+            "Product: {0,-25} Price: ${1,6:####.00}",
+            rdr["TenMostExpensiveProducts"],
+            rdr["UnitPrice"]);
+    }
+
+    return stringBuilder.ToString();
+}
+
+                        </code></pre>
+                        <p>It it testable?</p>
+                        <p class="fragment">Maybe</p>
+                        <p class="fragment">Unit Test?</p>
+                        <p class="fragment">No</p>
+                        <p class="fragment">Integration Test?</p>
+                        <p class="fragment">Possible</p>
+                    </section>
+
+                    <section>
+                        <h2>Database -&gt; Known State</h2>
+                        <p>aka "Fixed Data"</p>
+                    </section>
+
+                    <section>
+                        <h2>Testable?</h2>
+                        <img src="images/LongStoredProc.png">
+                    </section>
+
+                    <section>
+                        <h2>Testable?</h2>
+                        <pre><code class="cs">public class CustomerMetricsCreator
+{
+    public int GetCustomerCount()
+    {
+        var dataLayer = new DataLayer();
+
+        var allCustomers = dataLayer.GetAllCustomers();
+
+        return allCustomers.Count();
+    }
+}
+                        </code></pre>
+                        <p>It it testable?</p>
+                        <p class="fragment">Maybe</p>
+                        <p class="fragment">Unit Test?</p>
+                        <p class="fragment">No</p>
+                        <p class="fragment">Integration Test?</p>
+                        <p class="fragment">Possible</p>
+                    </section>
+
+                    <section>
+                        <h2>Tight Coupling</h2>
+                    </section>
+
+                    <section>
+                        <h2>Testable?</h2>
+                        <pre><code class="cs">public class CustomerMetricsCreator
+{
+    private readonly ICustomerRepository _customerRepository;
+
+    public CustomerMetricsCreator(
+        ICustomerRepository customerRepository)
+    {
+        _customerRepository = customerRepository;
+    }
+
+    public int GetCustomerCount()
+    {
+        var allCustomers = _customerRepository.GetAllCustomers();
+
+        return allCustomers.Count();
+    }
+}
+                        </code></pre>
+                        <p>It it testable?</p>
+                        <p class="fragment">Yes</p>
+                        <p class="fragment">Unit Test?</p>
+                        <p class="fragment">Yes</p>
+                        <p class="fragment">Integration Test?</p>
+                        <p class="fragment">Possible</p>
+                    </section>
                 </section>
 
                 <section>
