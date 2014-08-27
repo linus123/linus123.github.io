@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>ReturnsCalc</h1>
+					<p>From Legacy to Modern Technology</p>
+				</section>
+
+                <section>
+                    <h2>The Returns Problem</h2>
+                    <ul>
+                        <li>6 to 8 Implementations of Returns</li>
+                        <li>Numbers were Difference</li>
+                        <li>Returns 2.0 - Not Reusable</li>
+                        <li>Pearl Code was Unmaintainable</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Create a New One</h3>
+                    <h1 class="fragment">NO</h1>
+                </section>
+
+                <section>
+                    <h2>Picked ReturnsCalc</h2>
+                    <aside class="notes">
+                        <ul>
+                            <li>Started for Dim.com</li>
+                            <li>Created by Research</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>ReturnsCalc Architecture</h2>
+                    <ul>
+                        <li>Code base started 7 yo 10 Years Ago</li>
+                        <li>.NET 2.0</li>
+                        <li>WCF Service</li>
+                        <li>Bugs in Calculations</li>
+                        <li>Unclear Params / Results</li>
+                        <li>To Slow for Dimensional.com</li>
+                        <li>No Automated Tests</li>
+                        <li>Code was a Mess!</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Architecture</h2>
+                    <img src="images/ReturnsCalcOldArch.png" />
+                </section>
+
+                <section>
+                    <h2>Refactored Code</h2>
+                    <h4>Driven by Tests</h4>
+                    <aside class="notes">
+                        <ul>
+                            <li>Six Man Months</li>
+                            <li>Squashed out Bugs</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>How</h2>
+                    <img src="images/WorkingEffectivelyWithLegacyCode.jpg" />
+                </section>
+
+                <section>
+                    <h2>ReturnsCalc Refactored Architecture</h2>
+                    <ul>
+                        <li>.NET 4.5</li>
+                        <li>WebApi 4</li>
+                        <li>MVC 4</li>
+                        <li>Angular.js</li>
+                        <li>NServiceBus 4</li>
+                        <li><a href="http://astdc-web03d:7500/Test/Services" target="_blank">High Test Coverage</a></li>
+                        <li>Better Codebases</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Refactored Architecture</h2>
+                    <img src="images/ReturnsCalcNewArch.png" />
+                    <aside class="notes">
+                        <ul>
+                            <li>Mobile app coming soon.</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2><a href="http://astdc-comweb03s:5757/" target="_blank">Returns Lite</a></h2>
+                </section>
+
+                <section>
+                    <h4>Lesson</h4>
+                    <h3>Don't Rewrite Systems</h3><h3>Refactor Them</h3>
+                </section>
+            </div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
