@@ -94,10 +94,9 @@
                     </section>
 
                     <section>
-                        <h3>Overused Technologies</h3>
+                        <h3>Technology Stack Mismatch</h3>
                         <ul>
-                            <li>UC4, SQL Code - different slide</li>
-                            <li>Cannot Abstract from Database Objects - Picture</li>
+                            <li>Cannot Abstract from Database Objects</li>
                             <li>Unclear Relationships Between Objects</li>
                             <li>Limited Expressiveness - Mostly Organized by Technical Artifact</li>
                         </ul>
@@ -137,8 +136,8 @@
                         <ul>
                             <li>Single SSIS Packages calling Single Proc</li>
                             <li>SSIS Packages Containing VB Code</li>
-                            <li>Deployments are more expensive than ours</li>
-                            <li>Inefficient Table Reads - Baby Sign</li>
+                            <li>Deployments are more expensive - 3 Types of Artifacts</li>
+                            <li>Inefficient Table Reads</li>
                         </ul>
                     </section>
 
@@ -196,6 +195,17 @@
                     </section>
 
                     <section>
+                        <h3>Proof of Concept</h3>
+                    </section>
+
+                    <section>
+                        <h3>UC4 Change</h3>
+					    <pre><code>dtexec /f InstrumentIdentifierArchive.dtsx /config InstrumentIdentifierArchive.dtsConfig &Param1# &Param2# &Param3#</code></pre>
+                        <p>becomes...</p>
+                        <pre><code>Dimensional.EndOfMonth.MonthEndProcessRunner.exe ArchiveInstrumentIdentifier &Param1# &Param2# &Param3#</code></pre>
+                    </section>
+
+                    <section>
                         <p>Benefit</p>
                         <h3>System More Expressive</h3>
                         <p>Grouped by Business / Use Case</p>
@@ -213,6 +223,12 @@
 
                     <section>
                         <p>Benefit</p>
+                        <h3>All Development is Done Locally</h3>
+                        <p>Assuming all databases are in a build process.</p>
+                    </section>
+
+                    <section>
+                        <p>Benefit</p>
                         <h3>Sets Up for SOA</h3>
                     </section>
 
@@ -224,11 +240,39 @@
                     </section>
 
                     <section>
-                        <h3>Legacy Culture</h3>
+                        <h3>Welcome</h3>
+                        <aside class="notes">
+                            <ul>
+                                <li>Current Integrator of 3rd party systems</li>
+                                <li>"We are not software engineers"</li>
+                                <li>Eagle Upgrade is pushed the bounds of your technology stack</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <section>
-                        <h3>DfaSys2 - DB Version</h3>
+                        <p>Classic Software Engineering Problem</p>
+                        <h3><a href="http://sourcemaking.com/antipatterns/vendor-lock-in" target="_blank">Vendor Lock-In</a></h3>
+                        <aside class="notes">
+                            <ul>
+                                <li>Classic problem of abstraction : a Software Engineering problem</li>
+                            </ul>
+                        </aside>
+
+                    </section>
+
+                    <section>
+                        <p>Welcome to</p>
+                        <h3>Software Engineering</h3>
+                        <aside class="notes">
+                            <ul>
+                                <li>Proposed solution an SE solution</li>
+                                <li>We are encouraging you look at this as an SE problem, to step out of your comfort zone</li>
+                                <li>Will take months to learn</li>
+                                <li>Not easy to master</li>
+                                <li>Team who make the shift: lower defects, less maintenance, increase in morale</li>
+                            </ul>
+                        </aside>
                     </section>
                 </section>
 
