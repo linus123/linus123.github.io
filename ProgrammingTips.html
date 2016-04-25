@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Improving Code</h1>
+					<h3>Tips on Improving Code</h3>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+					<ul>
+						<li>Look at code and talk.</li>
+						<li>Start with "YUGE" concepts then moved to smaller ones.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>We are all learning.</h3>
+
+					<aside class="notes">
+						<ul>
+							<li>It is OK of you have made these mistakes.</li>
+							<li>I have made EVERY single one of these.</li>
+							<li>This talk is about improving.</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Returns 2 Code</h3>
+					<ul>
+						<li>Over 10 Years Old</li>
+						<li>"Tremendous" Business Value</li>
+					</ul>
+					<aside class="notes">
+						<ul>
+							<li>Go back 13 / 14 Years Ago</li>
+							<li>Microsoft had not figured best practices for .NET</li>
+							<li>Agile was only invented a couple of years before</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>Immutability</h2>
+					</section>
+
+					<section>
+						<p>In object-oriented and functional programming, an immutable object (unchangeable object) is an object whose state cannot be modified after it is created.</p>
+						<p>-- Wikipedia</p>
+
+						<aside class="notes">
+							<ul>
+								<li>One of the features functional programmers love.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Mutable Example</h3>
+						<p><a href="https://gist.github.com/linus123/7dafbd6d43315ee20d66eb5d8ef9bf73#file-mutableexample-cs" target="_blank">Code</a></p>
+
+						<aside class="notes">
+							<ul>
+								<li>The customer THINKS the currency conversion is wrong.</li>
+								<li>What is it doing?</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Immutable Example</h3>
+						<p><a href="https://gist.github.com/linus123/7dafbd6d43315ee20d66eb5d8ef9bf73#file-immutableexample-cs" target="_blank">Code</a></p>
+					</section>
+
+					<section>
+						<h3>But we HAVE to change values!</h3>
+					</section>
+
+					<section>
+						<h3>Immutable with Calculation Example</h3>
+						<p><a href="https://gist.github.com/linus123/7dafbd6d43315ee20d66eb5d8ef9bf73#file-immutablewithchangeexample-cs" target="_blank">Code</a></p>
+					</section>
+
+					<section>
+						<h4>Immutability makes your code easier to reason about.</h4>
+					</section>
+
+					<section>
+						<h3>Returns 2 vs. Returns Web</h3>
+
+						<aside class="notes">
+							<ul>
+								<li>Mutability makes returns 2 hard to understand.</li>
+								<li>Returns 2 - Never know what state an object is in - has the currency conversion been applied?</li>
+								<li>Returns Web - Got it right</li>
+								<li>Returns Web - Can show calculations</li>
+								<li>Returns Web - Easier to reason about</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Returns Web Service</h3>
+						<p><a href="http://returns.api.dimensional.dev/swagger/ui/index#!/PerformancePage/PerformancePage_ByPortfolioForFundCenter" target="_blank">Demo</a></p>
+					</section>
+
+					<section>
+						<h3>Immutability Tips</h3>
+
+						<ul>
+							<li>Maximize Immutability - Minimize Mutability</li>
+							<li>Separate Mutable and Immutable Objects</li>
+						</ul>
+
+					</section>
+				</section>
+
+				<section>
+					<img src="images/OrlyStackOverflow.jpg" />
+				</section>
+
+				<section>
+					<section>
+						<h2>Inheritance</h2>
+
+						<aside class="notes">
+							<ul>
+								<li>A lot like seasoning and cooking.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Good OOP != Inheritance</h3>
+
+						<aside class="notes">
+							<ul>
+								<li>See this mistake with people new to object oriented programming.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Good OOP == Composition</h3>
+					</section>
+
+					<section>
+						<h3>Highest form of Coupling</h3>
+					</section>
+
+					<section>
+						<h3>Inheritance Example</h3>
+						<p><a href="https://gist.github.com/linus123/166fd121e2404c0aac5bcebeef3f69b7#file-inheritanceportfolioproblem-cs" target="_blank">Demo</a></p>
+						<aside class="notes">
+							<ul>
+								<li>Customer now wants to do currency conversion on composite.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Composition Example</h3>
+						<p><a href="https://gist.github.com/linus123/166fd121e2404c0aac5bcebeef3f69b7#file-inheritanceportfoliosolution-cs" target="_blank">Demo</a></p>
+					</section>
+
+					<section>
+						<h3>Investor Reporting Story</h3>
+						<aside class="notes">
+							<ul>
+								<li>How I got hired.</li>
+								<li>Reporting framework based on Inheritance.</li>
+								<li>Assumptions: Every Report - Time Period, Portfolio Number, Equity.</li>
+								<li>Systems shifted to 3 systems.</li>
+								<li>Removed Inheritance</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h4>"Favor object composition over class inheritance."</h4>
+						<p>-- <a href="http://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612/ref=sr_1_1?ie=UTF8&qid=1461524518&sr=8-1&keywords=design+patterns" target="_blank">Design Patterns</a></p>
+					</section>
+
+					<section>
+						<h4>"Why is inheritance EVEN built into the language?"</h4>
+						<p>-- Gomti Mehta (Former Dimensional Employee)</p>
+					</section>
+
+				</section>
+
+				<section>
+					<img src="images/OrlyNoRead.jpg" />
+				</section>
+
+				<section>
+					<section>
+						<h2>Organizing Code</h2>
+					</section>
+
+					<section>
+						<h3>ASP MVC</h3>
+						<img src="images/MVCGroup.png" />
+						<aside class="notes">
+							<ul>
+								<li>Code Smell by MS</li>
+								<li>Single business change requires you to span multiple folders</li>
+								<li>MVC: Can change but takes some config work</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Group by Business</h3>
+						<img src="images/GroupByBusiness.png" />
+					</section>
+
+					<section>
+						<h3>Benefits</h3>
+						<ul>
+							<li>Matches Language of the Business</li>
+							<li>Easier for New Engineers</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>More Info</p>
+						<h3>
+							<a href="https://app.pluralsight.com/library/courses/domain-driven-design-fundamentals/table-of-contents" target="_blank">
+								Domain-Driven Design Fundamentals
+							</a>
+						</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Side Effects</h3>
+					</section>
+
+					<section>
+						<h3>Problem</h3>
+						<p><a href="https://gist.github.com/linus123/0c180ac8721e48fc6b09faa9dbe06ffa#file-sideeffectproblem-cs" target="_blank">Code</a></p>
+						<aside class="notes">
+							<ul>
+								<li>Customer complains that return is REALLY slow.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Solution</h3>
+						<p><a href="https://gist.github.com/linus123/0c180ac8721e48fc6b09faa9dbe06ffa#file-sideeffectsolution-cs" target="_blank">Code</a></p>
+					</section>
+
+					<section>
+						<p>aka</p>
+						<h3>Artificial Coupling</h3>
+						<p><a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882/ref=sr_1_1?ie=UTF8&qid=1461581488&sr=8-1&keywords=clean+code" target="_blank">Clean Code Book</a></p>
+					</section>
+				</section>
+
+				<section>
+					<img src="images/OrlyBlameTheUser.jpg" />
+				</section>
+
+				<section>
+					<section>
+						<h2>Switch Statements</h2>
+					</section>
+
+					<section>
+						<h3>Problem</h3>
+						<p><a href="https://gist.github.com/linus123/8b88b0ca3f6a7ec2c745d42c8c162c16#file-switchproblem-cs" target="_blank">Code</a></p>
+						<aside class="notes">
+							<ul>
+								<li>Customer wants to add the singapore office.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3><a href="https://sourcemaking.com/refactoring/smells/shotgun-surgery" target="_blank">Shotgun Surgery</a></h3>
+					</section>
+
+					<section>
+						<h3><a href="https://sourcemaking.com/design_patterns/strategy" target="_blank">Strategy Pattern</a></h3>
+					</section>
+
+					<section>
+						<h3>Solution</h3>
+						<p><a href="https://gist.github.com/linus123/8b88b0ca3f6a7ec2c745d42c8c162c16#file-switchsolution-cs" target="_blank">Code</a></p>
+					</section>
+
+					<section>
+						<h2>Return 2</h2>
+						<p>RTComputeDef Line - 53</p>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Data Clumps</h2>
+					</section>
+
+					<section>
+						<h3>Problem</h3>
+						<p><a href="https://gist.github.com/linus123/6fe07c0c6d47faa9b94b79da79ead907#file-dataclumpsproblem-cs" target="_blank">Code</a></p>
+					</section>
+
+					<section>
+						<p>Code Smell</p>
+						<h3><a href="https://sourcemaking.com/refactoring/smells/data-clumps" target="_blank">Data Clumps</a></h3>
+					</section>
+
+					<section>
+						<h3>Solution</h3>
+						<p><a href="https://gist.github.com/linus123/6fe07c0c6d47faa9b94b79da79ead907#file-dataclumpssolution-cs" target="_blank">Code</a></p>
+					</section>
+
+					<section>
+						<h2>Return 2</h2>
+						<p>dtStart</p>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Interface Segregation Principal</h2>
+					</section>
+
+					<section>
+						<h3>Problem</h3>
+						<p><a href="https://gist.github.com/linus123/dde94ddd24aa7f907e756c5aecc9128f#file-ispproblem-cs" target="_blank">Code</a></p>
+					</section>
+
+					<section>
+						<h3>Solution</h3>
+						<p><a href="https://gist.github.com/linus123/dde94ddd24aa7f907e756c5aecc9128f#file-ispsolution-cs" target="_blank">Code</a></p>
+					</section>
+
+					<section>
+						<h3><a href="http://www.amazon.com/Agile-Principles-Patterns-Practices-C/dp/0131857258/ref=sr_1_1?ie=UTF8&qid=1461610975&sr=8-1&keywords=agile+patterns+and+practices" target="_blank">Agile Principles, Patterns, and Practices</a></h3>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Boolean Flags</h2>
+					</section>
+
+					<section>
+						<h3>Problem</h3>
+						<p><a href="https://gist.github.com/linus123/80723874348addd86aac5396f6e01386#file-flagsproblem-cs" target="_blank">Code</a></p>
+					</section>
+
+					<section>
+						<h3>Solution</h3>
+						<p><a href="https://gist.github.com/linus123/80723874348addd86aac5396f6e01386#file-flagssolution-cs" target="_blank">Code</a></p>
+					</section>
+
+					<section>
+						<h2>Return 2</h2>
+						<p>PatchSelectSeries</p>
+					</section>
+
+				</section>
+
+				<section>
+					<img src="images/OrlyTryingStuff.jpg" />
+				</section>
+
+				<!-- Example of nested vertical slides -->
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
