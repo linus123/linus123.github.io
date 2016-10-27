@@ -55,27 +55,27 @@
 					</ol>
 				</section>
 
-				<section>
-					<section>
-						<h2>Definitions and Assumptions</h2>
-					</section>
+				<!--<section>-->
+					<!--<section>-->
+						<!--<h2>Definitions and Assumptions</h2>-->
+					<!--</section>-->
 
-					<section>
-						<h3>Single Responsibility Principle</h3>
-						<p>Should change for the same reasons</p>
-						<p>Who is asking to change it</p>
-					</section>
+					<!--<section>-->
+						<!--<h3>Single Responsibility Principle</h3>-->
+						<!--<p>Should change for the same reasons</p>-->
+						<!--<p>Who is asking to change it</p>-->
+					<!--</section>-->
 
-					<section>
-						<h3>Vehicle Data</h3>
-						<p>Properties of a vehicle that </p>
-					</section>
+					<!--<section>-->
+						<!--<h3>Vehicle Data</h3>-->
+						<!--<p>Properties of a vehicle that </p>-->
+					<!--</section>-->
 
-					<section>
-						<h4>Vehicle and Portfolio data belong in the same system.</h4>
-					</section>
+					<!--<section>-->
+						<!--<h4>Vehicle and Portfolio data belong in the same system.</h4>-->
+					<!--</section>-->
 
-				</section>
+				<!--</section>-->
 
 				<section>
 					<section>
@@ -83,17 +83,35 @@
 					</section>
 
 					<section>
-						<h3>Data Spread Out in Various Places</h3>
-						<p>Separated by systems AND by teams.</p>
-						<p>Visio Diagram?</p>
-						<p>Cannot reason about them</p>
-						<p>Divergent Change</p>
+						<h3>Properties Spread Out in Various Systems</h3>
+						<p>Separated by systems AND by teams</p>
+						<aside class="notes">
+							<ul>
+								<li>Makes the data hard to reason about them.</li>
+							</ul>
+						</aside>
 					</section>
 
 					<section>
-						<h3>Technical Debt Prevents us from Changing</h3>
-						<p>DS2A, DS2B, VPM</p>
+						<h3>
+							<a href="https://sourcemaking.com/refactoring/smells/divergent-change" target="_blank">Divergent Change</a>
+						</h3>
+						<aside class="notes">
+							<ul>
+								<li>Use the example of hedged vehicle codes.</li>
+							</ul>
+						</aside>
 					</section>
+
+					<section>
+						<h3>Tribal Knowledge</h3>
+						<aside class="notes">
+							<ul>
+								<li>Talk about Portfolios with strage inception date</li>
+							</ul>
+						</aside>
+					</section>
+
 				</section>
 
 				<section>
@@ -114,6 +132,15 @@
 					<section>
 						<h3>VPM with SOA</h3>
 						<img src="images/VPMFutureStateArchitecture.png">
+						<aside class="notes">
+							<ul>
+								<li>Database becomes a private artifact.</li>
+								<li>Will have an internal bus.</li>
+								<li>Convert public interfaces.</li>
+								<li>Put off data marts.</li>
+								<li>Muted items are good ideas we are not 100% confident if they will work.</li>
+							</ul>
+						</aside>
 					</section>
 
 					<section>
@@ -132,16 +159,32 @@
 					</section>
 
 					<section>
-						<p>DataMart Strategy</p>
+						<h3>Ownership</h3>
 						<ul>
-							<li>Legacy systems become DataMarts.</li>
-							<li>New DataMarts for SQL Users</li>
-							<li>Can be customized for customer.</li>
+							<li>IAD - Valid Business Rules, Data Governance</li>
+							<li>IT -  4 Nines, Technical Stability / Risk</li>
 						</ul>
+						<aside class="notes">
+							<ul>
+								<li>This is just for formality</li>
+								<li>In reality we are all on the same team and will share the responsibility</li>
+							</ul>
+						</aside>
 					</section>
 
 					<section>
-						<p>Other systems become read only</p>
+						<h3>Data Mart Strategy</h3>
+						<ul>
+							<li>Legacy systems become data marts.</li>
+							<li>New DataMarts for SQL Users</li>
+							<li>Customized by Customer</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>Stress out customers do not have to think about if they are using the correct data</li>
+								<li>Use Asset Class as an example : Marketing vs Rest of Compnay</li>
+							</ul>
+						</aside>
 					</section>
 				</section>
 
@@ -151,20 +194,56 @@
 					</section>
 
 					<section>
-						<h2>Upgrade Practices</h2>
+						<h3>Mature Software Engineering Discipline</h3>
 					</section>
 
 					<section>
-						<h2>Make DS2A readonly</h2>
+						<h4>Mature SE - Collective Code Ownership</h4>
+						<ul>
+							<li>Branching Strategy - Done</li>
+							<li>Code Reviews - Done</li>
+						</ul>
 					</section>
 
 					<section>
-						<h2>Advertize and Train Collective Code Owership</h2>
-						<p>Not about ownership</p>
+						<h4>Mature SE - Automated Deployment</h4>
+						<ul>
+							<li>Database Build Process</li>
+							<li>Continuous Integration</li>
+							<li>One Click Deployment</li>
+							<li>Training for Database Build Process</li>
+						</ul>
 					</section>
 
 					<section>
-						<h2>Transition to SOA Tools</h2>
+						<h4>Mature SE - Automated Testing</h4>
+						<ul>
+							<li>UI Testing - Done</li>
+							<li>Add Infrastructure Automated Tests</li>
+							<li>Decouple from DB - Tech Debt</li>
+							<li>Training for Automated Testing</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Make DS2A readonly</h3>
+						<ul>
+							<li>Benchmarks</li>
+							<li>Portfolio to Benchmarks</li>
+							<li>Portfolio</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Champion Collective Code Ownership</h3>
+					</section>
+
+					<section>
+						<h3>Transition to SOA Tools</h3>
+						<ul>
+							<li>Refactor Approval System</li>
+							<li>Support Events</li>
+						</ul>
 					</section>
 				</section>
 
