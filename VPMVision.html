@@ -96,11 +96,6 @@
 					<section>
 						<h3>Properties Spread Out in Various Systems</h3>
 						<p>Separated by systems AND by teams</p>
-						<aside class="notes">
-							<ul>
-								<li>Makes the data hard to reason about them.</li>
-							</ul>
-						</aside>
 					</section>
 
 					<section>
@@ -109,7 +104,7 @@
 						</h3>
 						<aside class="notes">
 							<ul>
-								<li>Use the example of hedged vehicle codes.</li>
+								<li>Use the example of fund of fund vehicle codes.</li>
 							</ul>
 						</aside>
 					</section>
@@ -118,9 +113,13 @@
 						<h3>Tribal Knowledge</h3>
 						<aside class="notes">
 							<ul>
-								<li>Talk about Portfolios with strage inception date</li>
+								<li>Talk about Portfolios with strange inception date</li>
 							</ul>
 						</aside>
+					</section>
+
+					<section>
+						<h3>Hard to Reason About the System</h3>
 					</section>
 
 				</section>
@@ -139,10 +138,15 @@
 							<li>It may consist of other underlying services.</li>
 						</ol>
 					</section>
-					
+
+					<section>
+						<h4>Place Vehicles, Portfolios, and Benchmarks in the same system.</h4>
+					</section>
+
 					<section>
 						<h3>VPM with SOA</h3>
 						<img src="images/VPMFutureStateArchitecture.png">
+						<p>Long Term Vision : 5 - 6 Years</p>
 						<aside class="notes">
 							<ul>
 								<li>Database becomes a private artifact.</li>
@@ -155,12 +159,21 @@
 					</section>
 
 					<section>
-						<h4>Place Vehicles, Portfolios, and Benchmarks in the same system.</h4>
+						<h3>This is NOT a rewrite.</h3>
 					</section>
 
 					<section>
-						<h2>Collective Code Ownership</h2>
-						<p>Anyone can submit a code change to the system.</p>
+						<h3>Collective Code Ownership</h3>
+						<ul>
+							<li>Limits Divergent Change</li>
+							<li>Anyone Can Change the System</li>
+							<li>Central Place for Data Governance</li>
+							<li>
+								<a href="https://stash.dimensional.com/projects/ITSMA/repos/gips/browse" target="_blank">
+									Source Control to ID Owners
+								</a>
+							</li>
+						</ul>
 						<aside class="notes">
 							<ul>
 								<li>Watch for the focus on extremes.</li>
@@ -173,7 +186,7 @@
 						<h3>Ownership</h3>
 						<ul>
 							<li>IAD - Valid Business Rules, Data Governance</li>
-							<li>IT -  4 Nines, Technical Stability / Risk</li>
+							<li>I/T -  4 Nines, Technical Stability / Risk</li>
 						</ul>
 						<aside class="notes">
 							<ul>
@@ -186,16 +199,27 @@
 					<section>
 						<h3>Data Mart Strategy</h3>
 						<ul>
-							<li>Legacy systems become data marts.</li>
-							<li>New DataMarts for SQL Users</li>
+							<li>DataMarts for SQL Users</li>
 							<li>Customized by Customer</li>
+							<li>Legacy systems become data marts.</li>
 						</ul>
 						<aside class="notes">
 							<ul>
 								<li>Stress out customers do not have to think about if they are using the correct data</li>
 								<li>Use Asset Class as an example : Marketing vs Rest of Compnay</li>
+								<li>Use inception date example</li>
 							</ul>
 						</aside>
+					</section>
+
+					<section>
+						<h3>Data Extract Strategy</h3>
+						<ul>
+							<li>Make the Extracts more Useful than Legacy Systems</li>
+							<li>Hands the Business the Answer</li>
+							<li>Can Schedule Extracts</li>
+							<li>OData with Office 2016</li>
+						</ul>
 					</section>
 				</section>
 
