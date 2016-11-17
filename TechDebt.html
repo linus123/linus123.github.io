@@ -123,24 +123,182 @@
 				</section>
 
 				<section>
-					<h3>Why do we change?</h3>
-					<ul>
-						<li>Add / Remove Functionality</li>
-						<li>Improve Code Quality</li>
-					</ul>
+					<h3>Pay Off Technical Debt</h3>
+					<p>by</p>
+					<h3>Refactoring</h3>
+					<p>by</p>
+					<h3>Automated Testing</h3>
 					<aside class="notes">
 						<ul>
-							<li>Separate the objectives</li>
-							<li>Get feedback after each one.</li>
+							<li>Can Pay off Technical Debt by chaning the system without breaking it</li>
+							<li>Accomplish refactoring with Automated Testing</li>
 						</ul>
 					</aside>
 				</section>
+
+				<section>
+					<h3>Refactoring Risk</h3>
+					<img src="images/Refactoring.png" />
+				</section>
+
+				<section>
+					<h3>Refactor vs. Rewrite</h3>
+					<img src="http://blog.webrunners.de/wp-content/uploads/2015/09/productivity.svg" style="background-color: white" />
+				</section>
+
+				<!--<section>-->
+					<!--<h3>Why do we change?</h3>-->
+					<!--<ul>-->
+						<!--<li>Add / Remove Functionality</li>-->
+						<!--<li>Improve Code Quality</li>-->
+					<!--</ul>-->
+					<!--<aside class="notes">-->
+						<!--<ul>-->
+							<!--<li>Separate the objectives</li>-->
+							<!--<li>Get feedback after each one.</li>-->
+						<!--</ul>-->
+					<!--</aside>-->
+				<!--</section>-->
+
+				<!--<section>-->
+					<!--<h3>System Under Test (SUT)</h3>-->
+				<!--</section>-->
 
 				<section>
 					<section>
 						<p>Technical Debt</p>
 						<h2>Databases</h2>
 					</section>
+
+					<section>
+						<h2>Coupling</h2>
+						<aside class="notes">
+							<ul>
+								<li>biggest problem to refactoring is COUPLING</li>
+								<li>Must couple to tables</li>
+								<li>Tables not an interface</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Testing => State</h2>
+					</section>
+
+					<section>
+						<img src="images/RefactoringDatabases.jpg" />
+						<aside class="notes">
+							<ul>
+								<li>the following process is from this book</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<img src="images/databaseRefactoringProcess.gif"/>
+						<aside class="notes">
+							<ul>
+								<li>tests could be written in any launage</li>
+								<li>deprecation keep both working</li>
+								<li>test are destructive</li>
+								<li>save transition scripts</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Developer Sandbox</h3>
+						<img src="images/SandBox.png"/>
+						<aside class="notes">
+							<ul>
+								<li>Local machine an option but NOT required</li>
+								<li><a href="https://stash.dimensional.com/projects/ID" target="_blank">Chris Source Control</a></li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Resetting State</h3>
+						<ul>
+							<li>Insert Scripts</li>
+							<li>Data File Data Sets</li>
+							<li>Data Setup API</li>
+							<li>Restore Backup</li>
+							<li>Master Data Store</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>If destructive then reset must be done in each test</li>
+								<li>Create and API : Report Center PortfolioControllerForAuditReportTests</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>SQL Scripts and Stored Procs</h3>
+						<p>Refactor to Programming Language</p>
+						<aside class="notes">
+							<ul>
+								<li>A little easier</li>
+								<li>Still have state problem</li>
+								<li>But can create a quick test harness</li>
+								<li>IAD Reset FixedAttributionsForGetBrinsonAttributionsForSmaTests</li>
+
+								<li>To Programming: Sql NEVER ment to be language</li>
+								<li>To Programming:  Floading point calc</li>
+								<li>To Programming: SQL Procedureal only ... more options with languages</li>
+								<li>To Programming: Limited Options for Abstraction</li>
+								<li>To Programming: Cannot Distribute</li>
+							</ul>
+						</aside>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<p>Technical Debt</p>
+						<h2>Code</h2>
+					</section>
+
+					<section>
+						<img src="images/WorkingEffectivelyWithLegacyCode.jpg" />
+						<aside class="notes">
+							<ul>
+								<li>the following process is from this book</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<img src="images/ChangingCode.png" />
+					</section>
+
+					<section>
+						<h3>Returns 2</h3>
+					</section>
+
+					<section>
+						<h3>Blends => Returns Web</h3>
+					</section>
+
+					<section>
+						<img src="images/Returns2Arch.png" />
+						<aside class="notes">
+							<ul>
+								<li>Identify Change Points</li>
+								<li>Find Test Points</li>
+								<li>Break Dependencies</li>
+								<li>Write Tests</li>
+								<li>Make Change and Refactor</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<img src="images/Returns2Test.png" />
+					</section>
+
 				</section>
 
 			</div>
