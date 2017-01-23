@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -26,6 +26,7 @@
 		</script>
 
 		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
 	</head>
@@ -55,13 +56,24 @@
 				</section>
 
                 <section>
-                    <h3>Goal 1:</h3>
-                    <h2>Drive down the cost / fear of change.</h2>
-                </section>
+                    <section>
+                        <h2>Goals</h2>
+                    </section>
 
-                <section>
-                    <h3>Goal 2:</h3>
-                    <h2>Guarantee all database changes are checked into version control.</h2>
+                    <section>
+                        <h3>Goal 1:</h3>
+                        <h2>Drive down the cost / fear of change.</h2>
+                    </section>
+
+                    <section>
+                        <h3>Goal 2:</h3>
+                        <h2>Guarantee all database changes are checked into version control.</h2>
+                    </section>
+
+                    <section>
+                        <h3>Goal 3:</h3>
+                        <h2>Move DBA review eariler in the process.</h2>
+                    </section>
                 </section>
 
                 <section>
@@ -79,70 +91,70 @@
                 </section>
 
                 <section>
-                    <h3>This guy does database versioning by transitions.</h3>
-                    <img src="images/billionaire-dog.jpg" />
+                    <section>
+                        <h2>Example</h2>
+                    </section>
+
+                    <section>
+                        <img src="images/TableTransition.png"/>
+                    </section>
+
+                    <section>
+                        <h2>Scripts We Need</h2>
+
+                        <ul>
+                            <li>CreateCityTable.sql</li>
+                            <li>CreateStateTable.sql</li>
+                            <li>AddCityIdToEmployee.sql</li>
+                            <li>DropCityStateFromEmployee.sql</li>
+                            <li>AlterInsertEmployeeStoredProc.sql</li>
+
+                        </ul>
+
+                    </section>
+
+                    <section>
+                        <h2>Run Order</h2>
+                        <h3>How do we know in what order to run these scripts?</h3>
+                    </section>
+
+                    <section>
+                        <h2>Number Prefix</h2>
+
+                        <ol>
+                            <li>001_CreateCityTable.sql</li>
+                            <li>002_CreateStateTable.sql</li>
+                            <li>003_AddCityIdToEmployee.sql</li>
+                            <li>004_DropCityStateFromEmployee.sql</li>
+                            <li>005_AlterInsertEmployeeStoredProc.sql</li>
+                        </ol>
+                    </section>
+
+                    <section>
+                        <h2>Anyone see a problem?</h2>
+                        <h3>Hint: We have data loss.</h3>
+                    </section>
+
+                    <section>
+                        <h2>Missing Transformation</h2>
+                        <h3>We need to include the data transformation: a transition script.</h3>
+                    </section>
+
+                    <section>
+                        <h2>Working Scripts</h2>
+
+                        <ol>
+                            <li>001_CreateCityTable.sql</li>
+                            <li>002_CreateStateTable.sql</li>
+                            <li>003_AddCityIdToEmployee.sql</li>
+                            <li>004_TransformCityState.sql</li>
+                            <li>005_DropCityStateFromEmployee.sql</li>
+                            <li>006_AlterInsertEmployeeStoredProc.sql</li>
+                        </ol>
+                    </section>
+
                 </section>
 
-                <section>
-                    <h2>An Example</h2>
-
-                    <img src="images/TableTransition.png"/>
-
-                </section>
-
-                <section>
-                    <h2>Scripts We Need</h2>
-
-                    <ul>
-                        <li>CreateCityTable.sql</li>
-                        <li>CreateStateTable.sql</li>
-                        <li>AddCityIdToEmployee.sql</li>
-                        <li>DropCityStateFromEmployee.sql</li>
-                        <li>AlterInsertEmployeeStoredProc.sql</li>
-
-                    </ul>
-
-                </section>
-
-                <section>
-                    <h2>Run Order</h2>
-                    <h3>How do we know in what order to run these scripts?</h3>
-                </section>
-
-                <section>
-                    <h2>Number Prefix</h2>
-
-                    <ol>
-                        <li>001_CreateCityTable.sql</li>
-                        <li>002_CreateStateTable.sql</li>
-                        <li>003_AddCityIdToEmployee.sql</li>
-                        <li>004_DropCityStateFromEmployee.sql</li>
-                        <li>005_AlterInsertEmployeeStoredProc.sql</li>
-                    </ol>
-                </section>
-
-                <section>
-                    <h2>Anyone see a problem?</h2>
-                    <h3>Hint: We have data loss.</h3>
-                </section>
-
-                <section>
-                    <h2>Missing Transformation</h2>
-                    <h3>We need to include the data transformation: a transition script.</h3>
-                </section>
-
-                <section>
-                    <h2>Working Scripts</h2>
-
-                    <ol>
-                        <li>001_CreateCityTable.sql</li>
-                        <li>002_CreateStateTable.sql</li>
-                        <li>003_AddCityIdToEmployee.sql</li>
-                        <li>004_TransformCityState.sql</li>
-                        <li>005_DropCityStateFromEmployee.sql</li>
-                        <li>006_AlterInsertEmployeeStoredProc.sql</li>
-                    </ol>
-                </section>
 
                 <section>
                     <h2>Centralized Development</h2>
@@ -185,52 +197,46 @@
                 </section>
 
                 <section>
-                    <h3>Princess Leia likes developer Sandboxes</h3>
-                    <img src="images/ec830e549540cb4fa176836a1339c85f.jpg"/>
+                    <section>
+                        <h2>Cost of Change</h2>
+                    </section>
+
+                    <section>
+                        <h2>Cost of Change</h2>
+                        <img src="images/costOfChangeTraditional.gif" />
+                        <h3>How can we prevent this?</h3>
+                    </section>
+
+                    <section>
+                        <h3>Solution 1:</h3>
+                        <h2>Automated Tests</h2>
+                        <h3>with...</h3>
+                    </section>
+
+                    <section>
+                        <h3>Solution 2:</h3>
+                        <h2>Continuous Integration</h2>
+                    </section>
+
+                    <section>
+                        <h3>Cost of Change with</h3>
+                        <h2>Tests and CI</h2>
+                        <img src="images/costOfChangeBeck.gif" />
+                    </section>
+
+                    <section>
+                        <h2>Keys to Automated Testing</h2>
+                        <h3>Developer Sandboxes</h3>
+                        <h3>Fixed Set of Test Data</h3>
+                    </section>
+
+                    <section>
+                        <h2>We will need your help for test data!</h2>
+                    </section>
                 </section>
 
                 <section>
-                    <h2>Cost of Change</h2>
-                    <img src="images/costOfChangeTraditional.gif" />
-                    <h3>How can we prevent this?</h3>
-                </section>
-
-                <section>
-                    <h3>Solution 1:</h3>
-                    <h2>Automated Tests</h2>
-                    <h3>with...</h3>
-                </section>
-
-                <section>
-                    <h3>Solution 2:</h3>
-                    <h2>Continuous Integration</h2>
-                </section>
-
-                <section>
-                    <h3>Cost of Change with</h3>
-                    <h2>Tests and CI</h2>
-                    <img src="images/costOfChangeBeck.gif" />
-                </section>
-
-                <section>
-                    <h2>Keys to Automated Testing</h2>
-                    <h3>Developer Sandboxes</h3>
-                    <h3>Fixed Set of Test Data</h3>
-                </section>
-
-                <section>
-                    <h2>We will need your help for test data!</h2>
-                </section>
-
-                <section>
-                    <h3>This is cool!</h3>
-                    <img src="images/tpfF8z80l.jpg" />
-                </section>
-
-                <section>
-                    <h2>Process Players</h2>
-                    <img src="images/Players.png" />
-                    <h4>Artifacts are not created unless build passes.</h4>
+                    <img src="images/DatabaseChangeProcess.png" />
                 </section>
 
                 <section>
@@ -238,7 +244,7 @@
                 </section>
 
                 <section>
-                    <h2>Demo: Dimensional Database</h2>
+                    <h2>Demo: Characteristic Database</h2>
                     <h3>Your developer sandbox is on your local machine.</h3>
                 </section>
 
@@ -247,7 +253,6 @@
                     <ul>
                         <li>SQL Express is installed</li>
                         <li>You have local admin on your machine</li>
-                        <li>You have Visual Studio installed (temporary)</li>
                         <li>Powershell Scripting is Setup</li>
                     </ul>
                 </section>
