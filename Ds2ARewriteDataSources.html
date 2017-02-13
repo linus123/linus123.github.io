@@ -78,12 +78,13 @@
 								<li>Services : Port / Account</li>
 								<li>Control some systems others we do not.</li>
 								<li>Note on User Security on VB app.</li>
+								<li>Am I missing anything?</li>
 							</ul>
 						</aside>
 					</section>
 
 					<section>
-						<h3>Dimensional DB must be treated as an independent system.</h3>
+						<h3>Dimensional DB must be treated as an independent stand-alone system.</h3>
 					</section>
 
 					<section>
@@ -91,17 +92,10 @@
 						<aside class="notes">
 							<ul>
 								<li>Model has the business complexity.</li>
+								<li>Contains the "tribal knowledge" that at one time killed us.</li>
+								<li>Coric, MFR, Public Site, CARS, etc</li>
 							</ul>
 						</aside>
-					</section>
-
-					<section>
-						<h2>Web APIs</h2>
-						<ul>
-							<li>Automated Testing</li>
-							<li>Automated Deployment</li>
-							<li>Code Review Process</li>
-						</ul>
 					</section>
 				</section>
 
@@ -109,6 +103,11 @@
 					<section>
 						<h2>Vehicle Portfolio Master</h2>
 						<p>Vision</p>
+						<aside class="notes">
+							<ul>
+								<li>Have reviewed this with IAD</li>
+							</ul>
+						</aside>
 					</section>
 
 					<section>
@@ -129,13 +128,144 @@
 					</section>
 
 					<section>
+						<h4>Technical Strategy</h4>
+						<img src="images/VPMFutureStateArchitecture.png" />
+						<aside class="notes">
+							<ul>
+								<li>DS2B is treated like a data mart</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
 						<h3>Benchmark Technical Strategy</h3>
-						<img src="images/Ds2Rewrite/Slide4.png" />
+						<img src="images/Ds2Rewrite/Slide5.png" />
 					</section>
 				</section>
 
 				<section>
-					<p>80% of the code will be in C#</p>
+					<section>
+						<h2>Service Oriented Architecture</h2>
+						<p>Future State Strategy</p>
+						<aside class="notes">
+							<ul>
+								<li>NOT an architecture</li>
+								<li>Architectural strategy</li>
+								<li>Set of Values, Suggestions, and Methodologies that we apply to create a future state architecture</li>
+								<li>The following keeps these strategies in mind.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Service = Business Capability</h3>
+					</section>
+
+					<section>
+						<h3>SOA = Software Engineering Fundamentals</h3>
+						<ul>
+							<li>Automated Deployments</li>
+							<li>Automated Testing</li>
+							<li>Collective Code Ownership</li>
+							<li>SOLID Principals</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>What is a service?</h3>
+						<ul>
+							<li>A service is the technical authority for a specific business capability.</li>
+							<li>Add data and business rules reside within the service.</li>
+							<li>Nothing is "left over" after identifying services.</li>
+							<li>Everything must be in some service.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Tenets of SOA</h3>
+						<ol>
+							<li>Services are autonomous.</li>
+							<li>Services have explicit boundaries.</li>
+							<li>Services shared contract &amp; schema, not class or type.</li>
+							<li>Service interaction is controlled by policy.</li>
+						</ol>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>DS2A Data Source Strategy</h2>
+					</section>
+
+					<section>
+						<img src="images/Ds2Rewrite/Slide6.png" />
+						<aside class="notes">
+							<ul>
+								<li>80% of the code should be in C-Sharp</li>
+								<li>JS UI Code tends to NOT be reusable between other systems.</li>
+								<li>Limited automated testing options for JS</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Data Domains</h3>
+						<ul>
+							<li>Portfolio &amp; Benchmark</li>
+							<li>Clients &amp; Accounts</li>
+							<li>Everything Else</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Portfolio &amp; Benchmark Data</h3>
+						<p>Two Phased Approach</p>
+					</section>
+
+					<section>
+						<h4>Phase 1</h4>
+						<img src="images/Ds2Rewrite/Slide3.PNG" />
+						<p><a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">Clean Architecture</a></p>
+						<aside class="notes">
+							<ul>
+								<li>Already supports SE fundamentals</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h4>Phase 2</h4>
+						<img src="images/Ds2Rewrite/Slide7.PNG" />
+						<aside class="notes">
+							<ul>
+								<li>The software in is in the box</li>
+								<li>Uses the same strategy as DS2B Vehicles</li>
+								<li>Use the Developer avenue of VPM</li>
+								<li>Database MUst remain a stand alone system due to direct user access</li>
+								<li>* Database CANNOT be part of the service - since services does not have autonomous control</li>
+								<li>Current service has links to DS2B</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Clients &amp; Accounts Data</h3>
+						<img src="images/Ds2Rewrite/Slide4.PNG" />
+					</section>
+
+					<section>
+						<h3>Everything Else</h3>
+						<ul>
+							<li>Countries - Country Micro Service</li>
+							<li>Holidays - Business Day Micro Service</li>
+							<li>More things...</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<h2>Questions / Discussion</h2>
 				</section>
 			</div>
 
