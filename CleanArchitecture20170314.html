@@ -33,176 +33,275 @@
 				<section>
 					<h2>The Plan</h2>
 					<ol>
-						<li>Talk</li>
-						<li>Look at Code</li>
+						<li>N-Tier Applications</li>
+						<li>Dependency Inversion Principal</li>
+						<li>Clean Architecture</li>
+						<li>Switching to Clean Architecture</li>
 					</ol>
 				</section>
 
 				<section>
-					<h2>A Story</h2>
-					<p>Clear Channel's Budget and Forecast App</p>
-					<aside class="notes">
+					<section>
+						<h2>N-Tier Applications</h2>
+						<p><a href="http://www.c-sharpcorner.com/article/ado-net-from-windows-dna-perspective/" target="_blank">Windows DNA</a></p>
+					</section>
+
+					<section>
+						<img src="images/Architecture20170314/Slide1.PNG" />
+					</section>
+
+					<section>
+						<h3>Good Things</h3>
 						<ul>
-							<li>Was an accounting application</li>
-							<li>Helps tell how much money we were going to make</li>
-							<li>Visual Basic 6 / ASP</li>
-							<li>(Cook Kids) VB Objects registered with COM</li>
+							<li>Layers Work</li>
+							<li>Simple</li>
 						</ul>
-					</aside>
+						<aside class="notes">
+							<ul>
+								<li>Layers work and are proven.</li>
+								<li>Simple: Very intuitive</li>
+								<li>Simple: Easy to understand for new devs joining the team.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Bad Things</h3>
+					</section>
+
+					<section>
+						<h3>Transitive Dependency</h3>
+						<img src="images/Architecture20170314/Slide2.PNG" />
+					</section>
+
+					<section>
+						<img src="images/Architecture20170314/Slide1.PNG" />
+						<aside class="notes">
+							<ul>
+								<li>Presentation layer is dependent on data access and therefore database.</li>
+								<li>Changing a data access DLL requires you to deploy the ENTIRE application.</li>
+								<li>Changes to the database / third party become require all layers to be recompiled and deployed.</li>
+								<li>Easy for programmers to leak data access only object into presentation.</li>
+								<li>Upgrades to DBs / third parties become really risky.</li>
+								<li>Ever had a third party system go away?</li>
+								<li>We have ALL gone though a third party upgraded / change that caused us to rewire signification portions of our system.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<img src="images/theDatabase.jpg">
+						<aside class="notes">
+							<ul>
+								<li>All focus shifts to the DB / third party.</li>
+								<li>The database IS the application.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>We can do better.</h3>
+						<aside class="notes">
+							<ul>
+								<li>But first we have to understand the DIP</li>
+							</ul>
+						</aside>
+					</section>
 				</section>
 
 				<section>
-					<h2>n-Tier</h2>
-					<img src="images/nTier.jpg">
-					<aside class="notes">
+					<section>
+						<h2>Dependency Inversion Principle (DIP)</h2>
+					</section>
+
+					<section>
+						<h3>SOLID Principle</h3>
+
 						<ul>
-							<li>Layers Work = Working Software</li>
-							<li>Each layer depends on the one above.</li>
-							<li>Problem: In the end everything depends on the database.</li>
-							<li>Problem: Dataset tends to penetrate all layers.</li>
-							<li>Problem: Nothing makes you "fall into the pit of success"</li>
-							<li>Problem: Database schemas become VERY hard to change</li>
-							<li>Problem: Hard to changes data sources to services if using dataset</li>
-							<li>Problem: How many of these system have automated test coverage</li>
+							<li>Single Responsibility Principles</li>
+							<li>Open / Closed Principle</li>
+							<li>Liskov Substitution Principle</li>
+							<li>Interface Segregation Principle</li>
+							<li><strong style="text-decoration: underline">Dependency Inversion Principle</strong></li>
 						</ul>
-					</aside>
-				</section>
+					</section>
 
-				<section>
-					<h2>The Result</h2>
-					<img src="images/theDatabase.jpg">
-					<aside class="notes">
+					<section>
+						<p>A. High-level modules should not depend on low-level modules. Both should depend on abstractions.</p>
+						<p>B. Abstractions should not depend on details. Details should depend on abstractions.</p>
+					</section>
+
+					<section>
+						<h3>High Level Policy</h3>
 						<ul>
-							<li>Tighly coupled to database</li>
-							<li>Now we are legacy</li>
-							<li>Coric Story - Team belives (NOT IT) that once set setup the database that we are going to have a hard time changing it</li>
+							<li>Use Cases</li>
+							<li>Business Rules</li>
+							<li>Tend to change for Business Reasons</li>
 						</ul>
-					</aside>
+
+						<aside class="notes">
+							<ul>
+								<li>Example: Fact Sheets should show a 10yr return for a portfolio.</li>
+								<li>Example: Report should only show incepted portfolios.</li>
+								<li>Example: System should send an email when a submits a web form.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Low Level Details</h3>
+						<ul>
+							<li>SQL Queries</li>
+							<li>Third party library calls</li>
+							<li>Can change due to NON Business Reasons</li>
+						</ul>
+
+						<aside class="notes">
+							<ul>
+								<li>Example: ADO.NET code</li>
+								<li>Example: Web Forms / MVC code</li>
+								<li>Example: Sending an email.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<img src="images/Architecture20170314/Slide3.PNG" />
+						<aside class="notes">
+							<ul>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<img src="images/Architecture20170314/Slide4.PNG" />
+						<aside class="notes">
+							<ul>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>N-Tier Violates DIP</h3>
+					</section>
+
+					<section>
+						<img src="images/Architecture20170314/Slide5.PNG" />
+						<aside class="notes">
+							<ul>
+							</ul>
+						</aside>
+					</section>
+
 				</section>
 
 				<section>
-					<h2>We can do better.</h2>
+					<section>
+						<h2>Clean Architecture</h2>
+					</section>
+
+					<section>
+						<h3>Improved Architecture</h3>
+						<ul>
+							<li>Minimizes the effect of NON-Business Changes</li>
+							<li>Decouples from User Interface Frameworks</li>
+							<li>Decouples the use of databases, 3rd party applications, 3rd party libraries</li>
+							<li>Improved support for Unit Testing</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>Key Concept</p>
+						<h3>BUSINESS RULES => Central Abstraction</h3>
+						<p><em>NOT the database</em></p>
+					</section>
+
+					<section>
+						<h4>Clean Architecture</h4>
+						<img src="images/Architecture20170314/Slide6.PNG" />
+						<aside class="notes">
+							<ul>
+								<li>Each Layer points to the once inside</li>
+								<li>Inner domain logic can only be standard code: C#, Python, Etc.  NOT LIBRARIES</li>
+								<li>The core knows nothing about the database or third party software</li>
+								<li>Minimize the code in outside later</li>
+								<li>Can replace outside technologies cheaply</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Business Rules Core Shall...</h3>
+						<ul>
+							<li class="fragment">have no dependencies</li>
+							<li class="fragment">be organized by business rules / uses cases</li>
+							<li class="fragment">contain 80% of system code</li>
+							<li class="fragment">make a good use of OOP</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Organized by Business Rules</h3>
+						<img src="images/PortfolioServiceFolders.png" />
+					</section>
+
+					<section>
+						<h4>Domain Logic Patterns</h4>
+						<img src="images/PatternsOfenterpriseAppArch.jpg" />
+						<p><a href="https://www.martinfowler.com/eaaCatalog/" target="_blank">Online Catalog</a></p>
+					</section>
+
+					<section>
+						<h2><a href="http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">Clean Architecture</a></h2>
+						<aside class="notes">
+							<ul>
+								<li>Other terms for this architecture: all same in terms of dependencies</li>
+								<li>Domain Modeling is touched on.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h4>Testable Architecture</h4>
+						<img src="images/Architecture20170314/Slide7.PNG" />
+					</section>
 				</section>
 
 				<section>
-					<h2>A Better Architecture</h2>
+					<section>
+						<h2>Switching to Clean Architecture</h2>
+					</section>
+
+					<section>
+						<h2>Two Options</h2>
+						<ol>
+							<li>Long Term Refactoring Strategy with Tests</li>
+							<li>Rewrite</li>
+						</ol>
+					</section>
+
+					<section>
+						<img src="images/Architecture20170314/Slide8.PNG" />
+					</section>
+
+					<section>
+						<h3>Ask for Help</h3>
+					</section>
+				</section>
+
+				<section>
+					<h2>More Information</h2>
 					<ul>
-						<li>Forces abstraction of third party libraries</li>
-						<li>Limits the effect of the database.</li>
-						<li>Defends against legacy code.</li>
-						<li>Supports unit tests.</li>
-						<li>Show NServiceBus code</li>
+						<li><a href="https://www.youtube.com/watch?v=Nsjsiz2A9mg" target="-_blank">Robert Martin Video</a></li>
+						<li><a href="https://cleancoders.com/episode/clean-code-episode-7/show" target="-_blank">Clean Code Video</a></li>
+						<li><a href="https://app.pluralsight.com/library/courses/clean-architecture-patterns-practices-principles/table-of-contents" target="-_blank">PluralSight</a></li>
 					</ul>
 				</section>
 
 				<section>
-					<p>Key Concept</p>
-					<h3>BUSINESS RULES => Central Abstraction</h3>
-					<p><em>NOT the database</em></p>
+					<h2>Questions</h2>
 				</section>
 
-				<section>
-					<h2><a href="http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">Clean Architecture</a></h2>
-					<aside class="notes">
-						<ul>
-							<li>Other terms for this architecture</li>
-							<li>Each Layer points to the once inside</li>
-						</ul>
-					</aside>
-				</section>
-
-				<section>
-					<h2>Another View</h2>
-					<img src="images/hexagonal_architecture_sketch.jpg">
-					<aside class="notes">
-						<ul>
-							<li>Technologies are on the outside.</li>
-							<li>The core knows nothing about the database or third party software</li>
-							<li>Third party software must be on the outside.</li>
-							<li>Technologies MUST BE KEPT THIN.</li>
-							<li>Data Access Problem: ADO, Code Blocks, Strongly Type Datasets, Link to SQL, Entity Framework</li>
-							<li>Slows Legacy Code - Investor Reporting</li>
-							<li>How hard is it to test?</li>
-							<li>How hard is it to change third party libraries?</li>
-
-							<li>Story:  iQC third party story</li>
-
-							<li>Talk about the boundary</li>
-						</ul>
-					</aside>
-				</section>
-
-				<section>
-					<h3><a href="http://sourcemaking.com/antipatterns/vendor-lock-in" target="_blank">Vendor Lock-In</a></h3>
-					<aside class="notes">
-						<ul>
-							<li>Classic problem of abstraction : a Software Engineering problem</li>
-						</ul>
-					</aside>
-
-					<aside class="notes">
-						<ul>
-							<li>Story:  iQC third party story</li>
-						</ul>
-					</aside>
-				</section>
-
-				<section>
-					<p>Sample Project</p>
-					<h2>Tiny Returns</h2>
-				</section>
-
-				<section>
-					<img src="images/TinyReturnsPhysicalLayout.png">
-				</section>
-
-				<section>
-					<h2>To the code...</h2>
-					<aside class="notes">
-						<ul>
-							<li>Core - Organized by Business Rules</li>
-							<li>Core - Few References</li>
-							<li>Every Knows about the core</li>
-							<li>Small Database Code</li>
-							<li>If we had to change the database how hard do you think it would be?</li>
-							<li>Take a look at an interface - IPerformanceReportExcelReportView</li>
-						</ul>
-					</aside>
-				</section>
-
-				<section>
-					<h2>Polymorphism</h2>
-					<a href="https://gist.github.com/linus123/11389478" target="_blank">Objects of a derived class may be treated as objects of a base class.</a>
-				</section>
-
-				<section>
-					<h3>Polymorphism = Loose Coupling</h3>
-				</section>
-
-				<section>
-					<h2>Unit Testing</h2>
-					<ul>
-						<li>Substitute Test Doubles for Outer Layer Objects</li>
-						<li>Can Simulate Outer Objects</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Direction of Dependencies</h2>
-				</section>
-
-				<section>
-					<img src="images/TinyReturnsFlowOfControl.png">
-				</section>
-
-				<section>
-					<img src="images/TinyReturnsDIP.png">
-				</section>
-
-				<section>
-					<h2>Dependency Inversion Principal</h2>
-					<p>soliD</p>
-				</section>
 			</div>
 
 </div>
