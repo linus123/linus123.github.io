@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Clean Architecture</h1>
+				</section>
+
+				<section>
+					<h2>The Plan</h2>
+					<ol>
+						<li>Talk</li>
+						<li>Look at Code</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>A Story</h2>
+					<p>Clear Channel's Budget and Forecast App</p>
+					<aside class="notes">
+						<ul>
+							<li>Was an accounting application</li>
+							<li>Helps tell how much money we were going to make</li>
+							<li>Visual Basic 6 / ASP</li>
+							<li>(Cook Kids) VB Objects registered with COM</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>n-Tier</h2>
+					<img src="images/nTier.jpg">
+					<aside class="notes">
+						<ul>
+							<li>Layers Work = Working Software</li>
+							<li>Each layer depends on the one above.</li>
+							<li>Problem: In the end everything depends on the database.</li>
+							<li>Problem: Dataset tends to penetrate all layers.</li>
+							<li>Problem: Nothing makes you "fall into the pit of success"</li>
+							<li>Problem: Database schemas become VERY hard to change</li>
+							<li>Problem: Hard to changes data sources to services if using dataset</li>
+							<li>Problem: How many of these system have automated test coverage</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>The Result</h2>
+					<img src="images/theDatabase.jpg">
+					<aside class="notes">
+						<ul>
+							<li>Tighly coupled to database</li>
+							<li>Now we are legacy</li>
+							<li>Coric Story - Team belives (NOT IT) that once set setup the database that we are going to have a hard time changing it</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>We can do better.</h2>
+				</section>
+
+				<section>
+					<h2>A Better Architecture</h2>
+					<ul>
+						<li>Forces abstraction of third party libraries</li>
+						<li>Limits the effect of the database.</li>
+						<li>Defends against legacy code.</li>
+						<li>Supports unit tests.</li>
+						<li>Show NServiceBus code</li>
+					</ul>
+				</section>
+
+				<section>
+					<p>Key Concept</p>
+					<h3>BUSINESS RULES => Central Abstraction</h3>
+					<p><em>NOT the database</em></p>
+				</section>
+
+				<section>
+					<h2><a href="http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">Clean Architecture</a></h2>
+					<aside class="notes">
+						<ul>
+							<li>Other terms for this architecture</li>
+							<li>Each Layer points to the once inside</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Another View</h2>
+					<img src="images/hexagonal_architecture_sketch.jpg">
+					<aside class="notes">
+						<ul>
+							<li>Technologies are on the outside.</li>
+							<li>The core knows nothing about the database or third party software</li>
+							<li>Third party software must be on the outside.</li>
+							<li>Technologies MUST BE KEPT THIN.</li>
+							<li>Data Access Problem: ADO, Code Blocks, Strongly Type Datasets, Link to SQL, Entity Framework</li>
+							<li>Slows Legacy Code - Investor Reporting</li>
+							<li>How hard is it to test?</li>
+							<li>How hard is it to change third party libraries?</li>
+
+							<li>Story:  iQC third party story</li>
+
+							<li>Talk about the boundary</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h3><a href="http://sourcemaking.com/antipatterns/vendor-lock-in" target="_blank">Vendor Lock-In</a></h3>
+					<aside class="notes">
+						<ul>
+							<li>Classic problem of abstraction : a Software Engineering problem</li>
+						</ul>
+					</aside>
+
+					<aside class="notes">
+						<ul>
+							<li>Story:  iQC third party story</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<p>Sample Project</p>
+					<h2>Tiny Returns</h2>
+				</section>
+
+				<section>
+					<img src="images/TinyReturnsPhysicalLayout.png">
+				</section>
+
+				<section>
+					<h2>To the code...</h2>
+					<aside class="notes">
+						<ul>
+							<li>Core - Organized by Business Rules</li>
+							<li>Core - Few References</li>
+							<li>Every Knows about the core</li>
+							<li>Small Database Code</li>
+							<li>If we had to change the database how hard do you think it would be?</li>
+							<li>Take a look at an interface - IPerformanceReportExcelReportView</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Polymorphism</h2>
+					<a href="https://gist.github.com/linus123/11389478" target="_blank">Objects of a derived class may be treated as objects of a base class.</a>
+				</section>
+
+				<section>
+					<h3>Polymorphism = Loose Coupling</h3>
+				</section>
+
+				<section>
+					<h2>Unit Testing</h2>
+					<ul>
+						<li>Substitute Test Doubles for Outer Layer Objects</li>
+						<li>Can Simulate Outer Objects</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Direction of Dependencies</h2>
+				</section>
+
+				<section>
+					<img src="images/TinyReturnsFlowOfControl.png">
+				</section>
+
+				<section>
+					<img src="images/TinyReturnsDIP.png">
+				</section>
+
+				<section>
+					<h2>Dependency Inversion Principal</h2>
+					<p>soliD</p>
+				</section>
+			</div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+	// More info https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		history: true,
+
+		// More info https://github.com/hakimel/reveal.js#dependencies
+		dependencies: [
+			{ src: 'plugin/markdown/marked.js' },
+			{ src: 'plugin/markdown/markdown.js' },
+			{ src: 'plugin/notes/notes.js', async: true },
+			{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+		]
+	});
+</script>
+</body>
+</html>
