@@ -31,10 +31,28 @@
 				</section>
 
 				<section>
+					<h2>Web Ex</h2>
+					<ul>
+						<li>Ask questions though chat</li>
+						<li>Please mute your phones</li>
+						<li>We will share recording</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>1 of 2 Brownbags</h2>
+					<ol>
+						<li>Clean Architecture</li>
+						<li>IoC Containers with Structuremap</li>
+					</ol>
+				</section>
+
+				<section>
 					<h2>The Plan</h2>
 					<ol>
 						<li>N-Tier Applications</li>
-						<li>Dependency Inversion Principal</li>
+						<li>SOLID Principles</li>
+						<li>Dependency Inversion Principle</li>
 						<li>Clean Architecture</li>
 						<li>Switching to Clean Architecture</li>
 					</ol>
@@ -42,12 +60,68 @@
 
 				<section>
 					<section>
+						<h2>Terms</h2>
+					</section>
+
+					<section>
+						<h3>Service Oriented Architecture</h3>
+
+						<aside class="notes">
+							<ul>
+								<li>Has guide lines on how we create a single application.</li>
+								<li>Guide lines no how we would organize ALL applications.</li>
+								<li>Guide lines on system to system communication.</li>
+								<li>Enterprise strategy for our products.</li>
+								<li>We will be introducing more SOA concepts and SOA terminology</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>System</h3>
+						<p>A collection of artifacts that make a deploy-able unit.</p>
+
+						<aside class="notes">
+							<ul>
+								<li>Use returns web as example.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Architectural Style</h3>
+						<p>a coarse grained pattern that provides an abstract framework for a family of systems</p>
+						<small>-- Microsoft</small>
+
+						<aside class="notes">
+							<ul>
+								<li>N-Tier and Clean Arch are styles</li>
+								<li>A system may have multiple arch styles</li>
+							</ul>
+						</aside>
+
+					</section>
+				</section>
+
+				<section>
+					<section>
 						<h2>N-Tier Applications</h2>
 						<p><a href="http://www.c-sharpcorner.com/article/ado-net-from-windows-dna-perspective/" target="_blank">Windows DNA</a></p>
+						<aside class="notes">
+							<ul>
+								<li>Was the "correct" way to build applications from MS in the late 90s to early 2000s.</li>
+								<li>Each layer went on a different machine: distributed computing.</li>
+							</ul>
+						</aside>
 					</section>
 
 					<section>
 						<img src="images/Architecture20170314/Slide1.PNG" />
+						<aside class="notes">
+							<ul>
+								<li>Later we matured to add the business layer as a separate layer from the data layer.</li>
+							</ul>
+						</aside>
 					</section>
 
 					<section>
@@ -96,12 +170,15 @@
 							<ul>
 								<li>All focus shifts to the DB / third party.</li>
 								<li>The database IS the application.</li>
+								<li>We start using the DB as an integration point.  DB were not meant for this.</li>
+								<li>We put shared code in the DB: procs, views, functs</li>
 							</ul>
 						</aside>
 					</section>
 
 					<section>
 						<h3>We can do better.</h3>
+						<p>Dependency Inversion Principle (DIP)</p>
 						<aside class="notes">
 							<ul>
 								<li>But first we have to understand the DIP</li>
@@ -112,19 +189,46 @@
 
 				<section>
 					<section>
-						<h2>Dependency Inversion Principle (DIP)</h2>
+						<h2>SOLID Principles</h2>
+						<p>Quickly</p>
 					</section>
 
 					<section>
-						<h3>SOLID Principle</h3>
+						<img src="images/AgileSoftwareDev.jpg" />
+						<aside class="notes">
+							<ul>
+								<li>Robert Martin "Uncle Bob" created these.</li>
+								<li>Principles around object oriented programming.</li>
+								<li>When used together, improved the maintainability of a system.</li>
+							</ul>
+						</aside>
+					</section>
 
-						<ul>
-							<li>Single Responsibility Principles</li>
-							<li>Open / Closed Principle</li>
-							<li>Liskov Substitution Principle</li>
-							<li>Interface Segregation Principle</li>
-							<li><strong style="text-decoration: underline">Dependency Inversion Principle</strong></li>
-						</ul>
+					<section>
+						<h3>Single Responsibility Principle</h3>
+						<p>"A class should have only one reason to change."</p>
+						<small>-- Robert Martin</small>
+					</section>
+
+					<section>
+						<h3>Open / Closed Principle</h3>
+						<p>Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification</p>
+					</section>
+
+					<section>
+						<h3>Liskov Substitution Principle</h3>
+						<p>If S is a subtype of T, then objects of type T may be replaced with objects of type S without altering any of the desirable properties of T</p>
+					</section>
+
+					<section>
+						<h3>Interface Segregation Principle</h3>
+						<p>No client should be forced to depend on methods it does not use</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Dependency Inversion Principle (DIP)</h2>
 					</section>
 
 					<section>
@@ -190,6 +294,9 @@
 						<img src="images/Architecture20170314/Slide5.PNG" />
 						<aside class="notes">
 							<ul>
+								<li>Convert the boundary</li>
+								<li>Requires map between interfaces and concrete classes</li>
+								<li>Review direction of flow of control</li>
 							</ul>
 						</aside>
 					</section>
@@ -251,12 +358,33 @@
 					<section>
 						<h3>Organized by Business Rules</h3>
 						<img src="images/PortfolioServiceFolders.png" />
+
+						<aside class="notes">
+							<ul>
+								<li>Names are hard here</li>
+								<li>A possible way to start is with the story</li>
+							</ul>
+						</aside>
+
 					</section>
 
 					<section>
 						<h4>Domain Logic Patterns</h4>
 						<img src="images/PatternsOfenterpriseAppArch.jpg" />
 						<p><a href="https://www.martinfowler.com/eaaCatalog/" target="_blank">Online Catalog</a></p>
+					</section>
+
+					<section>
+						<h4>Dependency Management</h4>
+						<img src="images/Architecture20170314/Slide6.PNG" />
+						<aside class="notes">
+							<ul>
+								<li>Blue part may be mare of several modules.</li>
+								<li>During app start up.  Web does not know about data layer, third party code, or other frameworks.  Only knows about business inner laters</li>
+								<li>Need some code to map business layer to outer layer.</li>
+								<li>IoC containers are perfect for this.  Will cover next brownbag.</li>
+							</ul>
+						</aside>
 					</section>
 
 					<section>
