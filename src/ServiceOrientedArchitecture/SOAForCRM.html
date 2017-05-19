@@ -26,6 +26,7 @@
     <div class="slides">
         <section>
             <h1>Service Oriented Architecture</h1>
+            <p>for CRM</p>
         </section>
 
         <section>
@@ -41,6 +42,7 @@
                     <li>Services share contract & schema, not class or type (or database)</li>
                     <li>Service interaction is controlled by policy</li>
                 </ol>
+                <small>Microsoft</small>
             </section>
 
             <section>
@@ -50,13 +52,39 @@
                     <li>All data and business rules reside within the service</li>
                     <li>Nothing is "left over" after identifying services</li>
                 </ul>
+                <small>IBM</small>
             </section>
 
         </section>
 
         <section>
             <section>
-                <h2>Example</h2>
+                <h2>System vs. Service</h2>
+            </section>
+
+            <section>
+                <h3>System</h3>
+                <ul>
+                    <li>"Deployable" Artifact</li>
+                    <li>Has Physical Boundaries</li>
+                    <li>Examples: Returns Web, GIPS, Public Site</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Service</h3>
+                <ul>
+                    <li>Technical Authority for a Business Capability</li>
+                    <li>Logical Boundaries</li>
+                    <li>Examples: Performance, Vehicles, Equity Characteristics</li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>hypothetical Example</h2>
+                <p>Fast Forward 10 - 15 Years</p>
                 <aside class="notes">
                     <ul>
                         <li>Best way to explain is to use a possible implementation</li>
@@ -119,9 +147,93 @@
         </section>
 
         <section>
+
             <section>
                 <h2>Microsoft CRM</h2>
+                <p>and Service Oriented Architecture</p>
             </section>
+
+            <section>
+                <p>Microsoft CRM is an application development platform that ships with a pre-configured CRM.</p>
+            </section>
+
+            <section>
+                <h3>It is code!</h3>
+            </section>
+
+            <section>
+                <h3>In terms of SOA CRM is...</h3>
+                <ul>
+                    <li>A System</li>
+                    <li>A Part of a Business Capability</li>
+                    <li>Shared Tool (Not Yet)</li>
+                </ul>
+            </section>
+
+        </section>
+
+        <section>
+            <h2><a href="https://sourcemaking.com/antipatterns/vendor-lock-in" target="_blank">Vendor Lock-In</a></h2>
+            <p>Any third party product will NOT be around forever.</p>
+        </section>
+
+        <section>
+            <img src="images/Slide4.PNG" />
+        </section>
+
+        <section>
+            <h2>Recommendations</h2>
+        </section>
+
+        <section>
+            <h2>Focus on Business Capabilities</h2>
+
+            <section>
+                <p>We are experts in client data and the sales pipeline. Currently, we leverage Microsoft CRM.</p>
+            </section>
+
+            <section>
+                <p>Learn where current client data business logic exists.  Have a long term strategy to "govern".</p>
+            </section>
+
+        </section>
+
+        <section>
+            <h2>Develop a Technical Strategy</h2>
+
+            <section>
+                <p>Agree what business capabilities are appropriate and NOT appropriate for the platform.</p>
+            </section>
+
+            <section>
+                <p>Create a data integration strategy.</p>
+            </section>
+
+            <section>
+                <p>Understand when we VIOLATE our guidelines and how we address long term.</p>
+            </section>
+
+            <section>
+                <p>Upgrade CRM versions on a cadence.</p>
+            </section>
+
+        </section>
+
+        <section>
+            <h2>Create a Testing Strategy</h2>
+
+            <section>
+                <p>Create disciplined testing strategy.</p>
+            </section>
+
+            <section>
+                <p>Automated testing MUST be a priority.</p>
+            </section>
+
+        </section>
+
+        <section>
+            <h2>Questions / Discussion</h2>
         </section>
 
         <!--
