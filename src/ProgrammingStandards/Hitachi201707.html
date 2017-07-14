@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Programming Standards</title>
+
+		<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+		<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Programming Standards</h1>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+					<ul>
+						<li>Review Standards</li>
+						<li>Next Steps</li>
+					</ul>
+				</section>
+
+				<section>
+					<p><small>Core Philosophies</small></p>
+					<section>
+						<h2>Core Philosophies</h2>
+					</section>
+
+					<section>
+						<p>We are</p>
+						<h3>Software Engineers</h3>
+					</section>
+
+					<section>
+						<h3>Maintainability</h3>
+						<p>is KING</p>
+					</section>
+
+					<section>
+						<img src="images/ExtremeProgrammingExplainedBook.jpg" />
+					</section>
+
+					<section>
+						<ul>
+							<li>User Stories *</li>
+							<li>Small Releases</li>
+							<li>Metaphor *</li>
+							<li>Collective Ownership</li>
+							<li>Coding Standards</li>
+							<li>Simple Design</li>
+							<li>Testing</li>
+							<li>Pair Programming *</li>
+							<li>Continuous Integration</li>
+							<li>40-hour Workweek</li>
+							<li>On-site Customer</li>
+						</ul>
+					</section>
+
+					<section>
+						<ul>
+							<li>Automated Deployment</li>
+						</ul>
+					</section>
+
+					<section>
+						<img src="images/costOfChangeTraditional.gif" />
+					</section>
+
+					<section>
+						<img src="images/costOfChangeBeck.gif" />
+					</section>
+				</section>
+
+				<section>
+					<p><small>Source Control</small></p>
+
+					<section>
+						<h2>Source Control</h2>
+						<p>Collective Ownership . Continuous Integration</p>
+					</section>
+
+					<section>
+						<h3>GIT</h3>
+					</section>
+
+					<section>
+						<h3>BitBucket Server (Internal)</h3>
+						<p><a href="https://stash.dimensional.com" target="_blank">stash.dimensional.com</a></p>
+					</section>
+
+					<section>
+						<h3><a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank">GitFlow</a></h3>
+					</section>
+
+					<section>
+						<h3>Pull Request</h3>
+						<p>[feature branch] =&gt; develop</p>
+					</section>
+
+					<section>
+						<p>Pull requests let you tell others about changes you've pushed to a GitHub repository. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.</p>
+						<p><small>-- <a about="https://yangsu.github.io/pull-request-tutorial/" target="_blank">https://yangsu.github.io/pull-request-tutorial/</a></small></p>
+					</section>
+
+					<section>
+						<h3><a href="https://stash.dimensional.com/projects/NETWS/repos/tinyreturnsinternprogram2017/pull-requests/7/overview" target="_blank">Sample Pull Request</a></h3>
+					</section>
+
+				</section>
+
+				<section>
+					<p><small>Coding Standards</small></p>
+
+					<section>
+						<h2>Coding Standards</h2>
+					</section>
+
+					<section>
+						<img src="../images/CleanCode.jpg" />
+					</section>
+
+					<section>
+						<h3>SOLID Principles</h3>
+						<ul>
+							<li>Single Responsibility</li>
+							<li>Open / Closed</li>
+							<li>Liskov Substitution</li>
+							<li>Interface Segregation</li>
+							<li>Dependency Inversion *</li>
+						</ul>
+					</section>
+
+					<section>
+						<img src="../images/AgileSoftwareDev.jpg" />
+					</section>
+
+					<section>
+						<img src="../images/RefactoringBook.jpg" />
+					</section>
+
+					<section>
+						<h4><a href="https://stash.dimensional.com/projects/NETWS/repos/code-project-standards/browse" target="_blank">Dimensional Coding Standards Document</a></h4>
+					</section>
+				</section>
+
+				<section>
+					<p><small>Automated Testing</small></p>
+
+					<section>
+						<h2>Automated Testing</h2>
+					</section>
+
+					<section>
+						<p>Every system's codebase shall have an automated test suite</p>
+						<p><small>-- Dimensional Coding Standards</small></p>
+					</section>
+
+					<section>
+						<img src="images/UnitTests.png" />
+					</section>
+
+					<section>
+						<h3>Bias toward testable technologies</h3>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>For another time</h2>
+						<ul>
+							<li>Continuous Integration</li>
+							<li>Automated Deployment</li>
+						</ul>
+					</section>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+		<script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '../../lib/reveal.js-3.4.1/plugin/markdown/marked.js' },
+					{ src: '../../lib/reveal.js-3.4.1/plugin/markdown/markdown.js' },
+					{ src: '../../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true },
+					{ src: '../../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
