@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>SOA / Data Distribution</title>
+
+		<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+		<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Service Oriented Architecture</h1>
+					<p>Data Distribution</p>
+				</section>
+
+				<section>
+					<h3>Is SOA Appropriate for data distribution?</h3>
+				</section>
+
+				<section>
+					<section>
+						<h2>Definitions</h2>
+					</section>
+
+					<section>
+						<h3>Physical System Boundary</h3>
+						<ul>
+							<li>Enumeration of Servers</li>
+							<li>Source Control Repository</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Logical System Boundary</h3>
+						<ul>
+							<li>Will Span Servers of Servers</li>
+							<li>Will Span Source Control Repository</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>System</h3>
+						<ul>
+							<li>"Deployable" Artifact</li>
+							<li>Has Physical Boundaries</li>
+							<li>Examples: Returns Web, GIPS, Public Site</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Product</h3>
+						<ul>
+							<li>???</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<img src="images/Slide5.PNG"/>
+				</section>
+
+				<section>
+					<section>
+						<h2>Enterprise N-Tired Architecture</h2>
+					</section>
+
+					<section>
+						<img src="images/Slide6.PNG"/>
+					</section>
+
+					<section>
+						<img src="images/Slide7.PNG"/>
+					</section>
+
+				</section>
+
+				<section>
+					<h4>Service Oriented Architecture</h4>
+
+					<section>
+						<h2>Service</h2>
+						<ul>
+							<li>The technical authority for a specific business capability</li>
+							<li>All data and business rules reside within the service</li>
+							<li>Nothing is "left over" after identifying services</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Tenets of Service Orientation</h3>
+						<ol>
+							<li>Services are autonomous</li>
+							<li>Services have explicit boundaries</li>
+							<li>Services share contract & schema, not class or type (or database)</li>
+							<li>Service interaction is controlled by policy</li>
+						</ol>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2><a href="https://us.dimensional.com/funds" target="_blank">Fund Center</a></h2>
+						<p>Feature of the Public Site</p>
+					</section>
+
+					<section>
+						<img src="images/FundCenterFundList.png"/>
+					</section>
+
+					<section>
+						<h3>Fast Forward 10 Years</h3>
+					</section>
+
+					<section>
+						<img src="images/Slide8.PNG" />
+					</section>
+
+					<section>
+						<img src="images/Slide9.PNG" />
+					</section>
+
+					<section>
+						<img src="images/Slide10.PNG" />
+					</section>
+
+					<section>
+						<img src="images/Slide12.PNG" />
+					</section>
+
+					<section>
+						<img src="images/SoaTechnology.png" />
+					</section>
+
+				</section>
+
+				<section>
+					<h2>Returns as a Service</h2>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+		<script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '../../lib/reveal.js-3.4.1/plugin/markdown/marked.js' },
+					{ src: '../../lib/reveal.js-3.4.1/plugin/markdown/markdown.js' },
+					{ src: '../../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true },
+					{ src: '../../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
+
