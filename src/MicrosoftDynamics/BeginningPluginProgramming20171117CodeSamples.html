@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Microsoft Dynamics CRM - Beginning Plugin Development</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../starter-template.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../lib/highlight/styles/vs.css">
+    <script src="../../lib/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header clearfix">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">Microsoft Dynamics CRM - Beginning Plugin Development</h3>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3>Connecting to CRM</h3>
+            <a name="Connecting"></a>
+			<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">private</span> <span style="color: #008000; font-weight: bold">static</span> IOrganizationService <span style="color: #0000FF">CreateOrganizationService</span>()
+{
+	IOrganizationService organizationService;
+
+	<span style="color: #B00040">var</span> connectionString = <span style="color: #BA2121">&quot;Url=https://dimensionaldev.api.crm.dynamics.com/api/data/v8.1/; Username=[User];Password=[Pass];authtype=Office365&quot;</span>;
+
+	<span style="color: #B00040">var</span> connection = <span style="color: #008000; font-weight: bold">new</span> CrmServiceClient(connectionString);
+
+	<span style="color: #008000; font-weight: bold">if</span> (connection.OrganizationWebProxyClient != <span style="color: #008000; font-weight: bold">null</span>)
+		organizationService = connection.OrganizationWebProxyClient;
+	<span style="color: #008000; font-weight: bold">else</span>
+		organizationService = connection.OrganizationServiceProxy;
+
+	<span style="color: #008000; font-weight: bold">return</span> organizationService;
+}
+</pre></td></tr></table></div>
+
+		</div>
+
+        <div class="col-md-12">
+            <h3>Get Task By Id</h3>
+            <a name="EntityById"></a>
+			<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #7D9029">[Fact]</span>
+<span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">void</span> <span style="color: #0000FF">CrmSdkShouldSuccessfullyPullTaskById</span>()
+{
+	<span style="color: #B00040">var</span> organizationService = CreateOrganizationService();
+
+	<span style="color: #B00040">var</span> columnSet = <span style="color: #008000; font-weight: bold">new</span> ColumnSet();
+
+	columnSet.AddColumns(
+		<span style="color: #BA2121">&quot;subject&quot;</span>,
+		<span style="color: #BA2121">&quot;statecode&quot;</span>,
+		<span style="color: #BA2121">&quot;hsl_taskgroupid&quot;</span>);
+
+	<span style="color: #B00040">var</span> entity = organizationService.Retrieve(
+		<span style="color: #BA2121">&quot;task&quot;</span>,
+		<span style="color: #008000; font-weight: bold">new</span> <span style="color: #0000FF">Guid</span>(<span style="color: #BA2121">&quot;71ebe864-8cc8-e711-811d-e0071b716c71&quot;</span>),
+		columnSet);
+
+	entity.Should().NotBeNull();
+
+	entity[<span style="color: #BA2121">&quot;subject&quot;</span>].Should().Be(<span style="color: #BA2121">&quot;Assign a launch coordinator&quot;</span>);
+
+	entity.Attributes.Contains(<span style="color: #BA2121">&quot;statecode&quot;</span>).Should().BeTrue();
+	entity[<span style="color: #BA2121">&quot;statecode&quot;</span>].Should().BeAssignableTo&lt;OptionSetValue&gt;();
+	<span style="color: #B00040">var</span> stateCode = (OptionSetValue) entity[<span style="color: #BA2121">&quot;statecode&quot;</span>];
+	stateCode.Value.Should().Be(<span style="color: #666666">0</span>);
+
+	entity.Attributes.Contains(<span style="color: #BA2121">&quot;hsl_taskgroupid&quot;</span>).Should().BeTrue();
+	entity[<span style="color: #BA2121">&quot;hsl_taskgroupid&quot;</span>].Should().BeAssignableTo&lt;EntityReference&gt;();
+	<span style="color: #B00040">var</span> taskGroupReference = (EntityReference)entity[<span style="color: #BA2121">&quot;hsl_taskgroupid&quot;</span>];
+	taskGroupReference.LogicalName.Should().Be(<span style="color: #BA2121">&quot;hsl_taskgroup&quot;</span>);
+	taskGroupReference.Id.Should().NotBeEmpty();
+}
+</pre></td></tr></table></div>
+
+		</div>
+
+        <div class="col-md-12">
+            <h3>Query Tasks via QueryExpression</h3>
+            <a name="QueryExpression"></a>
+			<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #7D9029">[Fact]</span>
+<span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">void</span> <span style="color: #0000FF">CrmSdkShouldSuccessfullyPullManyTaskByTaskGroupId</span>()
+{
+	<span style="color: #B00040">var</span> organizationService = CreateOrganizationService();
+
+	<span style="color: #B00040">var</span> query = <span style="color: #008000; font-weight: bold">new</span> QueryExpression(<span style="color: #BA2121">&quot;task&quot;</span>);
+
+	query.ColumnSet.AddColumns(
+		<span style="color: #BA2121">&quot;subject&quot;</span>,
+		<span style="color: #BA2121">&quot;statecode&quot;</span>,
+		<span style="color: #BA2121">&quot;hsl_taskgroupid&quot;</span>);
+
+	query.Criteria = <span style="color: #008000; font-weight: bold">new</span> FilterExpression();
+	query.Criteria.AddCondition(
+		<span style="color: #BA2121">&quot;hsl_taskgroupid&quot;</span>,
+		ConditionOperator.Equal,
+		<span style="color: #BA2121">&quot;44ef07ca-a983-49a8-ad6b-3a802feabfdc&quot;</span>);
+
+	<span style="color: #B00040">var</span> results = organizationService.RetrieveMultiple(query);
+
+	results.Should().NotBeNull();
+
+	<span style="color: #B00040">var</span> entity = results[<span style="color: #666666">0</span>];
+
+	entity[<span style="color: #BA2121">&quot;subject&quot;</span>].Should().Be(<span style="color: #BA2121">&quot;Assign a launch coordinator&quot;</span>);
+
+	entity.Attributes.Contains(<span style="color: #BA2121">&quot;statecode&quot;</span>).Should().BeTrue();
+	entity[<span style="color: #BA2121">&quot;statecode&quot;</span>].Should().BeAssignableTo&lt;OptionSetValue&gt;();
+	<span style="color: #B00040">var</span> stateCode = (OptionSetValue)entity[<span style="color: #BA2121">&quot;statecode&quot;</span>];
+	stateCode.Value.Should().Be(<span style="color: #666666">0</span>);
+
+	entity.Attributes.Contains(<span style="color: #BA2121">&quot;hsl_taskgroupid&quot;</span>).Should().BeTrue();
+	entity[<span style="color: #BA2121">&quot;hsl_taskgroupid&quot;</span>].Should().BeAssignableTo&lt;EntityReference&gt;();
+	<span style="color: #B00040">var</span> taskGroupReference = (EntityReference)entity[<span style="color: #BA2121">&quot;hsl_taskgroupid&quot;</span>];
+	taskGroupReference.LogicalName.Should().Be(<span style="color: #BA2121">&quot;hsl_taskgroup&quot;</span>);
+	taskGroupReference.Id.Should().NotBeEmpty();
+}
+</pre></td></tr></table></div>
+
+		</div>
+
+        <div class="col-md-12">
+            <h3>Create Task</h3>
+            <a name="CreateTask"></a>
+			<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #7D9029">[Fact]</span>
+<span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">void</span> <span style="color: #0000FF">CrmSdkShouldSuccessfullyCreateAndDeleteTask</span>()
+{
+	<span style="color: #B00040">var</span> organizationService = CreateOrganizationService();
+
+	<span style="color: #B00040">var</span> entity = <span style="color: #008000; font-weight: bold">new</span> Entity(<span style="color: #BA2121">&quot;task&quot;</span>);
+
+	entity[<span style="color: #BA2121">&quot;subject&quot;</span>] = <span style="color: #BA2121">&quot;My New Task&quot;</span>;
+
+	<span style="color: #B00040">var</span> taskId = organizationService.Create(entity);
+
+	taskId.Should().NotBeEmpty();
+
+	organizationService.Delete(<span style="color: #BA2121">&quot;task&quot;</span>, taskId);
+}
+</pre></td></tr></table></div>
+
+		</div>
+
+        <div class="col-md-12">
+            <h3>Update Task</h3>
+            <a name="UpdateTask"></a>
+			<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #7D9029">[Fact]</span>
+<span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">void</span> <span style="color: #0000FF">CrmSdkShouldSuccessfullyUpdateTasksProperties</span>()
+{
+	<span style="color: #B00040">var</span> organizationService = CreateOrganizationService();
+
+	<span style="color: #B00040">var</span> columnSet = <span style="color: #008000; font-weight: bold">new</span> ColumnSet();
+
+	columnSet.AddColumns(
+		<span style="color: #BA2121">&quot;subject&quot;</span>,
+		<span style="color: #BA2121">&quot;statecode&quot;</span>,
+		<span style="color: #BA2121">&quot;hsl_taskgroupid&quot;</span>);
+
+	<span style="color: #B00040">var</span> entity = organizationService.Retrieve(
+		<span style="color: #BA2121">&quot;task&quot;</span>,
+		<span style="color: #008000; font-weight: bold">new</span> <span style="color: #0000FF">Guid</span>(<span style="color: #BA2121">&quot;71ebe864-8cc8-e711-811d-e0071b716c71&quot;</span>),
+		columnSet);
+
+	entity.Should().NotBeNull();
+
+	entity[<span style="color: #BA2121">&quot;subject&quot;</span>] = <span style="color: #BA2121">&quot;New Subject&quot;</span>;
+	entity[<span style="color: #BA2121">&quot;statecode&quot;</span>] = <span style="color: #008000; font-weight: bold">new</span> OptionSetValue(<span style="color: #666666">1</span>); <span style="color: #408080; font-style: italic">// Completed</span>
+
+	organizationService.Update(entity);
+}
+</pre></td></tr></table></div>
+
+        </div>
+
+		<div class="col-md-12">
+			<h3>Basic Plugin</h3>
+			<a name="BasicPlugin"></a>
+			<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">using</span> <span style="color: #0000FF; font-weight: bold">System</span>;
+
+<span style="color: #008000; font-weight: bold">namespace</span> <span style="color: #0000FF; font-weight: bold">Microsoft.Crm.Sdk.Samples</span>
+{
+    <span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">AccountNumberPlugin</span> : IPlugin
+    {
+        <span style="color: #408080; font-style: italic">/// &lt;summary&gt;</span>
+        <span style="color: #408080; font-style: italic">///     A plug-in that auto generates an account number when an</span>
+        <span style="color: #408080; font-style: italic">///     account is created.</span>
+        <span style="color: #408080; font-style: italic">/// &lt;/summary&gt;</span>
+        <span style="color: #408080; font-style: italic">/// &lt;remarks&gt;</span>
+        <span style="color: #408080; font-style: italic">///     Register this plug-in on the Create message, account entity,</span>
+        <span style="color: #408080; font-style: italic">///     and pre-operation stage.</span>
+        <span style="color: #408080; font-style: italic">/// &lt;/remarks&gt;</span>
+        <span style="color: #408080; font-style: italic">//&lt;snippetAccountNumberPlugin2&gt;</span>
+        <span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">void</span> <span style="color: #0000FF">Execute</span>(IServiceProvider serviceProvider)
+        {
+            <span style="color: #408080; font-style: italic">// Obtain the execution context from the service provider.</span>
+            Microsoft.Xrm.Sdk.IPluginExecutionContext context = (Microsoft.Xrm.Sdk.IPluginExecutionContext)
+                serviceProvider.GetService(<span style="color: #008000; font-weight: bold">typeof</span>(Microsoft.Xrm.Sdk.IPluginExecutionContext));
+
+            <span style="color: #408080; font-style: italic">// The InputParameters collection contains all the data passed in the message request.</span>
+            <span style="color: #008000; font-weight: bold">if</span> (context.InputParameters.Contains(<span style="color: #BA2121">&quot;Target&quot;</span>) &amp;&amp;
+                context.InputParameters[<span style="color: #BA2121">&quot;Target&quot;</span>] <span style="color: #008000; font-weight: bold">is</span> Entity)
+            {
+                <span style="color: #408080; font-style: italic">// Obtain the target entity from the input parameters.</span>
+                Entity entity = (Entity) context.InputParameters[<span style="color: #BA2121">&quot;Target&quot;</span>];
+                <span style="color: #408080; font-style: italic">//&lt;/snippetAccountNumberPlugin2&gt;</span>
+
+                <span style="color: #408080; font-style: italic">// Verify that the target entity represents an account.</span>
+                <span style="color: #408080; font-style: italic">// If not, this plug-in was not registered correctly.</span>
+                <span style="color: #008000; font-weight: bold">if</span> (entity.LogicalName == <span style="color: #BA2121">&quot;account&quot;</span>)
+                    <span style="color: #008000; font-weight: bold">if</span> (entity.Attributes.Contains(<span style="color: #BA2121">&quot;accountnumber&quot;</span>) == <span style="color: #008000; font-weight: bold">false</span>)
+                    {
+                        <span style="color: #408080; font-style: italic">// Create a new accountnumber attribute, set its value, and add</span>
+                        <span style="color: #408080; font-style: italic">// the attribute to the entity&#39;s attribute collection.</span>
+                        <span style="color: #B00040">var</span> rndgen = <span style="color: #008000; font-weight: bold">new</span> Random();
+                        entity.Attributes.Add(<span style="color: #BA2121">&quot;accountnumber&quot;</span>, rndgen.Next().ToString());
+                    }
+                    <span style="color: #008000; font-weight: bold">else</span>
+                    {
+                        <span style="color: #408080; font-style: italic">// Throw an error, because account numbers must be system generated.</span>
+                        <span style="color: #408080; font-style: italic">// Throwing an InvalidPluginExecutionException will cause the error message</span>
+                        <span style="color: #408080; font-style: italic">// to be displayed in a dialog of the Web application.</span>
+                        <span style="color: #008000; font-weight: bold">throw</span> <span style="color: #008000; font-weight: bold">new</span> <span style="color: #0000FF">InvalidPluginExecutionException</span>(<span style="color: #BA2121">&quot;The account number can only be set by the system.&quot;</span>);
+                    }
+            }
+        }
+    }
+}
+<span style="color: #408080; font-style: italic">//&lt;/snippetAccountNumberPlugin&gt;</span>
+</pre></td></tr></table></div>
+
+		</div>
+
+    </div>
+
+</div><!-- /.container -->
+
+<script src="../../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</body>
+</html>

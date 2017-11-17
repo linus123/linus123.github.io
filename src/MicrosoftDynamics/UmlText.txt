@@ -1,0 +1,17 @@
+http://www.plantuml.com
+
+@startuml
+class TaskGroup {
+Id : Guid
+}
+
+
+class Task {
+Id : Guid
+Subject : string
+StateCode : OptionSetValue
+TaskGroupId : EntityReference
+}
+
+TaskGroup "1" -- "*" Task
+@enduml
