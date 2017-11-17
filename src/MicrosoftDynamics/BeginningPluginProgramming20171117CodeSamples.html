@@ -224,6 +224,94 @@
 		</div>
 
         <div class="col-md-12">
+            <h3>Query Tasks via Filter XML</h3>
+            <a name="FilterXml"></a>
+            <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #7D9029">[Fact]</span>
+<span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">void</span> <span style="color: #0000FF">CrmSdkShouldSuccessfullyPullManyTaskByTaskGroupIdUsingFilterXml</span>()
+{
+	<span style="color: #B00040">var</span> organizationService = CreateOrganizationService();
+
+	<span style="color: #B00040">var</span> fetchExpression = <span style="color: #008000; font-weight: bold">new</span> FetchExpression(<span style="color: #BA2121">@&quot;&lt;fetch version=&quot;&quot;1.0&quot;&quot; output-format=&quot;&quot;xml-platform&quot;&quot; mapping=&quot;&quot;logical&quot;&quot; distinct=&quot;&quot;false&quot;&quot;&gt;</span>
+<span style="color: #BA2121">&lt;entity name=&quot;&quot;task&quot;&quot;&gt;</span>
+<span style="color: #BA2121">&lt;attribute name=&quot;&quot;subject&quot;&quot; /&gt;</span>
+<span style="color: #BA2121">&lt;attribute name=&quot;&quot;statecode&quot;&quot; /&gt;</span>
+<span style="color: #BA2121">&lt;attribute name=&quot;&quot;prioritycode&quot;&quot; /&gt;</span>
+<span style="color: #BA2121">&lt;attribute name=&quot;&quot;scheduledend&quot;&quot; /&gt;</span>
+<span style="color: #BA2121">&lt;attribute name=&quot;&quot;createdby&quot;&quot; /&gt;</span>
+<span style="color: #BA2121">&lt;attribute name=&quot;&quot;regardingobjectid&quot;&quot; /&gt;</span>
+<span style="color: #BA2121">&lt;attribute name=&quot;&quot;activityid&quot;&quot; /&gt;</span>
+<span style="color: #BA2121">&lt;attribute name=&quot;&quot;hsl_taskgroupid&quot;&quot; /&gt;</span>
+<span style="color: #BA2121">&lt;order attribute=&quot;&quot;subject&quot;&quot; descending=&quot;&quot;false&quot;&quot; /&gt;</span>
+<span style="color: #BA2121">&lt;filter type=&quot;&quot;and&quot;&quot;&gt;</span>
+<span style="color: #BA2121">&lt;condition attribute=&quot;&quot;hsl_taskgroupid&quot;&quot; operator=&quot;&quot;eq&quot;&quot; uiname=&quot;&quot;Notify groups of launch&quot;&quot; uitype=&quot;&quot;hsl_taskgroup&quot;&quot; value=&quot;&quot;{44ef07ca-a983-49a8-ad6b-3a802feabfdc}&quot;&quot; /&gt;</span>
+<span style="color: #BA2121">&lt;/filter&gt;</span>
+<span style="color: #BA2121">&lt;/entity&gt;</span>
+<span style="color: #BA2121">&lt;/fetch&gt;&quot;</span>);
+
+	<span style="color: #B00040">var</span> results = organizationService.RetrieveMultiple(fetchExpression);
+
+	results.Should().NotBeNull();
+
+	<span style="color: #B00040">var</span> entity = results[<span style="color: #666666">0</span>];
+
+	entity[<span style="color: #BA2121">&quot;subject&quot;</span>].Should().Be(<span style="color: #BA2121">&quot;Assign a launch coordinator&quot;</span>);
+
+	entity.Attributes.Contains(<span style="color: #BA2121">&quot;statecode&quot;</span>).Should().BeTrue();
+	entity[<span style="color: #BA2121">&quot;statecode&quot;</span>].Should().BeAssignableTo&lt;OptionSetValue&gt;();
+	<span style="color: #B00040">var</span> stateCode = (OptionSetValue)entity[<span style="color: #BA2121">&quot;statecode&quot;</span>];
+	stateCode.Value.Should().Be(<span style="color: #666666">0</span>);
+
+	entity.Attributes.Contains(<span style="color: #BA2121">&quot;hsl_taskgroupid&quot;</span>).Should().BeTrue();
+	entity[<span style="color: #BA2121">&quot;hsl_taskgroupid&quot;</span>].Should().BeAssignableTo&lt;EntityReference&gt;();
+	<span style="color: #B00040">var</span> taskGroupReference = (EntityReference)entity[<span style="color: #BA2121">&quot;hsl_taskgroupid&quot;</span>];
+	taskGroupReference.LogicalName.Should().Be(<span style="color: #BA2121">&quot;hsl_taskgroup&quot;</span>);
+	taskGroupReference.Id.Should().NotBeEmpty();
+}
+</pre></td></tr></table></div>
+
+        </div>
+
+        <div class="col-md-12">
             <h3>Create Task</h3>
             <a name="CreateTask"></a>
 			<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
