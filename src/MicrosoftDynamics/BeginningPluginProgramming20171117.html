@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Microsoft Dynamics CRM - Beginning Plugin Development</title>
+
+		<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+		<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Beginning Plugin Development</h1>
+					<p>Microsoft Dynamics CRM</p>
+				</section>
+
+				<section>
+					<h2>The Plan</h2>
+				</section>
+
+				<section>
+					<h3>We will look at code</h3>
+				</section>
+
+				<section>
+					<h2>What is CRM</h2>
+					<ul>
+						<li>Describe business use</li>
+						<li>Runs in Azure</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h2>Fundamental CRM Functions</h2>
+					</section>
+
+					<section>
+						<p>Developers must understand the fundamentals of CRM to effectively write customizations.</p>
+					</section>
+
+					<section>
+						<h3>what the customer sees</h3>
+					</section>
+
+					<section>
+						<h3>Advanced Find</h3>
+					</section>
+
+					<section>
+						<h3>Customizing the System</h3>
+						<small>In CRM: Settings -&gt; Customizations</small>
+					</section>
+
+					<section>
+						<h3>Entity</h3>
+						<ul>
+							<li>Most equivalent to a table</li>
+							<li>Has a unique "logical" name</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Entity</h3>
+						<ul>
+							<li>Has fields</li>
+							<li>Each field has a unqiue "logical" name</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Entity</h3>
+						<ul>
+							<li>Supports one-to-many and many-to-many</li>
+							<li>Supports one or more forms</li>
+							<li>Supports views</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Programming CRM</h2>
+					</section>
+
+					<section>
+						<p>Learn the fundamentals of CRM before writing customizations.</p>
+					</section>
+
+					<section>
+						<p>[First slide showing layout]</p>
+					</section>
+
+					<section>
+						<h3>Two Interface Options</h3>
+						<ul>
+							<li>SDK</li>
+							<li>Web Services (OData)</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Finding the SDK</h3>
+						<small>In CRM: </small>
+						<small>Settings -&gt; Customizations -&gt; Developer Resources</small>
+					</section>
+
+					<section>
+						<h3>Developer Resources</h3>
+						<ul>
+							<li>NuGet Packages</li>
+							<li>SDK Download</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>Code examples in SDK are EXCELLENT!</p>
+					</section>
+
+					<section>
+						<h3><a href="BeginningPluginProgramming20171117CodeSamples.html#Connecting" target="CodeSamples">Connecting to CRM</a></h3>
+					</section>
+
+					<section>
+						<img src="images/TaskToTaskGroupClassDiagram.png">
+					</section>
+
+					<section>
+						<h3><a href="BeginningPluginProgramming20171117CodeSamples.html#EntityById" target="CodeSamples">Managing Data</a></h3>
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+						<h2>Plugins</h2>
+						<ul>
+							<li>IPlugin Interface</li>
+							<li>
+								Registering DLL
+								<ul>
+									<li>Message Types</li>
+									<li>Step Stages</li>
+									<li>State Modes</li>
+								</ul>
+							</li>
+							<li>Logging and Errors</li>
+							<li>Debugging?</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Plugin == .NET DLL</h3>
+					</section>
+
+					<section>
+						<h3>IPlugin Interface</h3>
+                    <pre><code>public interface IPlugin
+{
+	void Execute(System.IServiceProvider serviceProvider);
+}</code></pre>
+					</section>
+
+					<section>
+						<h3>Basic Plugin Code</h3>
+					</section>
+
+				</section>
+
+				<section>
+					<h2>More Info</h2>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+		<script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '../../lib/reveal.js-3.4.1/plugin/markdown/marked.js' },
+					{ src: '../../lib/reveal.js-3.4.1/plugin/markdown/markdown.js' },
+					{ src: '../../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true },
+					{ src: '../../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
+
