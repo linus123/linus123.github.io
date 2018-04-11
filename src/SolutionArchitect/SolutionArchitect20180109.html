@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Service Oriented Architecture for CRM</title>
+
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>Solution Architect</h1>
+				</section>
+
+                <section>
+                    <section>
+                        <h2>Problems?</h2>
+                        <p>What problems are we trying to solve?</p>
+                    </section>
+
+                    <section>
+                        <p>We are inconsistent in maintaining stable (long term) system solutions.</p>
+                    </section>
+
+                    <section>
+                        <p>High level architectural strategies are MADE UP, therefore, IMPOSSIBLE to implement across all teams.</p>
+                    </section>
+
+                    <section>
+                        <p>Our REAL problems are rooted in the team structures and people politics.</p>
+                        <p>Openly discussing these issues is difficult.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Position Definition</h2>
+                        <p>Grass Roots Focused</p>
+                    </section>
+
+                    <section>
+                        <h4>bias toward individual engineers</h4>
+                        <ul>
+                            <li>1 x 1 Mentoring</li>
+                            <li>Pair Programming</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <p>Focused on principles and disciplines rather than tools or prescriptions.</p>
+                    </section>
+
+                    <section>
+                        <p>Architectural Strategy</p>
+                        <h3>Service Oriented Architecture</h3>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Topics for Discussion</h2>
+                    </section>
+
+                    <section>
+                        <p>Coding Standards</p>
+                    </section>
+
+                    <section>
+                        <p>Data Distribution</p>
+                    </section>
+
+                    <section>
+                        <p>Python</p>
+                    </section>
+
+                    <section>
+                        <p>Tools</p>
+                        <ul>
+                            <li>Team City</li>
+                            <li>Stash</li>
+                            <li>[Deployment Tool]</li>
+                        </ul>
+                    </section>
+                </section>
+
+			</div>
+
+        </div>
+
+        <script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+        <script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                history: true,
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: '../../lib/reveal.js-3.4.1/plugin/markdown/marked.js' },
+                    { src: '../../lib/reveal.js-3.4.1/plugin/markdown/markdown.js' },
+                    { src: '../../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true },
+                    { src: '../../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+        </script>
+    </body>
+</html>
