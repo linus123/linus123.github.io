@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Intern Program Guide 2017</title>
+
+	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Database Build Process</h1>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+					<ol>
+						<li>High Level Overview and Goals</li>
+						<li>Nerd Rage with Demo</li>
+						<li>Questions and Discussion</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Benefits of Current Process</h2>
+					<ul>
+						<li>Adds Discipline to Change</li>
+						<li>Experts Review Change Scripts</li>
+						<li>Limits Risk</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>What we wanted to improve...</h2>
+					<ul>
+						<li>Keep Benefits of Current Process</li>
+						<li>Review Scripts Sooner (Closer to Development)</li>
+						<li>Review Scripts More Often</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Other things we improved...</h2>
+					<ul>
+						<li>Approval Via Code Review</li>
+						<li>Practice Deployment</li>
+						<li>Minimize Differences Between DEV, STG, and PRD</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Will Work for 80% of Dimensional Databases</h2>
+					<p>Will work for other 20% with slight modifications</p>
+				</section>
+
+				<section>
+					<h2>Tech Stack</h2>
+					<ul>
+						<li>MS-SQL</li>
+						<li>Stash</li>
+						<li>GIT</li>
+						<li>RoundhousE</li>
+						<li>Powershell</li>
+						<li>Psake</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Demo Time</h2>
+					<img src="http://www.war-gamer.co.uk/wp-content/uploads/2013/07/324df46b6436-xl.jpg" />
+				</section>
+			</div>
+
+</div>
+
+<script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+<script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+<script>
+	// More info https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		history: true,
+
+		// More info https://github.com/hakimel/reveal.js#dependencies
+		dependencies: [
+			{ src: '../../lib/reveal.js-3.4.1/plugin/markdown/marked.js' },
+			{ src: '../../lib/reveal.js-3.4.1/plugin/markdown/markdown.js' },
+			{ src: '../../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true },
+			{ src: '../../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+		]
+	});
+</script>
+</body>
+</html>
