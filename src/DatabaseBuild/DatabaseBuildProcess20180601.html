@@ -38,6 +38,28 @@
 
 				<section>
 					<section>
+						<h2>Definitions</h2>
+					</section>
+
+					<section>
+						<p>CI == Continuous Integration</p>
+					</section>
+
+					<section>
+						<p>GIT == Source Control (Distributed)</p>
+					</section>
+
+					<section>
+						<p>Stash</p>
+						<p>== Bit Bucket Server</p>
+						<p>== Web Application Integrates w/ GIT</p>
+					</section>
+
+
+				</section>
+
+				<section>
+					<section>
 						<h2>Centralized vs Sandbox</h2>
 						<p>Database Development</p>
 					</section>
@@ -48,11 +70,88 @@
 					</section>
 
 					<section>
-						<h3>Sandbox Development</h3>
+						<h3>Sandbox</h3>
 						<img src="images/SandBox.png" />
 					</section>
 
+					<section>
+						<p>Sandbox database does NOT have a copy of all the data!</p>
+					</section>
 				</section>
+
+				<section>
+					<h2>Components</h2>
+					<ol>
+						<li>Sandbox</li>
+						<li>Source Control / Continuous Integration</li>
+						<li>Automated Deployment</li>
+					</ol>
+				</section>
+
+				<section>
+					<section>
+						<h2>Sandbox</h2>
+					</section>
+
+					<section>
+						<h3>Sandbox => Local Machine</h3>
+					</section>
+
+					<section>
+						<h3>Tools</h3>
+						<ul>
+							<li>Powershell</li>
+							<li><a href="https://github.com/psake/psake" target="_blank">Psake</a></li>
+							<li>SQL Express</li>
+							<li><a href="https://github.com/chucknorris/roundhouse/wiki" target="_blank">Roundhouse</a></li>
+						</ul>
+					</section>
+
+					<section>
+						<!--
+
+						https://www.websequencediagrams.com/
+
+						title Local Build
+
+Powershell -> Roundhouse : Drop
+Roundhouse -> SQLExpress : Drop DB
+SQLExpress -> Roundhouse :
+Roundhouse -> Powershell :
+
+Powershell -> Roundhouse : Create DB
+Roundhouse -> FileSystem : Get SQL Scripts
+FileSystem -> Roundhouse : SQL Scripts
+Roundhouse -> SQLExpress : Create DB
+SQLExpress -> Roundhouse :
+Roundhouse -> SQLExpress : Run SQL Scripts
+SQLExpress -> Roundhouse :
+
+Roundhouse -> Powershell :
+
+						-->
+
+						<img src="images/LocalBuildProcess.png" />
+
+					</section>
+
+					<!--
+
+https://www.websequencediagrams.com/
+
+title CI Feature Branch Build
+
+Local -> Local : Iterate
+Local -> CI Server : Push Scripts
+CI Server -> CI Server : Local Build
+CI Server -> Local : Pass or Fail
+
+-->
+
+				</section>
+
+				<!-- Source control... By Object vs By Transition -->
+
 			</div>
 
 </div>
