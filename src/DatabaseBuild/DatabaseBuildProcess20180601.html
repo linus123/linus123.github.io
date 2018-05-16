@@ -167,7 +167,7 @@ Roundhouse -> Powershell :
 					</section>
 
 					<section>
-						<img src="images/TeamCityPull%20Request.png" />
+						<img src="images/TeamCityPullRequest.png" />
 					</section>
 
 
@@ -188,9 +188,35 @@ TeamCity -> Local : Pass or Fail
 
 				</section>
 
+				<section>
+
+					<section>
+						<h2>Automated Deployment</h2>
+					</section>
+
+					<section>
+						<img src="images/TeamCityDatabaseDeployment.png" />
+					</section>
+					<!--
+
+title TeamCity Database Deployment
+
+Local -> TeamCity : Deploy
+TeamCity -> TeamCity : Gather Artifacts
+TeamCity -> Roundhouse : Update Database
+Roundhouse -> Database : Run Scripts
+Database -> Roundhouse :
+Database -> TeamCity :
+TeamCity -> Local :
+					-->
+
+				</section>
+
 				<!-- Source control... By Object vs By Transition -->
+				<!-- New tables will hold the version -->
 				<!-- Will work from 80% of databases -->
 				<!-- Script are done by transition -->
+				<!-- Issue of rollback scripts -->
 
 			</div>
 	<!--
