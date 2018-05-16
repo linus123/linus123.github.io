@@ -24,7 +24,15 @@
 <body>
 <div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
+			<!--
+
+			* Preparation *
+
+			- Ensure you have a good local database example.
+			- Delete the database on the local machine BEFORE the presentation
+
+			-->
+
 			<div class="slides">
 				<section>
 					<h1>Database Build Process</h1>
@@ -55,6 +63,10 @@
 						<p>== Web Application Integrates w/ GIT</p>
 					</section>
 
+					<section>
+						<h3>Artifacts</h3>
+						<p>One ore more files that make up a deployable system.</p>
+					</section>
 
 				</section>
 
@@ -135,25 +147,105 @@ Roundhouse -> Powershell :
 
 					</section>
 
+				</section>
+
+				<section>
+					<section>
+						<h2>Source Control &amp; CI</h2>
+					</section>
+
+					<section>
+						<p>Use a feature branch to develop a single deployable unit of work.</p>
+					</section>
+
+					<section>
+						<img src="images/FeatureBranchBuild.png" />
+					</section>
+
+					<section>
+						<p>Submit pull request once feature branch is ready for deployment.</p>
+					</section>
+
+					<section>
+						<img src="images/TeamCityPullRequest.png" />
+					</section>
+
+
 					<!--
 
-https://www.websequencediagrams.com/
-
-title CI Feature Branch Build
+title TeamCity Feature Branch Build
 
 Local -> Local : Iterate
-Local -> CI Server : Push Scripts
-CI Server -> CI Server : Local Build
-CI Server -> Local : Pass or Fail
+Local -> Stash : Push Scripts
+Stash -> Local :
+TeamCity -> Stash : Get Scripts
+Stash -> TeamCity : Scripts
+TeamCity -> TeamCity : Local Build
+TeamCity -> Local : Pass or Fail
 
 -->
+
+
+				</section>
+
+				<section>
+
+					<section>
+						<h2>Automated Deployment</h2>
+					</section>
+					
+					<!-- Practice deployment in lower enviornments -->
+
+					<section>
+						<img src="images/TeamCityDatabaseDeployment.png" />
+					</section>
+					<!--
+
+title TeamCity Database Deployment
+
+Local -> TeamCity : Deploy
+TeamCity -> TeamCity : Gather Artifacts
+TeamCity -> Roundhouse : Update Database
+Roundhouse -> Database : Run Scripts
+Database -> Roundhouse :
+Database -> TeamCity :
+TeamCity -> Local :
+					-->
 
 				</section>
 
 				<!-- Source control... By Object vs By Transition -->
+				<!-- New tables will hold the version -->
+				<!-- Will work from 80% of databases -->
+				<!-- Script are done by transition -->
+				<!-- Issue of rollback scripts -->
 
 			</div>
+	<!--
 
+title TeamCity Pull Request
+
+Local -> TeamCity : Push Scripts
+TeamCity -> TeamCity : Local Build
+TeamCity -> Local : Pass
+Local -> Stash : Submit Pull Request
+Stash -> DBAs : Email
+Stash -> Local :
+
+DBAs -> Stash : Approve Pull Request
+Stash -> DBAs :
+
+Local -> Stash : Merge
+Stash -> Local :
+
+TeamCity -> Stash : Get Code
+Stash -> TeamCity : Merged Code
+
+TeamCity -> TeamCity : Local Build
+TeamCity -> TeamCity : Create Artifacts
+
+
+	-->
 </div>
 
 <script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
