@@ -184,8 +184,9 @@ TeamCity -> TeamCity : Local Build
 TeamCity -> Local : Pass or Fail
 
 -->
-
-
+					<section>
+						<p>Artifacts should contain ALL files needed to deploy.</p>
+					</section>
 				</section>
 
 				<section>
@@ -195,18 +196,15 @@ TeamCity -> Local : Pass or Fail
 					</section>
 
 					<section>
-						<p>[Screen cap of Team City single single click build]</p>
-					</section>
-					
-					<!-- Practice deployment in lower enviornments -->
-
-					<section>
 						<img src="images/TeamCityDatabaseDeployment.png" />
 					</section>
 					<!--
 
 title TeamCity Database Deployment
 
+Local -> TeamCity : Restore
+TeamCity -> Database : Restore Latest Backup
+Database -> Local :
 Local -> TeamCity : Deploy
 TeamCity -> TeamCity : Gather Artifacts
 TeamCity -> Roundhouse : Update Database
@@ -215,6 +213,16 @@ Database -> Roundhouse :
 Database -> TeamCity :
 TeamCity -> Local :
 					-->
+
+					<section>
+						<p>[Screen cap of Team City single single database restore]</p>
+					</section>
+
+					<section>
+						<p>[Screen cap of Team City single single click build]</p>
+					</section>
+					
+					<!-- Practice deployment in lower enviornments -->
 
 					<section>
 						<h3>Database Version Tables</h3>
