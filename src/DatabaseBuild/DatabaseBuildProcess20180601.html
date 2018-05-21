@@ -162,15 +162,6 @@ Roundhouse -> Powershell :
 						<img src="images/FeatureBranchBuild.png" />
 					</section>
 
-					<section>
-						<p>Submit pull request once feature branch is ready for deployment.</p>
-					</section>
-
-					<section>
-						<img src="images/TeamCityPullRequest.png" />
-					</section>
-
-
 					<!--
 
 title TeamCity Feature Branch Build
@@ -184,6 +175,40 @@ TeamCity -> TeamCity : Local Build
 TeamCity -> Local : Pass or Fail
 
 -->
+					<section>
+						<p>Submit pull request once feature branch is ready for deployment.</p>
+					</section>
+
+					<section>
+						<img src="images/TeamCityPullRequest.png" />
+					</section>
+
+					<!--
+
+                title TeamCity Pull Request
+
+                Local -> TeamCity : Push Scripts
+                TeamCity -> TeamCity : Local Build
+                TeamCity -> Local : Pass
+                Local -> Stash : Submit Pull Request
+                Stash -> DBAs : Email
+                Stash -> Local :
+
+                DBAs -> Stash : Approve Pull Request
+                Stash -> DBAs :
+
+                Local -> Stash : Merge
+                Stash -> Local :
+
+                TeamCity -> Stash : Get Code
+                Stash -> TeamCity : Merged Code
+
+                TeamCity -> TeamCity : Local Build
+                TeamCity -> TeamCity : Create Artifacts
+
+                    -->
+
+
 					<section>
 						<p>Artifacts should contain ALL files needed to deploy.</p>
 					</section>
@@ -221,11 +246,41 @@ TeamCity -> Local :
 					<section>
 						<p>[Screen cap of Team City single single click build]</p>
 					</section>
-					
-					<!-- Practice deployment in lower enviornments -->
+
+					<section>
+						<p>Practice deployment in lower enviornments.</p>
+					</section>
 
 					<section>
 						<h3>Database Version Tables</h3>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Limitations</h2>
+					</section>
+
+					<section>
+						<h3>Build Process Limits</h3>
+						<ul>
+							<li>Large Number of Linked Servers</li>
+							<li>Hard to Test Replicated Databases</li>
+							<li>Mismatching Environments == Side Effects</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>Roundhouse does NOT support rollbacks.</p>
+						<p>Use DB Deploy instead.</p>
+					</section>
+
+					<section>
+						<h3>Automated Restore Limits</h3>
+						<ul>
+							<li>Will not work for DBs over 60GBs.</li>
+						</ul>
 					</section>
 
 				</section>
@@ -237,31 +292,6 @@ TeamCity -> Local :
 				<!-- Issue of rollback scripts -->
 
 			</div>
-	<!--
-
-title TeamCity Pull Request
-
-Local -> TeamCity : Push Scripts
-TeamCity -> TeamCity : Local Build
-TeamCity -> Local : Pass
-Local -> Stash : Submit Pull Request
-Stash -> DBAs : Email
-Stash -> Local :
-
-DBAs -> Stash : Approve Pull Request
-Stash -> DBAs :
-
-Local -> Stash : Merge
-Stash -> Local :
-
-TeamCity -> Stash : Get Code
-Stash -> TeamCity : Merged Code
-
-TeamCity -> TeamCity : Local Build
-TeamCity -> TeamCity : Create Artifacts
-
-
-	-->
 </div>
 
 <script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
