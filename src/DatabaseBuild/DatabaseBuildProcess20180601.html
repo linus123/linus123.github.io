@@ -73,16 +73,39 @@
 					<section>
 						<h3>Centralized</h3>
 						<img src="images/centraldev.png" />
+
+						<aside class="notes">
+							<ul>
+								<li>Acts like a huge global variable</li>
+							</ul>
+						</aside>
+
 					</section>
 
 					<section>
 						<h3>Sandbox</h3>
 						<img src="images/SandBox.png" />
+
+						<aside class="notes">
+							<ul>
+								<li>Each developer can create / destroy their instance at any time</li>
+								<li>Each developer can choose to get the "latest" changes</li>
+							</ul>
+						</aside>
+
 					</section>
 
 					<section>
 						<p>Sandbox database does NOT have a copy of all the data!</p>
+
+						<aside class="notes">
+							<ul>
+								<li>Performance testing is done in a later environment</li>
+							</ul>
+						</aside>
+
 					</section>
+
 				</section>
 
 				<section>
@@ -141,6 +164,14 @@ Roundhouse -> Powershell :
 
 					</section>
 
+					<section>
+						<h3>Powershell Build Scripts</h3>
+						<ul>
+							<li><a href="https://stash.dimensional.com/projects/ID/repos/characteristic-database/browse/Build.ps1" target="_blank">Bootstrapping Script</a></li>
+							<li><a href="https://stash.dimensional.com/projects/ID/repos/characteristic-database/browse/default.ps1" target="_blank">Build Script</a></li>
+						</ul>
+					</section>
+
 				</section>
 
 				<section>
@@ -150,6 +181,13 @@ Roundhouse -> Powershell :
 
 					<section>
 						<p>Use a feature branch to develop a single deployable unit of work.</p>
+
+						<aside class="notes">
+							<ul>
+								<li>The smaller the better</li>
+							</ul>
+						</aside>
+
 					</section>
 
 					<section>
@@ -170,7 +208,11 @@ TeamCity -> Local : Pass or Fail
 
 -->
 					<section>
-						<p>Submit pull request once feature branch is ready for deployment.</p>
+						<p>
+							<a href="https://stash.dimensional.com/projects/IW/repos/vehicle-portfolio-master/pull-requests/41/diff#data/VehiclePortfolioMasterDatabase/mssql/UP/0030_RenameBenchmarkTypeTable.sql" target="_blank">
+								Submit pull request once feature branch is ready for deployment.
+							</a>
+						</p>
 					</section>
 
 					<section>
@@ -204,7 +246,11 @@ TeamCity -> Local : Pass or Fail
 
 
 					<section>
-						<p>Artifacts should contain ALL files needed to deploy.</p>
+						<p>
+							<a href="http://teamcity.dimensional.com/viewLog.html?buildId=140966&buildTypeId=Analytics_Databases_CharacteristicLocalDb&tab=artifacts#!11gtswz82nxe4" target="_blank">
+								Artifacts should contain ALL files needed to deploy.
+							</a>
+						</p>
 					</section>
 				</section>
 
@@ -234,15 +280,31 @@ TeamCity -> Local :
 					-->
 
 					<section>
+						<h4>Team City Deployment</h4>
 						<img src="images/TeamCityDbDeployment.png" />
 					</section>
 
 					<section>
-						<p>Practice deployment in lower environments.</p>
+						<h3>
+							<a href="http://teamcity.dimensional.com/viewLog.html?buildId=92035&buildTypeId=Analytics_Databases_Characteristic_30CharacteristicDatabaseUpdatePrd&tab=buildLog#_focus=20&state=20" target="_blank">
+								Deployment Log
+							</a>
+						</h3>
 					</section>
 
 					<section>
-						<h3>Database Version Tables</h3>
+						<h4>Only Method of Database Change Deployment</h4>
+						<p>Even for ECMs</p>
+					</section>
+
+					<section>
+						<h4>Database Version Tables</h4>
+						<img src="images/RoundhouseTables.png" />
+					</section>
+
+					<section>
+						<h4>What changed?</h4>
+						<img src="images/VersionNumberReference.png" />
 					</section>
 
 				</section>
