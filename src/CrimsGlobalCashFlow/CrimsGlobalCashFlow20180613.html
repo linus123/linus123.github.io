@@ -27,241 +27,153 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+
 				<section>
-					<h1>Beginning Plugin Development</h1>
-					<p>Microsoft Dynamics CRM</p>
+					<h1>Global Cash Flow</h1>
+					<p>CRIMS</p>
 				</section>
 
 				<section>
-					<h2>The Plan</h2>
+					<section>
+						<p>Problem</p>
+						<h2>Slow Deletes</h2>
+					</section>
+
+					<section>
+						<h3>Sample Delete</h3>
+											<pre><code>--empty current data from the table
+--clears 'ds2ta'
+DELETE c
+FROM   globalcashflow c
+WHERE  SourceID = @SourceID
+       AND EXISTS (SELECT TOP 1 1
+                   FROM   #vehicle v
+                   WHERE  c.vehicleid = v.vehicleid)</code></pre>
+					</section>
+
+					<section>
+						<p>Mutex causes other processes to backup.</p>
+					</section>
+
+					<section>
+						<p>Theory</p>
+						<h3>High Contention Table</h3>
+						<p>for a short time</p>
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+						<h2>Fixing the problem</h2>
+						<p>Short Term</p>
+					</section>
+
+					<section>
+						<h3>Assumptions</h3>
+						<ul>
+							<li>Can run on parallel table structure.</li>
+							<li>Can run on the same production DB server.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Stored Procs => Inline SQL</h3>
+					</section>
+
+					<section>
+						[Image]
+					</section>
+
+					<section>
+						<p>Make the system dependent on "Off Line" tables.</p>
+						<p>Merge at the end.</p>
+					</section>
+
+					<section>
+						<h3>Might NOT Fix the Problem</h3>
+						<p>SHOULD give us a better error message.</p>
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+						<h2>Fixing the problem</h2>
+						<p>Long Term</p>
+					</section>
+
+					<section>
+						<h3>Strategy</h3>
+						<ol>
+							<li>Refactor Single Unit</li>
+							<li>Run in Parallel (Testing)</li>
+							<li>Deploy to Production</li>
+						</ol>
+					</section>
+
+					<section>
+						<h3>Review Estimates</h3>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Solution Overview</h2>
+					</section>
+
+					<section>
+						<h3>Latest Tech Stack</h3>
+						<ul>
+							<li>.NET Core</li>
+							<li>NServiceBus or Mass Transit</li>
+							<li>XUnit</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Disciplined Software</h3>
+						<ul>
+							<li>Clean Code / SOLID</li>
+							<li>Full Unit/Integration Test Suite</li>
+							<li><a href="https://martinfowler.com/eaaCatalog/" target="_blank">Bias Towards Well Known Patterns</a></li>
+							<li>Automated Deployments</li>
+							<li>Automated Test Harness</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>We will wear the "hat" of your team.</p>
+					</section>
+
+					<section>
+						<h2>Collaboration / Transition</h2>
+						<ul>
+							<li>Lunch &amp; Learns</li>
+							<li>Code Reviews</li>
+							<li>Pair Programming</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<h2>Summary</h2>
 					<ul>
-						<li>Define CRM</li>
-						<li>CRM Fundamentals</li>
-						<li>CRM Programming</li>
-						<li>Plugins</li>
+						<li>Not Selling Fast Turnaround (at First)</li>
+						<li>Selling Steady Discipline</li>
 					</ul>
 				</section>
 
 				<section>
-					<h3>We will look at code</h3>
+					<p>Success : A system your team CAN work on.</p>
 				</section>
 
 				<section>
-					<section>
-						<h2>What is CRM?</h2>
-						<p>Customer Relationship Management</p>
-					</section>
-
-					<section>
-						<p>List of Companies</p>
-						<p>and</p>
-						<p>People who Work at those Companies</p>
-					</section>
-
-					<section>
-						<h3>Supports a disiplined sales process</h3>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h2>Microsoft Dynamics CRM</h2>
-						<ul>
-							<li>Hosted in Azure</li>
-							<li>XRM Platform</li>
-						</ul>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h2>Fundamental CRM Functions</h2>
-					</section>
-
-					<section>
-						<p>Developers must understand the fundamentals of CRM to effectively write customizations.</p>
-					</section>
-
-					<section>
-						<h3>what the customer sees</h3>
-					</section>
-
-					<section>
-						<h3>Advanced Find</h3>
-					</section>
-
-					<section>
-						<h3>Customizing the System</h3>
-						<small>In CRM: Settings -&gt; Customizations</small>
-					</section>
-
-					<section>
-						<h3>Entity</h3>
-						<ul>
-							<li>Most equivalent to a table</li>
-							<li>Has a unique "logical" name</li>
-						</ul>
-					</section>
-
-					<section>
-						<h3>Entity</h3>
-						<ul>
-							<li>Has fields</li>
-							<li>Each field has a unqiue "logical" name</li>
-						</ul>
-					</section>
-
-					<section>
-						<h3>Entity</h3>
-						<ul>
-							<li>Supports one-to-many and many-to-many</li>
-							<li>Supports one or more forms</li>
-							<li>Supports views</li>
-						</ul>
-					</section>
-
-				</section>
-
-				<section>
-					<section>
-						<h2>Programming CRM</h2>
-					</section>
-
-					<section>
-						<img src="BeginningPluginProgrammingImages/Slide1.PNG" />
-					</section>
-
-					<section>
-						<h3>Two Interface Options</h3>
-						<ul>
-							<li>SDK</li>
-							<li>Web Services (OData)</li>
-						</ul>
-					</section>
-
-					<section>
-						<h3>Finding the SDK</h3>
-						<small>In CRM: </small>
-						<small>Settings -&gt; Customizations -&gt; Developer Resources</small>
-					</section>
-
-					<section>
-						<h3>Developer Resources</h3>
-						<ul>
-							<li>NuGet Packages</li>
-							<li>SDK Download</li>
-						</ul>
-					</section>
-
-					<section>
-						<p>Code examples in SDK are EXCELLENT!</p>
-					</section>
-
-					<section>
-						<h3><a href="BeginningPluginProgramming20171117CodeSamples.html#Connecting" target="CodeSamples">Connecting to CRM</a></h3>
-					</section>
-
-					<section>
-						<img src="images/TaskToTaskGroupClassDiagram.png">
-					</section>
-
-					<section>
-						<h3><a href="BeginningPluginProgramming20171117CodeSamples.html#EntityById" target="CodeSamples">Managing Data</a></h3>
-					</section>
-
-				</section>
-
-				<section>
-
-					<section>
-						<h2>Plugins</h2>
-					</section>
-
-					<section>
-						<h3>Plugin == .NET DLL</h3>
-					</section>
-
-					<section>
-						<h3>IPlugin Interface</h3>
-                    <pre><code>public interface IPlugin
-{
-	void Execute(System.IServiceProvider serviceProvider);
-}</code></pre>
-					</section>
-
-					<section>
-						<h3><a href="BeginningPluginProgramming20171117CodeSamples.html#BasicPlugin" target="CodeSamples">Basic Plugin Code</a></h3>
-					</section>
-
-					<section>
-						<img src="BeginningPluginProgrammingImages/Slide2.PNG" />
-					</section>
-
-					<section>
-						<img src="BeginningPluginProgrammingImages/Slide3.PNG" />
-					</section>
-
-					<section>
-						<img src="images/PluginRegistrationTool01.png" />
-					</section>
-
-					<section>
-						<img src="images/PluginRegistrationTool02.png" />
-					</section>
-
-					<section>
-						<p>Plugins are attached to an entity.</p>
-					</section>
-
-					<section>
-						<h3>Message Types</h3>
-						<ul>
-							<li>Create</li>
-							<li>Update</li>
-							<li>Delete</li>
-						</ul>
-					</section>
-
-					<section>
-						<h3>Pipeline Stage of Execution</h3>
-						<ul>
-							<li>Pre-Validation</li>
-							<li>Pre-Operation</li>
-							<li>Post-Operation</li>
-						</ul>
-					</section>
-
-					<section>
-						<img src="images/EventPipeline.jpeg" />
-					</section>
-
-					<section>
-						<h3>Not Covering</h3>
-						<ul>
-							<li>Logging / Tracing</li>
-							<li>Errors</li>
-							<li>Debugging a Plugin</li>
-							<li>Deployment</li>
-							<li>Automated Testing</li>
-						</ul>
-					</section>
-
-				</section>
-
-				<section>
-					<section>
-						<h2>More Info</h2>
-					</section>
-
-					<section>
-						<h3>Pluralsight</h3>
-						<ul>
-							<li>Watch Dynamics CRM Part 1</li>
-							<li>Watch Dynamics CRM Part 2</li>
-							<li>Watch Dynamics CRM Part 3</li>
-							<li>Watch Dynamics CRM Part 4</li>
-						</ul>
-					</section>
+					<p>Goal : A system your team WANTS work on.</p>
 				</section>
 
 			</div>
