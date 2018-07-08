@@ -1,10 +1,333 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Returns Web - Technology Review</title>
+
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
 </head>
 <body>
 
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section>
+            <h1>Returns Web</h1>
+
+            <p>History / Discipline Review</p>
+
+            <aside class="notes">
+                <ul>
+                    <li>Plan: To cover the engineering discipline in the context of the history of returns web.</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section>
+            <section>
+                <h2>Fund Performance Calculations</h2>
+                <p>circa. 2008 - 2010</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>How did people get performance numbers?</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <p>Returns 2</p>
+                <img src="images/Returns2.png" />
+
+                <aside class="notes">
+                    <ul>
+                        <li>Seen as the authority</li>
+                        <li>Owned by Richard Fan</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <p>ReturnsW</p>
+                <img src="images/ReturnsW.png" />
+
+                <aside class="notes">
+                    <ul>
+                        <li>Used by booth and a small number of advisers</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <img src="images/ReturnsWebImages/Slide1.PNG">
+
+                <aside class="notes">
+                    <ul>
+                        <li>Buffet style of data distribution</li>
+                        <li>Many of the calling system we not correct</li>
+                        <li>Various implementations 1yr, 3yr, etc</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section style="background-color: darkred">
+                <p>Buffet Style of Data Distribution => Anti Pattern</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Define Anti Pattern</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+        </section>
+
+        <section>
+            <section>
+                <p>Returns for</p>
+                <h2>dimensional.com</h2>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Communications team needed returns but no REAL time way to get them</li>
+                        <li>Problem: Returns 2 and ReturnsW were not service based systems</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h3>Wrong Performance Numbers</h3>
+                <ul>
+                    <li>Problems Found 3 - 4 Times a Month</li>
+                    <li>Many Times Found by Executives</li>
+                    <li>Caused a Fire Drill</li>
+                </ul>
+
+                <aside class="notes">
+                    <ul>
+                        <li>System was written in Pearl that no one LIKE</li>
+                        <li>Temporal Problem: One fix for one month would break a later month</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h5>Communications => Research</h5>
+                <p>Create a system that allows real-time returns calculations.</p>
+            </section>
+
+            <section>
+                <img src="images/ReturnsWebImages/Slide2.PNG">
+
+                <aside class="notes">
+                    <ul>
+                        <li>Called a monolith</li>
+                        <li>Old MS technology : 2008</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <p>This NEW service also returned wrong numbers.</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Was abandoned</li>
+                    </ul>
+                </aside>
+
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Wanted to help solve this problem</h2>
+                <p>Took ownership of project</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>The code was a mess.</li>
+                        <li>Hard to change without breaking stuff</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <h3>System Problems</h3>
+                <ul>
+                    <li>Code => Mess</li>
+                    <li>Business Logic Not Isolated</li>
+                    <li>Slow - Did not Support Batch Calls</li>
+                    <li>Old Technology</li>
+                    <li>Manual Test</li>
+                </ul>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Problems other than the wrong numbers.</li>
+                        <li>Non-SE created it. He did the best he could</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section style="background-color: darkred">
+                <p>Big Bang Rewrites => High Degree of Failure</p>
+
+                <aside class="notes">
+                    <ul>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h3>Goals</h3>
+                <ul>
+                    <li>Correct Calculations => Keep Them</li>
+                    <li>Wrong Calculations => Fix Them</li>
+                    <li>Make All Business Logic Reusable</li>
+                </ul>
+            </section>
+
+            <section>
+                <img src="images/ReturnsWebImages/Slide2.PNG">
+            </section>
+
+            <section>
+                <img src="images/ReturnsWebImages/Slide3.PNG">
+            </section>
+
+            <section>
+                <img src="images/ReturnsWebImages/Slide4.PNG">
+            </section>
+
+            <section>
+                <img src="images/ReturnsWebImages/Slide5.PNG">
+            </section>
+
+            <section>
+                <img src="images/ReturnsWebImages/Slide6.PNG">
+            </section>
+
+            <section>
+                [Demo]
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Iterations and Feedback</h2>
+            </section>
+
+            <section>
+                <h3>Strategy - Iterations</h3>
+                <ol>
+                    <li>Test a Single Business Feature</li>
+                    <li>Isolate Business Rules (Refactor)</li>
+                    <li>Deploy</li>
+                    <li>Goto to Next Feature</li>
+                </ol>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Had to simulate the database.</li>
+                        <li>The smaller the iterations the faster this went.</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section style="background-color: darkred">
+                <h4>Feedback Cycles</h4>
+                <p>Fast Feedback => Fast Development</p>
+                <p>Long Feedback => Slow Development</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>It took weeks for Blake to validate returns calc</li>
+                        <li>Yan had moved on by then</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <p>Developer Written Tests => Fastest Feedback Cycles (seconds)</p>
+                <aside class="notes">
+                    <ul>
+                        <li>This is why TDD and Test First are so important.</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <p>Automated Deployment => Fastest Business Feedback</p>
+                <aside class="notes">
+                    <ul>
+                    </ul>
+                </aside>
+            </section>
+
+        </section>
+
+        <section>
+            <section>
+                <h2>Return API, Returns Lite/Web</h2>
+            </section>
+
+            <section>
+                <img src="images/ReturnsLite.png" />
+            </section>
+
+            <section>
+                [Clean Arch 5]
+            </section>
+
+        </section>
+
+    </div>
+
+</div>
+
+<script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+<script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {src: '../../lib/reveal.js-3.4.1/plugin/markdown/marked.js'},
+            {src: '../../lib/reveal.js-3.4.1/plugin/markdown/markdown.js'},
+            {src: '../../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true},
+            {
+                src: '../../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
 </body>
 </html>
