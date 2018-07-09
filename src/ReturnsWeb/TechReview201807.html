@@ -229,16 +229,19 @@
             <section>
                 <img src="images/ReturnsWebImages/Slide6.PNG">
             </section>
-
-            <section>
-                [Demo]
-            </section>
         </section>
 
         <section>
             <section>
-                <h2>Iterations and Feedback</h2>
+                <h2>Feedback &amp; Iterations</h2>
                 <p>Driven by Tests</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>As I am refactoring, I am using the following strategy...</li>
+                    </ul>
+                </aside>
+
             </section>
 
             <section>
@@ -246,25 +249,30 @@
                 <ol>
                     <li>Test a Single Business Feature</li>
                     <li>Isolate Business Rules (Refactor)</li>
+                    <li>Run the Tests</li>
                     <li>Deploy</li>
                     <li>Goto to Next Feature</li>
                 </ol>
 
                 <aside class="notes">
                     <ul>
-                        <li>Had to simulate the database.</li>
+                        <li>I would get feed back at step 3 and at step 4.</li>
                         <li>The smaller the iterations the faster this went.</li>
+                        <li>Had to simulate the database.</li>
                     </ul>
                 </aside>
             </section>
 
             <section style="background-color: darkred">
                 <h4>Feedback Cycles</h4>
-                <p>Fast Feedback => Fast Development</p>
+                <p>Small Feedback => Fast Development</p>
                 <p>Long Feedback => Slow Development</p>
 
                 <aside class="notes">
                     <ul>
+                        <li>Feedback Cycle => Time between making a change and seeing if it worked.</li>
+                        <li>The feedback cycle on returns API was faster than other systems.</li>
+                        <li>If your feedback cycle is one day... one hour... one minute.</li>
                         <li>It took weeks for Blake to validate returns calc</li>
                         <li>Yan had moved on by then</li>
                     </ul>
@@ -276,6 +284,15 @@
                 <aside class="notes">
                     <ul>
                         <li>This is why TDD and Test First are so important.</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section style="background-color: darkred">
+                <p>Test Driven Development => Feedback Cycles in Seconds</p>
+
+                <aside class="notes">
+                    <ul>
                     </ul>
                 </aside>
             </section>
@@ -297,19 +314,7 @@
             </section>
 
             <section>
-                [Clean Arch 5]
-            </section>
-
-            <section>
-                <h3>Two Strategies</h3>
-                <ul>
-                    <li>Generic URL Services</li>
-                    <li>* URL Per Caller *</li>
-                </ul>
-            </section>
-
-            <section>
-                [Images of API Calls]
+                <img src="images/ReturnsWebImages/Slide7.PNG" />
             </section>
 
             <section>
@@ -317,8 +322,10 @@
 
                 <aside class="notes">
                     <ul>
-                        <li>Leads to sharing SEVERAL APIs</li>
-                        <li>Char, Fixed Income, Returns, Portfolios</li>
+                        <li>Burch had a need for returns</li>
+                        <li>Instead of writing his own... modified returns API</li>
+                        <li>This is the spirit of open source style of development</li>
+                        <li>AKA collective code ownership</li>
                     </ul>
                 </aside>
 
@@ -329,6 +336,9 @@
 
                 <aside class="notes">
                     <ul>
+                        <li>Just as long as they were willing to keep the development standards they we able to contribute.</li>
+                        <li>Leads to sharing SEVERAL APIs</li>
+                        <li>Char, Fixed Income, Returns, Portfolios</li>
                     </ul>
                 </aside>
             </section>
@@ -342,6 +352,32 @@
                     <li>Countries</li>
                     <li>Exchange Rates</li>
                 </ul>
+            </section>
+
+            <section>
+                <h3>Two Strategies</h3>
+                <ul>
+                    <li>Generic URL Services</li>
+                    <li>URL Per Caller</li>
+                </ul>
+            </section>
+
+            <section>
+                <img src="images/ReturnsWebImages/Slide8.PNG" />
+            </section>
+
+            <section>
+                <img src="images/ReturnsWebImages/Slide9.PNG" />
+            </section>
+
+            <section style="background-color: darkred">
+                <p>The "Buffet Style of Data Distribution" can still happen with web services</p>
+
+                <aside class="notes">
+                    <ul>
+                    </ul>
+                </aside>
+
             </section>
 
         </section>
