@@ -1,0 +1,370 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Database Build Process</title>
+
+	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+<div class="reveal">
+
+			<!--
+
+			* Preparation *
+
+			- Ensure you have a good local database example.
+			- Delete the database on the local machine BEFORE the presentation
+
+			- Dive Deeper into Rollbacks
+			- Convert Code Review
+			- Cover the issue for scripts that are not "baked" yet
+				- Tie them to how the team choose to work
+			- Automated restore.  Ask for parameters
+
+
+			-->
+
+			<div class="slides">
+				<section>
+					<h1>Database Build Process</h1>
+					<p>for DBAs</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Definitions</h2>
+					</section>
+
+					<section>
+						<p>CI == Continuous Integration</p>
+					</section>
+
+					<section>
+						<h4>Continuous Integration</h4>
+						<p>In software engineering, continuous integration (CI) is the practice of merging all developer working copies to a shared mainline several times a day.</p>
+						<small>-- wikipedia</small>
+					</section>
+
+					<section>
+						<p>GIT == Source Control (Distributed)</p>
+					</section>
+
+					<section>
+						<p>Stash</p>
+						<p>== Bit Bucket Server</p>
+						<p>== Web Application Integrates w/ GIT</p>
+					</section>
+
+					<section>
+						<h3>Artifacts</h3>
+						<p>One ore more files that make up a deployable system.</p>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Centralized vs Sandbox</h2>
+						<p>Database Development</p>
+						<p>[Do we need this?]</p>
+					</section>
+
+					<section>
+						<h3>Centralized</h3>
+						<img src="images/centraldev.png" />
+
+						<aside class="notes">
+							<ul>
+								<li>Acts like a huge global variable</li>
+							</ul>
+						</aside>
+
+					</section>
+
+					<section>
+						<h3>Sandbox</h3>
+						<img src="images/SandBox.png" />
+
+						<aside class="notes">
+							<ul>
+								<li>Each developer can create / destroy their instance at any time</li>
+								<li>Each developer can choose to get the "latest" changes</li>
+							</ul>
+						</aside>
+
+					</section>
+
+					<section>
+						<p>Sandbox database does NOT have a copy of all the data!</p>
+
+						<aside class="notes">
+							<ul>
+								<li>Performance testing is done in a later environment</li>
+							</ul>
+						</aside>
+
+					</section>
+
+				</section>
+
+				<section>
+					<h2>Components</h2>
+					<ol>
+						<li>Sandbox</li>
+						<li>Source Control / Continuous Integration</li>
+						<li>Automated Deployment</li>
+					</ol>
+				</section>
+
+				<section>
+					<section>
+						<h2>Sandbox</h2>
+					</section>
+
+					<section>
+						<h3>Sandbox => Local Machine</h3>
+					</section>
+
+					<section>
+						<h3>Tools</h3>
+						<ul>
+							<li>Powershell</li>
+							<li><a href="https://github.com/psake/psake" target="_blank">Psake</a></li>
+							<li>SQL Express</li>
+							<li><a href="https://github.com/chucknorris/roundhouse/wiki" target="_blank">Roundhouse</a></li>
+						</ul>
+					</section>
+
+					<section>
+						<!--
+
+						https://www.websequencediagrams.com/
+
+						title Local Build
+
+Powershell -> Roundhouse : Drop
+Roundhouse -> SQLExpress : Drop DB
+SQLExpress -> Roundhouse :
+Roundhouse -> Powershell :
+
+Powershell -> Roundhouse : Create DB
+Roundhouse -> FileSystem : Get SQL Scripts
+FileSystem -> Roundhouse : SQL Scripts
+Roundhouse -> SQLExpress : Create DB
+SQLExpress -> Roundhouse :
+Roundhouse -> SQLExpress : Run SQL Scripts
+SQLExpress -> Roundhouse :
+
+Roundhouse -> Powershell :
+
+						-->
+
+						<img src="images/LocalBuildProcess.png" />
+
+					</section>
+
+					<section>
+						<h3>Powershell Build Scripts</h3>
+						<ul>
+							<li><a href="https://stash.dimensional.com/projects/ID/repos/characteristic-database/browse/Build.ps1" target="_blank">Bootstrapping Script</a></li>
+							<li><a href="https://stash.dimensional.com/projects/ID/repos/characteristic-database/browse/default.ps1" target="_blank">Build Script</a></li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Source Control &amp; CI</h2>
+					</section>
+
+					<section>
+						<p>
+							<a href="https://stash.dimensional.com/projects/IW/repos/vehicle-portfolio-master/pull-requests/41/diff#data/VehiclePortfolioMasterDatabase/mssql/UP/0030_RenameBenchmarkTypeTable.sql" target="_blank">
+								Developer will submit a pull request once feature branch is ready for deployment.
+							</a>
+						</p>
+					</section>
+
+					<section>
+						<img src="images/TeamCityPullRequest.png" />
+					</section>
+
+					<!--
+
+                title TeamCity Pull Request
+
+                Local -> TeamCity : Push Scripts
+                TeamCity -> TeamCity : Local Build
+                TeamCity -> Local : Pass
+                Local -> Stash : Submit Pull Request
+                Stash -> DBAs : Email
+                Stash -> Local :
+
+                DBAs -> Stash : Approve Pull Request
+                Stash -> DBAs :
+
+                Local -> Stash : Merge
+                Stash -> Local :
+
+                TeamCity -> Stash : Get Code
+                Stash -> TeamCity : Merged Code
+
+                TeamCity -> TeamCity : Local Build
+                TeamCity -> TeamCity : Create Artifacts
+
+                    -->
+
+
+					<section>
+						<p>
+							<a href="http://teamcity.dimensional.com/viewLog.html?buildId=140966&buildTypeId=Analytics_Databases_CharacteristicLocalDb&tab=artifacts#!11gtswz82nxe4" target="_blank">
+								Artifacts should contain ALL files needed to deploy.
+							</a>
+						</p>
+					</section>
+				</section>
+
+				<section>
+
+					<section>
+						<h2>Automated Deployment</h2>
+					</section>
+
+					<section>
+						<img src="images/TeamCityDatabaseDeployment.png" />
+					</section>
+					<!--
+
+title TeamCity Database Deployment
+
+Local -> TeamCity : Restore
+TeamCity -> Database : Restore Latest Backup
+Database -> Local :
+Local -> TeamCity : Deploy
+TeamCity -> TeamCity : Gather Artifacts
+TeamCity -> Roundhouse : Update Database
+Roundhouse -> Database : Run Scripts
+Database -> Roundhouse :
+Database -> TeamCity :
+TeamCity -> Local :
+					-->
+
+					<section>
+						<h4>Team City Deployment</h4>
+						<img src="images/TeamCityDbDeployment.png" />
+					</section>
+
+					<section>
+						<h3>
+							<a href="http://teamcity.dimensional.com/viewLog.html?buildId=92035&buildTypeId=Analytics_Databases_Characteristic_30CharacteristicDatabaseUpdatePrd&tab=buildLog#_focus=20&state=20" target="_blank">
+								Deployment Log
+							</a>
+						</h3>
+					</section>
+
+					<section>
+						<h4>Only Method of Database Change Deployment</h4>
+						<p>Even for ECMs</p>
+					</section>
+
+					<section>
+						<h4>Database Version Tables</h4>
+						<img src="images/RoundhouseTables.png" />
+					</section>
+
+					<section>
+						<h4>What changed?</h4>
+						<img src="images/VersionNumberReference.png" />
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Limitations</h2>
+					</section>
+
+					<section>
+						<h3>Build Process Limits</h3>
+						<ul>
+							<li>Large Number of External Dependencies</li>
+							<li>Hard to Test Replicated Databases</li>
+							<li>Mismatching Environments == Side Effects</li>
+						</ul>
+
+						<!-- Linked servers -->
+
+					</section>
+
+					<section>
+						<p>Roundhouse does NOT support rollbacks.</p>
+						<p>Use DB Deploy instead.</p>
+					</section>
+
+					<section>
+						<h3>Automated Restore Limits</h3>
+						<ul>
+							<li>Will not work for DBs over 60GBs.</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+						<h2>Source Control for Databases</h2>
+						<ol>
+							<li>By Object</li>
+							<li>By Transition</li>
+						</ol>
+					</section>
+
+					<section>
+						<h3>only "By Transition" works</h3>
+					</section>
+
+				</section>
+
+				<!-- New tables will hold the version -->
+				<!-- Will work from 80% of databases -->
+
+			</div>
+</div>
+
+<script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+<script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+<script>
+	// More info https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		history: true,
+
+		// More info https://github.com/hakimel/reveal.js#dependencies
+		dependencies: [
+			{ src: '../../lib/reveal.js-3.4.1/plugin/markdown/marked.js' },
+			{ src: '../../lib/reveal.js-3.4.1/plugin/markdown/markdown.js' },
+			{ src: '../../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true },
+			{ src: '../../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+		]
+	});
+</script>
+</body>
+</html>
