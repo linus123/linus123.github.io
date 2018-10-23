@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Automated Refresh</title>
+
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+                <section>
+                    <h2>SQL DB Auto Refresh Process</h2>
+                </section>
+
+                <section>
+                    <h3>Thank You</h3>
+                </section>
+
+                <section>
+                    <h3>Great Idea!</h3>
+                </section>
+
+                <section>
+                    <img src="images/AutoRefresh001.PNG" />
+
+                    <aside class="notes">
+                        <ul>
+                            <li>You have number of jobs that monitor changes to tables.</li>
+                            <li>Done through polling</li>
+                            <li>This is really an event based system</li>
+                            <li>Easy to get working for the "happy path"</li>
+                            <li>Will break down on edge cases / errors</li>
+                        </ul>
+                    </aside>
+
+                </section>
+
+                <section>
+                    <img src="images/AutoRefresh002.PNG" />
+
+                    <aside class="notes">
+                        <ul>
+                            <li>This flow chart is great.</li>
+                            <li>Flow chart plus polling jobs = "Process Orchestration"</li>
+                            <li>Building a process orchestration tool</li>
+                        </ul>
+                    </aside>
+
+                </section>
+
+                <section>
+                    <h3>Recap</h3>
+                    <ul>
+                        <li>Event Based System</li>
+                        <li>Hard to get Working for Edge Cases</li>
+                        <li>Flow Chart plus Polling => Process Orchestration</li>
+                    </ul>
+                </section>
+
+                <section>
+
+                    <section>
+                        <h3>Suggested Alternative</h3>
+                    </section>
+
+                    <section>
+                        <p>Don't implement process orchestration.</p>
+                    </section>
+
+                    <section>
+                        <img src="https://cdn-images-1.medium.com/max/800/0*Ibsu7Nvvd9gyhHxO.png" />
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Instead use a continuous integration tool</li>
+                                <li>Most of you know continuous integration?  If not let me know</li>
+                                <li>Team City support process orchestration catered toward development teams</li>
+                                <li>I believe the users of this Auto Refresh tool is the same user base as Team City.</li>
+                            </ul>
+                        </aside>
+
+                    </section>
+
+                    <section>
+                        <img src="images/Slide2.PNG" />
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Assume all database infrastructure</li>
+                                <li>Assume we make a series of lego blocks.</li>
+                                <li>Can be built using anything: Jobs, SQL, Powershell</li>
+                            </ul>
+                        </aside>
+
+                    </section>
+
+                    <section>
+                        <img src="images/Slide3.PNG" />
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Allow the developers to compose the lego blocks with TC</li>
+                                <li>They are really good at this</li>
+                                <li>DB team responsible for supporting only lego blocks</li>
+                                <li>Leave support mostly up to them</li>
+                                <li>You: Don't have the problem of polling jobs or complex edge cases</li>
+                                <li>Since it is CI it is something I can evangelize</li>
+                                <li>Make the lines HTTP: will work on Linux => I can help</li>
+                            </ul>
+                        </aside>
+
+                    </section>
+
+                    <section>
+                        <h3>Summary</h3>
+                        <ul>
+                            <li>Implement Lego Blocks</li>
+                            <li>Allow Developers to Process Orchestration</li>
+                            <li>Use Team City or other CI Tool</li>
+                            <li>Support Web Services if Possible</li>
+                        </ul>
+                    </section>
+
+
+                </section>
+
+			</div>
+
+		</div>
+
+        <script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+        <script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                history: true,
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: '../../lib/reveal.js-3.4.1/plugin/markdown/marked.js' },
+                    { src: '../../lib/reveal.js-3.4.1/plugin/markdown/markdown.js' },
+                    { src: '../../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true },
+                    { src: '../../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+        </script>
+</body>
+</html>
+
