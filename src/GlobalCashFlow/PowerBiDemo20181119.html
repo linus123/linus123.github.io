@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Power BI Demo</title>
+
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+        <section>
+            <h1>Power BI Demo</h1>
+            <p>for Global Cash Flow</p>
+        </section>
+
+        <section>
+            <h2>Supplements Current Systems</h2>
+            <p>Not a Replacement</p>
+        </section>
+
+        <section>
+            <h2>Power BI</h2>
+
+            <section>
+                <h3>Simple to learn</h3>
+            </section>
+
+            <section>
+                <h3>Bias Toward Dashboards</h3>
+                <p>Close to Real Time</p>
+            </section>
+
+            <section>
+                <h3>Not Good for...</h3>
+                <ul>
+                    <li>Large Data Sets</li>
+                    <li>Trend Reporting</li>
+                    <li>Advanced Hosting Features</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Cloud Offering</h3>
+                <p>It Exists</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>How It Works</h2>
+            </section>
+
+            <section>
+                <img src="images/LogicalArch.PNG" />
+            </section>
+
+            <section>
+                <h4>Data Scrubbing => Hard</h4>
+            </section>
+
+        </section>
+
+    </div>
+
+</div>
+
+<script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+<script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {src: '../../lib/reveal.js-3.4.1/plugin/markdown/marked.js'},
+            {src: '../../lib/reveal.js-3.4.1/plugin/markdown/markdown.js'},
+            {src: '../../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true},
+            {
+                src: '../../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
+

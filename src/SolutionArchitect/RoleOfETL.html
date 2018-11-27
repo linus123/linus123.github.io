@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Extract, Transform and Load Tools</title>
+
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section>
+            <h1>ETL Tools</h1>
+            <p>Extract Transform Load</p>
+        </section>
+
+        <section>
+
+            <section>
+                <h2>Definition</h2>
+            </section>
+
+            <section>
+                <p>Data Source X => Data Destination Y</p>
+            </section>
+
+            <section>
+                <img src="https://technet.microsoft.com/en-us/library/cc917721.s2_big(l=en-us).png" />
+            </section>
+
+            <section>
+                <img src="http://2.bp.blogspot.com/-VKLQrIK2PDU/VRlgPA_OpuI/AAAAAAAAAiM/rA0HrKiwdLw/s1600/75.png" />
+            </section>
+
+            <section>
+                <img src="http://lh4.ggpht.com/-Ee7eZolKYi0/UhGRZ0BLvwI/AAAAAAAAIe8/qtJMiGQBCo0/image_thumb%25255B93%25255D.png?imgmax=800" />
+            </section>
+
+            <section>
+                <h3>Two Parts to Data Transfer</h3>
+                <ol>
+                    <li>Process Orchestration</li>
+                    <li>Data Flow Mapping</li>
+                </ol>
+            </section>
+
+        </section>
+
+        <section>
+            <section>
+                <h2>ETL is Code</h2>
+            </section>
+
+            <section>
+                <h3>Contains</h3>
+                <ul>
+                    <li>Conditionals</li>
+                    <li>Loops</li>
+                    <li>Support Modularity</li>
+                </ul>
+            </section>
+
+            <section data-state='the-end'>
+                <h3>More</h3>
+                <ul>
+                    <li>Source file is XML</li>
+                    <li>Stored in Source Control</li>
+                    <li>Deploy with System</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Same risk as code</h3>
+            </section>
+
+        </section>
+
+        <section>
+            <section>
+                <h2>Testability</h2>
+                <p>or lack there of</p>
+            </section>
+
+            <section>
+                <h3>SE Standards</h3>
+                <ul>
+                    <li>Each developer must shift their coding practice to Test Driven Development or Test First Development.</li>
+                    <li>A system's unit, integration, and system tests should be runnable...
+                        <ul>
+                            <li>by executing a single command or</li>
+                            <li>by clicking a single button.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Problem of Culture</h3>
+                <p><a href="https://stash.dimensional.com/projects/IISFI/repos/dfa.fixedincome.integration.2012/browse/src/DFA.FixedIncome.Integration.2012/ImpliedRatings_SSIS_2012" target="_blank">IT Investments (Fixed Income)</a></p>
+                <p><a href="https://stash.dimensional.com/projects/DD/repos/core_schema/browse/etl" target="_blank">Data Distribution</a></p>
+            </section>
+
+            <section>
+                <p>There are no DFA examples of testing a suite of ETL packages.</p>
+            </section>
+
+            <section>
+                <p>There are no DFA champions of automated testing for ETL.</p>
+            </section>
+
+            <section>
+                <h3>Accept we are not going to write tests for ETL</h3>
+            </section>
+
+        </section>
+
+        <section>
+            <section>
+                <p>Point of View</p>
+                <h2>Software Architecture</h2>
+            </section>
+
+            <section>
+                <img src="https://martinfowler.com/books/eaa.jpg"/>
+            </section>
+
+            <section>
+                <h3>Domain Logic Patterns</h3>
+                <p>Organizing Business Rules</p>
+            </section>
+
+            <section>
+                <h3>Domain Logic Patterns</h3>
+                <ul>
+                    <li>Transaction Script</li>
+                    <li>Table Module</li>
+                    <li>Domain Model</li>
+                    <li>Service Layer</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>ETL Closets to Transaction Script</h3>
+            </section>
+
+            <section>
+                <h3>Advantages</h3>
+                <ul>
+                    <li>It's a simple procedural model that most developers understand.</li>
+                    <li>It's easy for tools to do this behind the scenes.</li>
+                </ul>
+                <small>-- Patterns of Enterprise Application Architecture</small>
+            </section>
+
+            <section>
+                <h3>Disadvantages</h3>
+                <ul>
+                    <li>Hard to reduce duplication</li>
+                    <li>...progressively harder to keep in a well-designed state</li>
+                </ul>
+            </section>
+
+            <section>
+                <img src="images/DLP.png" />
+            </section>
+
+            <section>
+                <h3>Disadvantages of ETL</h3>
+                <ul>
+                    <li>Version Control: Hard to Tell What Changed</li>
+                    <li>Version Control: Merges are Impossible</li>
+                    <li>Code Reviews are Manual</li>
+                    <li>No Test Coverage Tools</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>The slippery slope</h3>
+            </section>
+        </section>
+
+        <section>
+
+            <section>
+                <h2>Policy for SE Standards</h2>
+            </section>
+
+            <section>
+                <p>Accept ETL packages are NOT going to be tested.</p>
+            </section>
+
+            <section>
+                <p>ETL tools can be used for data flows that are SIMPLE and RARELY change.</p>
+            </section>
+
+            <section>
+                <h3>MINIMAL business logic</h3>
+                <ul>
+                    <li>Cyclomatic Complexity Max of 2</li>
+                    <li>Max 1 Loop</li>
+                </ul>
+            </section>
+
+            <section>
+                <p>I will champion the testable ETL alternative.</p>
+            </section>
+
+        </section>
+
+    </div>
+
+</div>
+
+<script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+<script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {src: '../../lib/reveal.js-3.4.1/plugin/markdown/marked.js'},
+            {src: '../../lib/reveal.js-3.4.1/plugin/markdown/markdown.js'},
+            {src: '../../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true},
+            {
+                src: '../../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
