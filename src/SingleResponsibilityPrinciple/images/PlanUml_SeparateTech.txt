@@ -1,0 +1,12 @@
+@startuml
+class CompanyContactReportCreator{
+	CreateReport()
+}
+
+class DataAccess{
+	GetData()
+}
+
+CompanyContactReportCreator --|> DataAccess
+
+@enduml

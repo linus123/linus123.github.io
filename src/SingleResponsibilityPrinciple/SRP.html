@@ -1,0 +1,303 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Single Responsibility Principle</title>
+
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section>
+            <h1>Single Responsibility Principle</h1>
+        </section>
+
+        <section>
+            <img src="images/LevelTriangle.PNG" />
+        </section>
+
+        <section>
+            <h4>Class</h4>
+
+            <section>[Triangle Highlight]</section>
+
+            <section>
+                <h2>Class</h2>
+                <p>Original Definition</p>
+            </section>
+
+            <section>
+                <img src="../images/AgileSoftwareDev.jpg" />
+            </section>
+
+            <section>
+                <p>A class should have only one reason to change.</p>
+                <p><small>-- Robert Martin</small></p>
+            </section>
+
+            <section>
+                <h3>reason to change???</h3>
+            </section>
+
+            <section>
+                <h3>Why Change</h3>
+                <ul>
+                    <li>Technical Reasons</li>
+                    <li>Business Reasons</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Contact Management (CRM)</h3>
+            </section>
+
+            <section>
+                <h4>Company Report</h4>
+                <img src="images/ContactReport.png" />
+            </section>
+
+            <section>
+                <img src="images/PlanUml_SingleClass.png" />
+            </section>
+
+            <section>
+                <img src="images/PlanUml_SeparateTech.png" />
+            </section>
+
+            <section>
+                <img src="images/PlanUml_SeparateTechAndBusiness.png" />
+            </section>
+
+            <section>
+                <h4>Have a bias toward Business Reasons</h4>
+            </section>
+
+            <!-- Make this slide better;  WE do want to talk about Cohesion -->
+            <section>
+                <h3>Cohesion</h3>
+            </section>
+
+        </section>
+
+        <section>
+            <h4>Single Line</h4>
+
+            <section>[Triangle Highlight]</section>
+
+            <section>
+                <h2>Single Line</h2>
+                <p>of Code</p>
+            </section>
+
+            <section>
+                <h3><a href="SRPCodeSamples.html#SingleLineTooMuch" target="_blank">Code Example</a></h3>
+            </section>
+
+        </section>
+
+        <section>
+            <h4>Function</h4>
+
+            <section>[Triangle Highlight]</section>
+
+            <section>
+                <h2>Function</h2>
+            </section>
+
+            <section>
+                <img src="../images/CleanCode.jpg" />
+            </section>
+
+            <section>
+                <p>Functions should do one thing. They should do it well.  They should do it only.</p>
+                <p><small>-- Robert Martin</small></p>
+            </section>
+
+            <section>
+                <h3><a href="SRPCodeSamples.html#FunctionTooMuch" target="_blank">Code Example</a></h3>
+            </section>
+
+        </section>
+
+        <section>
+            <h4>Module</h4>
+
+            <section>[Triangle Highlight]</section>
+
+            <section>
+                <h2>Module</h2>
+            </section>
+
+            <section>
+                <p>A collection of classes and functions.</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>If we know the responsibilities of the classes then we can know the responsiblities of the modules.</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <p>A module should have a well defined set of reasons to change...</p>
+
+            </section>
+
+            <section>
+                <p>...and these reasons should have a bias toward a business outcome.</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>If we have a set of classes or functions that can be separated by business or technology then choose business.</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <!--
+            Cover Folders
+
+            Types of modules
+                Data Access
+                Business Logic
+                Web UI / Web API
+
+            Organized by Use Cases
+
+            MVP Patter Example
+
+            MVC's Bad Organization
+
+            -->
+        </section>
+
+        <section>
+            <h4>System</h4>
+
+            <section>[Triangle Highlight]</section>
+
+            <section>
+                <h2>System</h2>
+                <p>can be deployed</p>
+            </section>
+
+            <section>
+                <img src="images/NTier.PNG" />
+
+                <aside class="notes">
+                    <ul>
+                        <li>This is a technical layout.</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <img src="images/NTierSlice.PNG" />
+            </section>
+
+            <section>
+                <h3><a href="http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">Clean Architecture</a></h3>
+                <p>Onion Architecture</p>
+            </section>
+
+            <section>
+                [Alternate Clean Arch Image]
+            </section>
+
+            <!--
+            I am not 100% sure if we should talk about bounded context.
+            It forces me to talk more about Domain Driven Design.
+            I am not sure that this is a good idea.
+             -->
+
+            <section>
+                <img src="../images/DomainDrivenDesignBook.jpg" />
+            </section>
+
+            <section>
+                <p>Domain Driven Design</p>
+                <h3><a href="https://martinfowler.com/bliki/BoundedContext.html" target="_blank">Bounded Context</a></h3>
+            </section>
+
+            <section>
+                <p>Bounded Context</p>
+                <h3>Includes the data</h3>
+            </section>
+
+            <section>
+                <p>Example?</p>
+            </section>
+
+            <!--
+            Uncle Bob's Church example
+            -->
+
+            <!--
+
+            Separating UI from backend => Anti Pattern
+
+            -->
+
+        </section>
+
+        <section>
+            <h4>Team</h4>
+
+        </section>
+
+        <!--
+
+        - System
+            - NTirered gorup by technology
+        - Team
+
+        -->
+
+    </div>
+
+</div>
+
+<script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+<script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {src: '../../lib/reveal.js-3.4.1/plugin/markdown/marked.js'},
+            {src: '../../lib/reveal.js-3.4.1/plugin/markdown/markdown.js'},
+            {src: '../../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true},
+            {
+                src: '../../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>

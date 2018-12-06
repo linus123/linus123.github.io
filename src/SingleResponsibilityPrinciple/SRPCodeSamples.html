@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Single Responsibility Principle</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../starter-template.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../lib/highlight/styles/vs.css">
+    <script src="../../lib/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header clearfix">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">Single Responsibility Principle</h3>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3>Single Line - Too Much</h3>
+            <a name="SingleLineTooMuch"></a>
+
+            <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">static</span> <span style="color: #B00040">double</span> <span style="color: #0000FF">Median</span>(<span style="color: #B00040">double</span>[] numbers)
+{
+	<span style="color: #B00040">var</span> sortedArray = sortArray(numbers);
+
+	<span style="color: #B00040">double</span> median;
+
+	<span style="color: #008000; font-weight: bold">if</span> (numbers.Length % <span style="color: #666666">2</span> == <span style="color: #666666">0</span>)
+	{
+		median = (sortedArray[numbers.Length / <span style="color: #666666">2</span> - <span style="color: #666666">1</span>] + sortedArray[numbers.Length / <span style="color: #666666">2</span>]) / <span style="color: #666666">2.0</span>;
+	}
+	<span style="color: #008000; font-weight: bold">else</span>
+		median = sortedArray[numbers.Length / <span style="color: #666666">2</span>];
+
+	<span style="color: #008000; font-weight: bold">return</span> median;
+}
+</pre></td></tr></table></div>
+
+        </div>
+
+        <div class="col-md-12">
+            <h3>Single Line - Better</h3>
+            <a name="SingleLineBetter"></a>
+
+            <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">static</span> <span style="color: #B00040">double</span> <span style="color: #0000FF">Median</span>(<span style="color: #B00040">double</span>[] numbers)
+{
+	<span style="color: #B00040">var</span> sortedArray = sortArray(numbers);
+
+	<span style="color: #B00040">double</span> median;
+
+	<span style="color: #B00040">var</span> middleIndex = numbers.Length / <span style="color: #666666">2</span>;
+
+	<span style="color: #008000; font-weight: bold">if</span> (numbers.Length % <span style="color: #666666">2</span> == <span style="color: #666666">0</span>)
+	{
+		<span style="color: #B00040">var</span> middleItemsSum = sortedArray[middleIndex - <span style="color: #666666">1</span>] + sortedArray[middleIndex];
+
+		median = middleItemsSum / <span style="color: #666666">2.0</span>;
+	}
+	<span style="color: #008000; font-weight: bold">else</span>
+		median = sortedArray[middleIndex];
+
+	<span style="color: #008000; font-weight: bold">return</span> median;
+}
+</pre></td></tr></table></div>
+
+        </div>
+
+        <div class="col-md-12">
+            <h3>Linq - Too Much</h3>
+            <a name="LinqTooMuch"></a>
+
+            <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> (<span style="color: #B00040">int</span> m = <span style="color: #666666">1</span>;
+	m &lt;= myMultiplierGridList.Where(a =&gt; a.SizeBucket == i).Select(a =&gt; a.DpbBucket).Distinct().Count();
+	m++)
+{
+	<span style="color: #408080; font-style: italic">// Some work</span>
+}
+</pre></td></tr></table></div>
+
+
+        </div>
+
+        <div class="col-md-12">
+            <h3>Linq - Better</h3>
+            <a name="LinqBetter"></a>
+
+            <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #B00040">var</span> listCount = myMultiplierGridList
+	.Where(a =&gt; a.SizeBucket == i)
+	.Select(a =&gt; a.DpbBucket)
+	.Distinct()
+	.Count();
+
+<span style="color: #008000; font-weight: bold">for</span> (<span style="color: #B00040">int</span> m = <span style="color: #666666">1</span>; m &lt;= listCount; m++)
+{
+	<span style="color: #408080; font-style: italic">// Some work</span>
+}
+</pre></td></tr></table></div>
+
+        </div>
+
+        <div class="col-md-12">
+            <h3>Function - Too Much</h3>
+            <a name="FunctionTooMuch"></a>
+
+            <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">static</span> <span style="color: #B00040">double</span>[] <span style="color: #0000FF">Diff</span>(<span style="color: #B00040">double</span>[] arrayA, <span style="color: #B00040">double</span>[] arrayB)
+{
+	<span style="color: #B00040">double</span>[] diffArray;
+	<span style="color: #B00040">int</span> length;
+	<span style="color: #008000; font-weight: bold">if</span> (arrayA== <span style="color: #008000; font-weight: bold">null</span> || ((length= arrayA.Length)&lt;<span style="color: #666666">1</span>)||
+		arrayB== <span style="color: #008000; font-weight: bold">null</span> || ((length= arrayB.Length)&lt;<span style="color: #666666">1</span>)||
+		arrayA.Length!= arrayB.Length)
+		<span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000; font-weight: bold">null</span>;
+
+	diffArray = <span style="color: #008000; font-weight: bold">new</span> <span style="color: #B00040">double</span>[length];
+
+	<span style="color: #008000; font-weight: bold">for</span> (<span style="color: #B00040">int</span> i = <span style="color: #666666">0</span>; i&lt;length; ++i)
+		diffArray[i]= arrayA[i]- arrayB[i];
+
+	<span style="color: #008000; font-weight: bold">return</span> diffArray;
+}
+</pre></td></tr></table></div>
+
+
+        </div>
+
+        <div class="col-md-12">
+            <h3>Function - Better</h3>
+            <a name="FunctionBetter"></a>
+
+            <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">static</span> <span style="color: #B00040">double</span>[] <span style="color: #0000FF">Diff</span>(
+	<span style="color: #B00040">double</span>[] a,
+	<span style="color: #B00040">double</span>[] b)
+{
+	<span style="color: #008000; font-weight: bold">if</span> (!AreValid(a, b))
+		<span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000; font-weight: bold">null</span>;
+
+	<span style="color: #008000; font-weight: bold">return</span> <span style="color: #0000FF">SubtractArrays</span>(a, b);
+}
+
+<span style="color: #008000; font-weight: bold">private</span> <span style="color: #008000; font-weight: bold">static</span> <span style="color: #B00040">bool</span> <span style="color: #0000FF">AreValid</span>(
+	<span style="color: #B00040">double</span>[] a,
+	<span style="color: #B00040">double</span>[] b)
+{
+	<span style="color: #008000; font-weight: bold">return</span> <span style="color: #0000FF">HasItems</span>(a)
+		   &amp;&amp; HasItems(b)
+		   &amp;&amp; HasSameLength(a, b);
+}
+
+<span style="color: #008000; font-weight: bold">private</span> <span style="color: #008000; font-weight: bold">static</span> <span style="color: #B00040">bool</span> <span style="color: #0000FF">HasSameLength</span>(
+	<span style="color: #B00040">double</span>[] a,
+	<span style="color: #B00040">double</span>[] b)
+{
+	<span style="color: #008000; font-weight: bold">return</span> a.Length == b.Length;
+}
+
+<span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">static</span> <span style="color: #B00040">bool</span> <span style="color: #0000FF">HasItems</span>(
+	<span style="color: #B00040">double</span>[] a)
+{
+	<span style="color: #008000; font-weight: bold">if</span> (a == <span style="color: #008000; font-weight: bold">null</span>)
+		<span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000; font-weight: bold">false</span>;
+
+	<span style="color: #008000; font-weight: bold">return</span> a.Length &gt; <span style="color: #666666">0</span>;
+}
+
+<span style="color: #008000; font-weight: bold">private</span> <span style="color: #008000; font-weight: bold">static</span> <span style="color: #B00040">double</span>[] <span style="color: #0000FF">SubtractArrays</span>(
+	<span style="color: #B00040">double</span>[] a,
+	<span style="color: #B00040">double</span>[] b)
+{
+	<span style="color: #B00040">var</span> diff = <span style="color: #008000; font-weight: bold">new</span> <span style="color: #B00040">double</span>[a.Length];
+
+	<span style="color: #008000; font-weight: bold">for</span> (<span style="color: #B00040">var</span> i = <span style="color: #666666">0</span>; i &lt; a.Length; ++i)
+		diff[i] = a[i] - b[i];
+
+	<span style="color: #008000; font-weight: bold">return</span> diff;
+}
+</pre></td></tr></table></div>
+
+        </div>
+
+    </div>
+
+</div><!-- /.container -->
+
+<script src="../../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</body>
+</html>

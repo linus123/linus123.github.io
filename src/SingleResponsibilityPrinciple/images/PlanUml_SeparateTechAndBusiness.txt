@@ -1,0 +1,17 @@
+@startuml
+class CompanyContactReportCreator{
+	CreateReport()
+}
+
+class CompanyDataGateway{
+	GetAll()
+}
+
+class ContactDataGateway{
+	GetAll()
+}
+
+CompanyContactReportCreator --|> CompanyDataGateway
+CompanyContactReportCreator --|> ContactDataGateway
+
+@enduml
