@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>2019 Ideas</title>
+
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>Ideas for 2019</h1>
+				</section>
+
+                <section>
+                    <h4>Big Bang Re-Write => Anti-Pattern</h4>
+                </section>
+
+                <section>
+                    <h4>Employee Service</h4>
+
+                    <section>
+                        <h2>Employee Service</h2>
+                        <p>Authoritative source of employees and employee related information.</p>
+                    </section>
+
+                    <section>
+                        <ul>
+                            <li>True SOA Service / Business Capability</li>
+                            <li>Jason Freeman and Paul H</li>
+                            <li>Extend the Work of Jason Freeman</li>
+                            <li>Bias toward of public messaging</li>
+                            <li>Needed for IAP</li>
+                        </ul>
+                    </section>
+
+                </section>
+
+                <section>
+                    <h4>SE Apprenticeship Program</h4>
+
+                    <section>
+                        <h2>SE Apprenticeship Program</h2>
+                        <p>Grow junior Software Engineers into hither level positions.</p>
+                    </section>
+
+                    <section>
+                        <ul>
+                            <li>Not more than two people</li>
+                            <li>3 Months Training. 9 Months of Apprenticeship</li>
+                            <li>Goal:  Transition person to another team.</li>
+                            <li>Will save onboarding / hiring cost.</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <h4>Business Calendar Service</h4>
+
+                    <section>
+                        <h2>Business Calendar Service</h2>
+                        <p>Calculates business dates for system taking into account holiday.</p>
+                    </section>
+
+                    <section>
+                        <ul>
+                            <li>Would like to translate this into a proper SOA service.</li>
+                            <li>Need Exchange holidays from CRIMs to work.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Politics</h3>
+                        <ul>
+                            <li>I don't want to have a dependency on CRIMs.</li>
+                            <li>Would like to back fill DS2A holiday table.</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <h4>Products API</h4>
+
+                    <section>
+                        <h2>Products API</h2>
+                        <p>Single cohesive open source Web service for Portfolios, Vehicles, and GIPS Composites</p>
+                    </section>
+
+                    <section>
+                        <ul>
+                            <li>Attempt to collapse Vehicles API (VPM) and Products API.</li>
+                            <li>Will require coordination with AID (Andy Wright / Mark Kras)</li>
+                            <li>Get Deepti's team on board.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Politics</h3>
+                        <ul>
+                            <li>Have NO idea how this will affect DD</li>
+                            <li>Duplicated with "meta"... I think</li>
+                            <li>IAD will be uncomfortable with the shared ownership</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <h4>Eagle Messaging: Trades</h4>
+
+                    <section>
+                        <h2>Eagle Messaging: Trades</h2>
+                        <p>Modify Eagle to send a PUBLIC message when a trade is executed for a fund.</p>
+                    </section>
+
+                    <section>
+                        <ul>
+                            <li>Will require close coordination with the Govind's team.</li>
+                            <li>Will have to understand timing.</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <h4>Exchange Rate API</h4>
+
+                    <section>
+                        <h2>Exchange Rate API</h2>
+                        <p>Authoritative source of exchange rates and currency conversation.</p>
+                    </section>
+
+                    <section>
+                        <ul>
+                            <li>Being with Chris B's Exchange Rate API.</li>
+                            <li>DO NOT want to be affected by Eagle upgrades.</li>
+                            <li>I am not sure if this should be an API or a true SOA service.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Politics</h3>
+                        <ul>
+                            <li>Ahbi's will not like us NOT getting the data from Eagle</li>
+                            <li>Joe R will hesitated us NOT getting the data from Eagle</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <h4>DS2A Messaging: Client Trades</h4>
+
+                    <section>
+                        <h2>DS2A Messaging: Client Trades</h2>
+                        <p>Send a message when a client buy's into our funds.</p>
+                    </section>
+
+                    <section>
+                        <ul>
+                            <li>Needed by CARS.</li>
+                            <li>Will have to work closely with Deepti's team.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Politics</h3>
+                        <ul>
+                            <li>Last engagement Hung wanted to do this though a DB trigger: Bad Idea</li>
+                        </ul>
+                    </section>
+                </section>
+
+            </div>
+
+        </div>
+
+        <script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+        <script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                history: true,
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: '../../lib/reveal.js-3.4.1/plugin/markdown/marked.js' },
+                    { src: '../../lib/reveal.js-3.4.1/plugin/markdown/markdown.js' },
+                    { src: '../../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true },
+                    { src: '../../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+        </script>
+    </body>
+</html>
