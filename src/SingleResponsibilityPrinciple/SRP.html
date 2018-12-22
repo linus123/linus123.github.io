@@ -32,17 +32,97 @@
         </section>
 
         <section>
+            <p>Goal</p>
+            <h3>Apply to more than just classes</h3>
+        </section>
+
+        <section>
             <img src="images/LevelTriangle.PNG" />
+
+            <aside class="notes">
+                <ul>
+                    <li>From micro to macro.</li>
+                    <li>Cover Later:  Business Bias</li>
+                </ul>
+            </aside>
+
+        </section>
+
+        <section>
+            <p>Can be used as a software architecture guideline.</p>
+        </section>
+
+        <section>
+            <h4>Function</h4>
+
+            <section>
+                <img src="images/LevelTriangle01Function.PNG" />
+
+                <aside class="notes">
+                    <ul>
+                        <li>Delay defining SRP.</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <img src="../images/CleanCode.jpg" />
+
+                <aside class="notes">
+                    <ul>
+                        <li>Covers: variable names, functions and function structure, code form.</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <!-- Extra Resources : Robert marting videos -->
+            <!-- Extra Resources : Plural Sight -->
+
+            <section>
+                <p>Functions should do one thing. They should do it well.  They should do it only.</p>
+                <p><small>-- Robert Martin</small></p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Is Extreme SRP</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <p>4 or less lines is a good size.</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Functions this small are probably going to do ONLY 1 thing.</li>
+                        <li>This is HARD.</li>
+                        <li>Robert Martin is extreme.  You WILL have functions more than 4 lines.</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <h3><a href="SRPCodeSamples.html#FunctionTooMuch" target="_blank">Code Example</a></h3>
+
+                <aside class="notes">
+                    <ul>
+                        <li>From Returns 2.0</li>
+                    </ul>
+                </aside>
+
+            </section>
+
         </section>
 
         <section>
             <h4>Class</h4>
 
-            <section>[Triangle Highlight]</section>
-
             <section>
-                <h2>Class</h2>
-                <p>Original Definition</p>
+                <img src="images/LevelTriangle02Class.PNG" />
             </section>
 
             <section>
@@ -52,6 +132,13 @@
             <section>
                 <p>A class should have only one reason to change.</p>
                 <p><small>-- Robert Martin</small></p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>This is the original definition.</li>
+                    </ul>
+                </aside>
+
             </section>
 
             <section>
@@ -64,9 +151,28 @@
                     <li>Technical Reasons</li>
                     <li>Business Reasons</li>
                 </ul>
+
+                <aside class="notes">
+                    <ul>
+                        <li>There could be others but mostly these.</li>
+                    </ul>
+                </aside>
+
             </section>
 
             <section>
+                <h4>Have a bias toward Business Reasons</h4>
+
+                <aside class="notes">
+                    <ul>
+                        <li>If you are in a place where you separate by both:  choose business reason.</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <p>Example</p>
                 <h3>Contact Management (CRM)</h3>
             </section>
 
@@ -87,48 +193,21 @@
                 <img src="images/PlanUml_SeparateTechAndBusiness.png" />
             </section>
 
-            <section>
-                <h4>Have a bias toward Business Reasons</h4>
-            </section>
-
-            <!-- Make this slide better;  WE do want to talk about Cohesion -->
-            <section>
-                <h3>Cohesion</h3>
-            </section>
-
         </section>
 
-        <section>
-            <p>Function</p>
-
-            <section>[Triangle Highlight]</section>
-
-            <section>
-                <h2>Function</h2>
-            </section>
-
-            <section>
-                <img src="../images/CleanCode.jpg" />
-            </section>
-
-            <section>
-                <p>Functions should do one thing. They should do it well.  They should do it only.</p>
-                <p><small>-- Robert Martin</small></p>
-            </section>
-
-            <section>
-                <h3><a href="SRPCodeSamples.html#FunctionTooMuch" target="_blank">Code Example</a></h3>
-            </section>
-
-        </section>
 
         <section>
             <h4>Module</h4>
 
-            <section>[Triangle Highlight]</section>
-
             <section>
-                <h2>Module</h2>
+                <img src="images/LevelTriangle03Module.PNG" />
+
+                <aside class="notes">
+                    <ul>
+                        <li>Cover Now:  Business Bias</li>
+                    </ul>
+                </aside>
+
             </section>
 
             <section>
@@ -136,7 +215,7 @@
 
                 <aside class="notes">
                     <ul>
-                        <li>If we know the responsibilities of the classes then we can know the responsiblities of the modules.</li>
+                        <li>If we know the responsibilities of the classes then we can know the responsibilities of the modules.</li>
                     </ul>
                 </aside>
 
@@ -170,26 +249,20 @@
                         <li>There could be more categories... not really sure.</li>
                     </ul>
                 </aside>
+            </section>
 
+            <section>
+                <h3>Cohesion</h3>
+                <p>put similar things together</p>
             </section>
 
             <section>
                 <h3>Organize Folders by Use Case</h3>
-
-                <aside class="notes">
-                    <ul>
-                        <li>AKA. Business, story, etc.</li>
-                        <li>This can be a little less string implementation detail modules.</li>
-                    </ul>
-                </aside>
-
-            </section>
-            
-            <section>
                 <img src="../images/PortfolioServiceFolders.png" />
 
                 <aside class="notes">
                     <ul>
+                        <li>AKA. Business, story, etc.</li>
                         <li>The business will request changes to the system.</li>
                         <li>Would be nice if the words they used matched the folders.</li>
                     </ul>
@@ -213,11 +286,19 @@
         <section>
             <h4>System</h4>
 
-            <section>[Triangle Highlight]</section>
+            <section>
+                <img src="images/LevelTriangle04System.PNG" />
+            </section>
 
             <section>
-                <h2>System</h2>
-                <p>can be deployed</p>
+                <ul>
+                    <li>is "deployable"</li>
+                    <li>can be made up of multiple executables elements on multiple machines</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>High Business Bias</h3>
             </section>
 
             <section>
@@ -226,6 +307,8 @@
                 <aside class="notes">
                     <ul>
                         <li>This is a technical layout.</li>
+                        <li>Talk about how this architecture changes...</li>
+                        <li>How many layers to we have to deploy to add data elements to the system?</li>
                     </ul>
                 </aside>
 
@@ -233,6 +316,15 @@
 
             <section>
                 <img src="images/NTierSlice.PNG" />
+
+                <aside class="notes">
+                    <ul>
+                        <li>We tend to change the software vertically.</li>
+                    </ul>
+                </aside>
+
+                <!-- Extra Resources : Slices not Layers -->
+
             </section>
 
             <section>
@@ -242,6 +334,19 @@
 
             <section>
                 <img src="images/CleanArchAlt.PNG" style="width: 50%; height: 50%">
+
+                <aside class="notes">
+                    <ul>
+                        <li>Two Parts: Requirements Gathering, Domain Modeling Patterns / OOP Patterns</li>
+                        <li>Mistake Concentrating on just OOP Patterns</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <p>Identifying Slices</p>
+                <h3>Bounded Context</h3>
             </section>
 
             <section>
@@ -251,6 +356,14 @@
             <section>
                 <p>Domain Driven Design</p>
                 <h3><a href="https://martinfowler.com/bliki/BoundedContext.html" target="_blank">Bounded Context</a></h3>
+
+
+                <aside class="notes">
+                    <ul>
+                        <li>We HAVE to understand the business to do this well.</li>
+                    </ul>
+                </aside>
+
             </section>
 
             <section>
@@ -262,7 +375,15 @@
             </section>
 
             <section>
-                <h3>Report Center</h3>
+                <h3>Business Logic <==> Data</h3>
+            </section>
+
+            <section>
+                <img src="images/PluarlSightBC.PNG" />
+            </section>
+
+            <section>
+                <h3><a href="http://reportcenter.dimensional.com/Portfolio/Detail?portfolioNumber=7&dataUpdateId=493&currency=USD" target="_blank">Report Center</a></h3>
                 <img src="images/ReportCenterExample.PNG" />
             </section>
 
@@ -281,10 +402,8 @@
         <section>
             <h4>Team</h4>
 
-            <section>[Triangle Highlight]</section>
-
             <section>
-                <h2>Team</h2>
+                <img src="images/LevelTriangle05Team.PNG" />
             </section>
 
             <section>
@@ -301,6 +420,33 @@
 
             <section>
                 <img src="images/SoaFromBC.PNG" />
+            </section>
+
+            <section>
+                <img src="images/SoaFromDevOps.PNG" />
+            </section>
+
+            <section>
+                <img src="images/PluarlSightBCPeople.PNG" />
+            </section>
+
+            <!-- Heading to the hardware is real DevOps -->
+
+            <section>
+                <p>But we have no bounded context.</p>
+                <p>:(</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Joke: Get going on the rewrites.</li>
+                        <li>If there are small changes to get to bounded context while making changes... make them</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h3>Understand Your Reasons to Change</h3>
+                <p>and resons you would like to STOP changing.</p>
             </section>
 
             <section>
@@ -325,16 +471,13 @@
                 </ul>
             </section>
 
-            <section>
-                <h3>Don't Reorganize</h3>
-                <p>Try to understand how my changes affect the customer.</p>
-            </section>
-
             <!--
 
             Anti-Pattern
+                Transfering Large Amounts of Data
                 Data Layer Team
-                File Processing TEam
+                File Processing / ETL TEam
+
 
             Watch out for cross cutting concern systems and third parties
 
