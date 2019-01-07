@@ -1,0 +1,9 @@
+@startuml
+
+:Dimensional Emp:  ---> (Fund Returns)
+
+Regulators ---> (Fund Returns)
+
+Advisor ---> (Fund Returns)
+
+@enduml
