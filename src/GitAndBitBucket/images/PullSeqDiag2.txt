@@ -1,0 +1,21 @@
+@startuml
+participant User order 10
+participant "Source Tree / Git" order 20
+participant "Local Repo" order 30
+participant "File System" order 40
+participant "BitBucket Repo" order 50
+
+User -> "Source Tree / Git" : Pull
+"Source Tree / Git" -> "BitBucket Repo" : Get Commits
+"BitBucket Repo" -> "Source Tree / Git" : Commits
+
+"Source Tree / Git" -> "Local Repo" : Save Commits
+"Local Repo" -> "Source Tree / Git" :
+
+"Source Tree / Git" -> "Source Tree / Git" : Checkout Branch
+"Source Tree / Git" -> "Local Repo" : Get Code
+"Local Repo" -> "Source Tree / Git" : Code
+"Source Tree / Git" -> "File System" : Change Code
+"File System" -> "Source Tree / Git" :
+"Source Tree / Git" -> User :
+@enduml

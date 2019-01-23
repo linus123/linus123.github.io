@@ -1,0 +1,334 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Dev Process</title>
+
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+        <section>
+            <h1>Git</h1>
+            <p>Every Day Usage</p>
+        </section>
+
+        <section>
+            <h2>Assumptions</h2>
+            <ul>
+                <li>New to Git</li>
+                <li>Coming from TFS</li>
+                <li>Your Repository is Already in BitBucket</li>
+            </ul>
+        </section>
+
+        <section>
+            <section>
+                <h2>Tools</h2>
+            </section>
+
+            <section>
+                <h3><a href="https://stash.dimensional.com" target="_blank">BitBucket Server</a></h3>
+                <p>Web application integrated with Git</p>
+                <p><small><a href="https://stash.dimensional.com" target="_blank">https://stash.dimensional.com</a></small></p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>GitHub like application</li>
+                        <li>Supports code reviews</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h3><a href="https://www.sourcetreeapp.com/" target="_blank">Source Tree</a></h3>
+                <p>GUI for Git</p>
+                <p><small><a href="https://www.sourcetreeapp.com/" target="_blank">https://www.sourcetreeapp.com</a></small></p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Atlassian makes BitBucket and Source Tree</li>
+                        <li>Ensure you get the version with Git included</li>
+                        <li>Was renamed BitBucket from stash</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+        </section>
+
+        <section>
+
+            <section>
+                <h2>Get the Source Code</h2>
+                <p>Clone the Repository</p>
+            </section>
+
+            <section>
+                <p>Repository == Source Control for a Single Project</p>
+                <p><small>"repo" for short</small></p>
+            </section>
+
+            <section>
+                <img src="images/Slide1.PNG" />
+
+                <aside class="notes">
+                    <ul>
+                        <li>Server repo => database of all commits ever made.</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <img src="images/Slide2.PNG" />
+
+                <aside class="notes">
+                    <ul>
+                        <li>Cloning pulls ALL check-ins for all time</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <img src="images/Slide3.PNG" />
+
+                <aside class="notes">
+                    <ul>
+                        <li>Check out creates the files.</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+
+                <img src="images/CloneSeqDiag2.png" />
+
+            </section>
+
+            <section>
+                [Demo - Code a Repo]
+            </section>
+
+        </section>
+
+        <section>
+            <section>
+                <h2>Branching</h2>
+                <p>First Class Feature</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Git assumes are you going to branches A LOT</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <p><strong>Branches are NOT folders!</strong></p>
+                <p>They only exists in the repository.</p>
+            </section>
+
+            <section style="background-color: darkred">
+                <h3>Merging works</h3>
+                <p>in Git</p>
+            </section>
+
+            <section>
+                <p>Branching Strategy</p>
+                <h3><a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html" target="_blank">GitFlow</a></h3>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Is a well known pattern</li>
+                        <li>Goto Link</li>
+                        <li>Describe Master</li>
+                        <li>master => Main Branch in TFS</li>
+                        <li>develop branch - dev integration branch</li>
+                        <li>develop branch - dev branch or integration branch</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <h4>Branches on BitBucket</h4>
+                <p>origin/[branch names]</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Checking origin branches will make a local copy</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <img src="images/CheckoutSeqDiag2.png" />
+
+            </section>
+
+            <section>
+                [Demo - Switching Branches]
+            </section>
+
+        </section>
+
+        <section>
+            <section>
+                <h2>Making a Change</h2>
+            </section>
+
+            <section>
+                <h3>TFS => Pessimistic Locking</h3>
+                <p>Git => No Locking</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Conflicts are managed though branching</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <h3>Commit => Local Repo Only</h3>
+            </section>
+
+            <section>
+                <h3>Feature Branch</h3>
+                <p>Smallest unit of "deployable" functionality.</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Smaller the feature the easier it is to manage.</li>
+                        <li>Many teams start with Jira ticket number.</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <h3>Feature Branch Name</h3>
+                <p>feature/[something]</p>
+            </section>
+
+            <section>
+                [Demo - Committing a Change]
+
+                <aside class="notes">
+                    <ul>
+                        <li>Source tree is looking at the .Git folders</li>
+                        <li>If deleted folder source tree would become unstable.</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+        </section>
+
+        <section>
+
+            <section>
+                <h2>Synchronizing the Repo</h2>
+            </section>
+
+            <section>
+                <h4>Push</h4>
+                <img src="images/PushSeqDiag2.png" />
+            </section>
+
+            <section>
+                <h4>Fetch</h4>
+                <img src="images/FetchSeqDiag2.png" />
+            </section>
+
+            <section>
+                <h4>Pull</h4>
+                <img src="images/PullSeqDiag2.png" />
+            </section>
+
+            <section>
+                [Demo - Pull and Push]
+            </section>
+
+        </section>
+
+        <section>
+            <h3>Did not Cover</h3>
+            <ul>
+                <li>Merging</li>
+                <li>Pull Request</li>
+                <li>Code Review</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Software Engineering Standards</h2>
+            <ul>
+                <li>Git with BitBucket</li>
+                <li>Branching Strategy = GitFlow *</li>
+            </ul>
+        </section>
+
+        <section>
+            <p>Git's Flexibility == Higher Learning Curve</p>
+        </section>
+
+        <section>
+            <h2>Training</h2>
+            <ul>
+                <li><a href="https://app.pluralsight.com/library/courses/git-fundamentals/table-of-contents" target="_blank">Git Fundamentals</a></li>
+                <li><a href="https://app.pluralsight.com/library/courses/using-gitflow/table-of-contents" target="_blank">Using GitFlow</a></li>
+            </ul>
+        </section>
+
+    </div>
+
+</div>
+
+<script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+<script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {src: '../../lib/reveal.js-3.4.1/plugin/markdown/marked.js'},
+            {src: '../../lib/reveal.js-3.4.1/plugin/markdown/markdown.js'},
+            {src: '../../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true},
+            {
+                src: '../../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
+
