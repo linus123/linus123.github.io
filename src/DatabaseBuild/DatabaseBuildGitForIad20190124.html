@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Git Fundamentals</title>
+    <title>Git for Database Build Process</title>
 
     <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
     <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
@@ -30,7 +30,7 @@
 
         <section>
             <h1>Git</h1>
-            <p>Fundamentals</p>
+            <p>for Database Build Process</p>
         </section>
 
         <section>
@@ -54,8 +54,7 @@
 
                 <aside class="notes">
                     <ul>
-                        <li>GitHub like application</li>
-                        <li>Supports code reviews</li>
+                        <li>Internal GitHub</li>
                     </ul>
                 </aside>
             </section>
@@ -70,6 +69,19 @@
                         <li>Atlassian makes BitBucket and Source Tree</li>
                         <li>Ensure you get the version with Git included</li>
                         <li>Was renamed BitBucket from stash</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h3><a href="http://teamcity.dimensional.com" target="_blank">Team City</a></h3>
+                <p>Continuous Integration Server</p>
+                <p><small><a href="http://teamcity.dimensional.com" target="_blank">http://teamcity.dimensional.com</a></small></p>
+
+
+                <aside class="notes">
+                    <ul>
+                        <li>Build automation</li>
                     </ul>
                 </aside>
 
@@ -97,7 +109,7 @@
             </section>
 
             <section>
-                <img src="images/Slide1.PNG" />
+                <img src="../GitAndBitBucket/images/Slide1.PNG" />
 
                 <aside class="notes">
                     <ul>
@@ -108,7 +120,7 @@
             </section>
 
             <section>
-                <img src="images/Slide2.PNG" />
+                <img src="../GitAndBitBucket/images/Slide2.PNG" />
 
                 <aside class="notes">
                     <ul>
@@ -119,7 +131,7 @@
             </section>
 
             <section>
-                <img src="images/Slide3.PNG" />
+                <img src="../GitAndBitBucket/images/Slide3.PNG" />
 
                 <aside class="notes">
                     <ul>
@@ -130,12 +142,44 @@
 
             <section>
 
-                <img src="images/CloneSeqDiag2.png" />
+                <img src="../GitAndBitBucket/images/CloneSeqDiag2.png" />
 
             </section>
 
             <section>
-                [Demo - Code a Repo]
+                [Demo - <a href="https://stash.dimensional.com" target="_blank">Code a Repo</a>]
+            </section>
+
+        </section>
+
+        <section>
+            <section>
+                <h2>Local Build</h2>
+                <p>Optional at First</p>
+            </section>
+
+            <section>
+                <h3>Assumptions</h3>
+                <ul>
+                    <li>SQL Express Installed Locally</li>
+                    <li>You Have Admin to SQL Express</li>
+                </ul>
+            </section>
+
+            <section>
+                <img src="images/SimpleLocal.PNG" />
+
+                <aside class="notes">
+                    <ul>
+                        <li>Source control is NOT involved for local build.</li>
+                    </ul>
+                </aside>
+
+
+            </section>
+
+            <section>
+                [Demo - Build Local Database]
             </section>
 
         </section>
@@ -158,15 +202,22 @@
 
                 <aside class="notes">
                     <ul>
-                        <li>Is a well known pattern</li>
-                        <li>Goto Link</li>
-                        <li>Describe Master</li>
-                        <li>master => Main Branch in TFS</li>
-                        <li>develop branch - dev integration branch</li>
-                        <li>develop branch - dev branch or integration branch</li>
+                        <li>develop branch - integration branch for current development</li>
+                        <li>master - closets to code in production</li>
                     </ul>
                 </aside>
+            </section>
 
+            <section>
+                <small>Special Branch</small>
+                <h3>master</h3>
+                <p>Code that matches production.</p>
+            </section>
+
+            <section>
+                <small>Special Branch</small>
+                <h3>develop</h3>
+                <p>Code in development not in production.</p>
             </section>
 
             <section>
@@ -182,8 +233,7 @@
             </section>
 
             <section>
-                <img src="images/CheckoutSeqDiag2.png" />
-
+                <img src="../GitAndBitBucket/images/CheckoutSeqDiag2.png" />
             </section>
 
             <section>
@@ -195,9 +245,16 @@
         <section>
             <section>
                 <h2>Making a Change</h2>
+                <p>in a branch</p>
             </section>
 
             <section>
+                <p>By Default</p>
+                <h3>Branch => Local Repo Only</h3>
+            </section>
+
+            <section>
+                <p>By Default</p>
                 <h3>Commit => Local Repo Only</h3>
             </section>
 
@@ -216,11 +273,41 @@
 
             <section>
                 <h3>Feature Branch Name</h3>
-                <p>feature/[something]</p>
+                <p>feature/[change name]</p>
             </section>
 
             <section>
-                [Demo - Committing a Change]
+                <h3>Add Database Change Scripts</h3>
+            </section>
+            
+            <section>
+                <h4>Database State Transitions</h4>
+                <img src="images/ScriptTransition.png" />
+
+                <aside class="notes">
+                    <ul>
+                        <li>This is NOT done by object.</li>
+                        <li>Even data updates / corrects go into the change scripts.</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <h3>Up</h3>
+                <p>folder contains the Transition Scripts</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>There are other types of folders that I will not cover right now.</li>
+                    </ul>
+                </aside>
+
+
+            </section>
+
+            <section>
+                [Demo - Making a Change]
 
                 <aside class="notes">
                     <ul>
@@ -240,18 +327,18 @@
             </section>
 
             <section>
+                <h4>Change is only local</h4>
+                <img src="../GitAndBitBucket/images/Slide3.PNG" />
+            </section>
+
+            <section>
                 <h4>Push</h4>
-                <img src="images/PushSeqDiag2.png" />
+                <img src="../GitAndBitBucket/images/PushSeqDiag2.png" />
             </section>
 
             <section>
-                <h4>Fetch</h4>
-                <img src="images/FetchSeqDiag2.png" />
-            </section>
-
-            <section>
-                <h4>Pull</h4>
-                <img src="images/PullSeqDiag2.png" />
+                <h4>Pull (Get Latest)</h4>
+                <img src="../GitAndBitBucket/images/PullSeqDiag2.png" />
             </section>
 
             <section>
@@ -261,32 +348,67 @@
         </section>
 
         <section>
-            <h3>Did not Cover</h3>
+            <section>
+                <h2>Did it Work?</h2>
+                <p>Team City</p>
+            </section>
+
+            <section>
+                <img src="images/SimpleLocal.PNG" />
+            </section>
+
+            <section>
+                <img src="images/TeamCityFeatureBranch.PNG" />
+            </section>
+
+            <section>
+                [Demo - <a href="http://teamcity.dimensional.com" target="_blank">Team City</a>]
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Pull Request</h2>
+            </section>
+
+            <section>
+                <p>A request for review by peers / DBA Team.</p>
+                <p><small>Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary. -- github</small></p>
+            </section>
+
+            <section>
+                <p>Goal to Merge</p>
+                <h4>feature branch => develop branch</h4>
+            </section>
+
+            <section>
+                [Demo - <a href="https://stash.dimensional.com/projects/ID/repos/characteristic-database/browse" target="_blank">Create Pull Request</a>]
+            </section>
+
+        </section>
+
+        <section>
+            <h2>Did Not Cover</h2>
             <ul>
-                <li>Merging</li>
-                <li>Pull Request</li>
-                <li>Code Review</li>
+                <li>Roundhouse in Detail</li>
+                <li>Merging to Master</li>
+                <li>Changing Non-Tables</li>
+                <li>Automated Deployment</li>
+                <li>Merge Conflicts</li>
             </ul>
         </section>
 
         <section>
-            <h2>Software Engineering Standards</h2>
-            <ul>
-                <li>Git with BitBucket</li>
-                <li>Branching Strategy = GitFlow *</li>
-            </ul>
-        </section>
-
-        <section>
-            <p>Git's Flexibility == Higher Learning Curve</p>
-        </section>
-
-        <section>
-            <h2>Training</h2>
+            <h2>Git Training</h2>
             <ul>
                 <li><a href="https://app.pluralsight.com/library/courses/git-fundamentals/table-of-contents" target="_blank">Git Fundamentals</a></li>
                 <li><a href="https://app.pluralsight.com/library/courses/using-gitflow/table-of-contents" target="_blank">Using GitFlow</a></li>
+                <li><a href="https://vimeo.com/281849797/25104b6f05" target="_blank">Git Daily Use (Dimensional)</a></li>
             </ul>
+        </section>
+
+        <section>
+            <h4><a href="https://vimeo.com/271516579/f9cf225715" target="_blank">Database Build Process (Dimensional)</a></h4>
         </section>
 
     </div>

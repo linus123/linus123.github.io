@@ -6,10 +6,16 @@ participant "File System" order 40
 participant "BitBucket Repo" order 50
 
 User -> "Source Tree / Git" : Pull
+
+"Source Tree / Git" -> "Local Repo" : Get Commits
+"Local Repo" -> "Source Tree / Git" : Commits
+
 "Source Tree / Git" -> "BitBucket Repo" : Get Commits
 "BitBucket Repo" -> "Source Tree / Git" : Commits
 
-"Source Tree / Git" -> "Local Repo" : Save Commits
+"Source Tree / Git" -> "Source Tree / Git" : Compare Commits
+
+"Source Tree / Git" -> "Local Repo" : Save New Commits
 "Local Repo" -> "Source Tree / Git" :
 
 "Source Tree / Git" -> "Source Tree / Git" : Checkout Branch
