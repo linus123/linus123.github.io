@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Extract, Transform and Load Tools</title>
+
+	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+<body>
+
+<div class="reveal">
+
+	<!-- Any section element inside of this container is displayed as a slide -->
+	<div class="slides">
+		<section>
+			<h1>Intermediate TDD</h1>
+			<p>Test Driven Development</p>
+		</section>
+
+		<section>
+			<h2>Last Session</h2>
+			<ul>
+				<li>Completed the Add Code Kata</li>
+				<li>Red, Green, Refactor</li>
+				<li>Feedback Makes You Faster</li>
+				<li>XUnit Test Framework</li>
+				<li>Naming Tests</li>
+				<li>Basic Assertions</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>This Session</h2>
+			<ul>
+				<li>Integration Tests</li>
+				<li>Polymorphism</li>
+				<li>Test Doubles : Spy Fake</li>
+				<li>Mocking Frameworks</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>Add Method - Next Iteration</h2>
+			<p><strong>int Add(string numbers)</strong></p>
+			<ol>
+				<li>Every call to add shall persist the given numbers and solution.</li>
+			</ol>
+
+			<aside class="notes">
+				<ul>
+					<li>Make the code change</li>
+				</ul>
+			</aside>
+
+		</section>
+
+		<section>
+			<h2>The Problem is Shared State</h2>
+			<p class="fragment">We have to reset state on every test.</p>
+
+			<aside class="notes">
+				<ul>
+					<li>Make the code change</li>
+					<li>Keep both tests</li>
+				</ul>
+			</aside>
+		</section>
+
+		<section>
+			<h2>Integration Test</h2>
+			<ul>
+				<li class="fragment">Crosses Process Boundaries</li>
+				<li class="fragment">Runs Slower than Unit Test</li>
+			</ul>
+			<aside class="notes">
+				<ul>
+					<li>Unit test run in isolation by definition integration tests do <not></not></li>
+				</ul>
+			</aside>
+		</section>
+
+		<section>
+			<h2>Multi Threaded Problem</h2>
+			<aside class="notes">
+				<ul>
+					<li>Make the code change : Separate the integration tests</li>
+				</ul>
+			</aside>
+		</section>
+
+		<section>
+			<h2>Can we convert to unit tests?</h2>
+			<p class="fragment">Yes! Use <strong>Test Doubles</strong></p>
+		</section>
+
+		<section>
+			<h2>Test Doubles</h2>
+			<ul>
+				<li class="fragment">Use Polymorphism</li>
+				<li class="fragment">Replace call to external process to Test Double</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>Where should we use a test double?</h2>
+			<aside class="notes">
+				<ul>
+					<li>To the code</li>
+				</ul>
+			</aside>
+		</section>
+
+		<section>
+			<h2>Bad Code Limits Unit Testing Options</h2>
+			<aside class="notes">
+				<ul>
+					<li>To the code</li>
+					<li>Violates SRP</li>
+					<li>Make the change - DO NOT USE DTO</li>
+				</ul>
+			</aside>
+		</section>
+
+		<section>
+			<h2>Test Double : Spy</h2>
+			<p>Lets you see how a class was called.</p>
+			<aside class="notes">
+				<ul>
+					<li>To the code</li>
+				</ul>
+			</aside>
+		</section>
+
+		<section>
+			<h2>Spy</h2>
+			<ul>
+				<li class="fragment">Good: Easy to Create and Understand</li>
+				<li class="fragment">Bad: Changes to interface causes changes to all spies</li>
+				<li class="fragment">Bad: Couples tests to implementation - Limits Refactoring</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>Spy - Mocking Library</h2>
+			<aside class="notes">
+				<ul>
+					<li>To the code</li>
+				</ul>
+			</aside>
+		</section>
+
+		<section>
+			<h2>Spy - Mocking Library</h2>
+			<ul>
+				<li class="fragment">Good: Less code than Manual Spy</li>
+				<li class="fragment">Bad: Increase in Code Complexity - Lambdas, Equality</li>
+				<li class="fragment">Bad: Couples tests to implementation - Limits Refactoring</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>Test Double : Fake</h2>
+			<p>Simulates the REAL functionality.</p>
+			<aside class="notes">
+				<ul>
+					<li>Explain DTO</li>
+					<li>Convert to DTO</li>
+					<li>To the code</li>
+				</ul>
+			</aside>
+		</section>
+
+		<section>
+			<h2>Fake</h2>
+			<ul>
+				<li class="fragment">Good: Easy to Understand and Use</li>
+				<li class="fragment">Good: Reduces Test Coupling</li>
+				<li class="fragment">Bad: Complicated and Hard to Create</li>
+				<li class="fragment">Bad: Can Contain Bugs and Side Effects</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>Summary</h2>
+			<ul>
+				<li>Integration Tests vs. Unit Tests</li>
+				<li>Test Doubles</li>
+				<li>Spy - See What Happened</li>
+				<li>Fake - Simulates the Real Functionality</li>
+			</ul>
+		</section>
+	</div>
+
+</div>
+
+<script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+<script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {src: '../../lib/reveal.js-3.4.1/plugin/markdown/marked.js'},
+            {src: '../../lib/reveal.js-3.4.1/plugin/markdown/markdown.js'},
+            {src: '../../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true},
+            {
+                src: '../../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
