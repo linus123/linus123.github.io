@@ -1,0 +1,18 @@
+@startuml
+
+node Client
+
+node WebUI AS "Web UI"
+
+node WebAPI AS "Web API"
+
+database Orders
+
+component CRIMS_API AS "CRIMS API"
+
+Client -- WebUI
+WebUI -- WebAPI
+WebAPI -- Orders
+WebAPI -- CRIMS_API
+
+@enduml
