@@ -1,18 +1,23 @@
 @startuml
 
-node Client
+cloud Client {
+    component Browser
+}
 
-node WebUI AS "Web UI"
+node Application {
+    component WebUI AS "Web UI"
+}
 
-node WebAPI AS "Web API"
+node Database {
+    database Orders
+}
 
-database Orders
+cloud {
+    component CRIMS_API AS "CRIMS API"
+}
 
-component CRIMS_API AS "CRIMS API"
-
-Client -- WebUI
-WebUI -- WebAPI
-WebAPI -- Orders
-WebAPI -- CRIMS_API
+Browser -- WebUI
+WebUI -- Orders
+WebUI -- CRIMS_API
 
 @enduml

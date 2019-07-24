@@ -1,0 +1,25 @@
+@startuml
+
+cloud Client {
+    component Browser
+}
+
+node Application {
+    component WebUI AS "Web UI"
+    component Host AS "NServiceBus Host"
+}
+
+node Database {
+    database Orders
+    component Queue
+}
+
+cloud {
+    component CRIMS_API AS "CRIMS API"
+}
+
+Browser -- WebUI
+Application -- Database
+Application -- CRIMS_API
+
+@enduml
