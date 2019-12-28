@@ -1,0 +1,16 @@
+title Local Build
+
+Cake -> Roundhouse : Drop
+Roundhouse -> SQL : Drop DB
+SQL -> Roundhouse :
+Roundhouse -> Cake :
+
+Cake -> Roundhouse : Create DB
+Roundhouse -> FileSystem : Get SQL Scripts
+FileSystem -> Roundhouse : SQL Scripts
+Roundhouse -> SQL : Create DB
+SQL -> Roundhouse :
+Roundhouse -> SQL : Run SQL Scripts
+SQL -> Roundhouse :
+
+Roundhouse -> Cake :

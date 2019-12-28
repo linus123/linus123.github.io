@@ -135,47 +135,67 @@
 					<section>
 						<h3>Tools</h3>
 						<ul>
-							<li>Powershell</li>
-							<li><a href="https://github.com/psake/psake" target="_blank">Psake</a></li>
-							<li>SQL Express</li>
+							<li><a href="https://cakebuild.net" target="_blank">Cake</a></li>
+							<li>SQL Developer Edition</li>
 							<li><a href="https://github.com/chucknorris/roundhouse/wiki" target="_blank">Roundhouse</a></li>
 						</ul>
 					</section>
 
 					<section>
-						<!--
 
-						https://www.websequencediagrams.com/
-
-						title Local Build
-
-Powershell -> Roundhouse : Drop
-Roundhouse -> SQLExpress : Drop DB
-SQLExpress -> Roundhouse :
-Roundhouse -> Powershell :
-
-Powershell -> Roundhouse : Create DB
-Roundhouse -> FileSystem : Get SQL Scripts
-FileSystem -> Roundhouse : SQL Scripts
-Roundhouse -> SQLExpress : Create DB
-SQLExpress -> Roundhouse :
-Roundhouse -> SQLExpress : Run SQL Scripts
-SQLExpress -> Roundhouse :
-
-Roundhouse -> Powershell :
-
-						-->
-
-						<img src="images/LocalBuildProcess.png" />
+						<img src="images/LocalBuildProcessCake.png" />
 
 					</section>
 
 					<section>
-						<h3>Powershell Build Scripts</h3>
+						<h3>Cake Build Scripts</h3>
 						<ul>
-							<li><a href="https://stash.dimensional.com/projects/ID/repos/characteristic-database/browse/Build.ps1" target="_blank">Bootstrapping Script</a></li>
-							<li><a href="https://stash.dimensional.com/projects/ID/repos/characteristic-database/browse/default.ps1" target="_blank">Build Script</a></li>
+							<li><a href="https://stash.dimensional.com/projects/IIS/repos/equity-trading-business-intelligence/browse/build.cake#488" target="_blank">Build Script</a></li>
 						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>RoundhousE</h2>
+						<p><a href="https://github.com/chucknorris/roundhouse/wiki" target="_blank">https://github.com/chucknorris/roundhouse/wiki</a></p>
+					</section>
+
+					<section>
+						<h4>Database State Transitions</h4>
+						<img src="images/ScriptTransition.png" />
+
+						<aside class="notes">
+							<ul>
+								<li>This is NOT done by object.</li>
+								<li>Even data updates / corrects go into the change scripts.</li>
+							</ul>
+						</aside>
+
+					</section>
+
+					<section>
+						<h4>Scripts are organized by folders</h4>
+					</section>
+
+					<section>
+						<h4><a href="https://github.com/chucknorris/roundhouse/wiki#scripts" target="_blank">Scripts in different folders run at different times</a></h4>
+					</section>
+
+					<section>
+						<h3>Up</h3>
+						<p>folder contains the Transition Scripts</p>
+
+						<aside class="notes">
+							<ul>
+								<li>There are other types of folders that I will not cover right now.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h4><a href="https://github.com/chucknorris/roundhouse/wiki/EnvironmentScripts" target="_blank">per environment scripts</a></h4>
 					</section>
 
 				</section>
@@ -252,11 +272,8 @@ TeamCity -> Local : Pass or Fail
 
 
 					<section>
-						<p>
-							<a href="http://teamcity.dimensional.com/viewLog.html?buildId=140966&buildTypeId=Analytics_Databases_CharacteristicLocalDb&tab=artifacts#!11gtswz82nxe4" target="_blank">
-								Artifacts should contain ALL files needed to deploy.
-							</a>
-						</p>
+						<h4>Include DBA on Database change Pull Request</h4>
+						<p><a href="https://stash.dimensional.com/projects/IIS/repos/equity-trading-business-intelligence/pull-requests/167/diff#database/MSSQL/BIDatabases/BIDWStaging/Up/0051_DropCreateStgTraderAllocatesCapacity.sql" target="_blank">Example</a> </p>
 					</section>
 				</section>
 
@@ -264,6 +281,10 @@ TeamCity -> Local : Pass or Fail
 
 					<section>
 						<h2>Automated Deployment</h2>
+					</section>
+
+					<section>
+						<h4>Only deltas are deployed</h4>
 					</section>
 
 					<section>
@@ -300,7 +321,6 @@ TeamCity -> Local :
 
 					<section>
 						<h4>Only Method of Database Change Deployment</h4>
-						<p>Even for ECMs</p>
 					</section>
 
 					<section>
@@ -311,53 +331,6 @@ TeamCity -> Local :
 					<section>
 						<h4>What changed?</h4>
 						<img src="images/VersionNumberReference.png" />
-					</section>
-
-				</section>
-
-				<section>
-					<section>
-						<h2>Limitations</h2>
-					</section>
-
-					<section>
-						<h3>Build Process Limits</h3>
-						<ul>
-							<li>Large Number of External Dependencies</li>
-							<li>Hard to Test Replicated Databases</li>
-							<li>Mismatching Environments == Side Effects</li>
-						</ul>
-
-						<!-- Linked servers -->
-
-					</section>
-
-					<section>
-						<p>Roundhouse does NOT support rollbacks.</p>
-						<p>Use DB Deploy instead.</p>
-					</section>
-
-					<section>
-						<h3>Automated Restore Limits</h3>
-						<ul>
-							<li>Will not work for DBs over 60GBs.</li>
-						</ul>
-					</section>
-
-				</section>
-
-				<section>
-
-					<section>
-						<h2>Source Control for Databases</h2>
-						<ol>
-							<li>By Object</li>
-							<li>By Transition</li>
-						</ol>
-					</section>
-
-					<section>
-						<h3>only "By Transition" works</h3>
 					</section>
 
 				</section>
