@@ -22,17 +22,17 @@
     </script>
 </head>
 
-	<body>
+    <body>
 
-		<div class="reveal">
+        <div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
 
-				<section>
-					<h1>Operations Assistant</h1>
+                <section>
+                    <h1>Operations Assistant</h1>
                     <p>Developer Written Tests</p>
-				</section>
+                </section>
 
                 <section>
 
@@ -67,30 +67,128 @@
                 <section>
 
                     <section>
-                        <h3>
-                            <a href="https://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052/ref=sr_1_1?crid=2CS05KNY4Z3OE&keywords=working+effectively+with+legacy+code&qid=1582059458&sprefix=working+eff%2Caps%2C174&sr=8-1"
-                               target="_blank">Working Effectively with Legacy Code
-                            </a>
-                        </h3>
+                        <h2>Adding Tests</h2>
+                    </section>
+
+                    <section>
+                        <img src="images/Slide1.PNG" />
+                    </section>
+
+                    <section>
+                        <p>Use the databases and file system to put the system into a "known state."</p>
+                    </section>
+
+                    <section>
+                        <p>The database, tests, and business logic all run on the local machine.</p>
+                    </section>
+
+                    <section>
+                        <img src="images/Slide2.PNG" />
+                    </section>
+
+                    <section>
+                        <img src="images/Slide3.PNG" />
+                    </section>
+
+                    <section>
+                        <img src="images/Slide4.PNG" />
+                    </section>
+
+                    <section>
+                        <img src="images/Slide5.PNG" />
                     </section>
 
                 </section>
 
                 <section>
-                    <h2>Test Anatomy</h2>
-                    <ol>
-                        <li>Setup</li>
-                        <li>Act</li>
-                        <li>Assert</li>
-                        <li>Teardown</li>
-                    </ol>
+                    <h2>All Tests run Locally</h2>
                 </section>
 
                 <section>
-                    <h2>All Testing is Local</h2>
+
+                    <section>
+                        <h2>Test Anatomy</h2>
+                        <ol>
+                            <li>Setup</li>
+                            <li>Act</li>
+                            <li>Assert</li>
+                            <li>Teardown</li>
+                        </ol>
+                    </section>
+
+                    <section>
+                        <img src="images/TestSqlDiagram.png" />
+                    </section>
+
                 </section>
 
-			</div>
+                <section>
+                    <section>
+                        <h2>Patterns</h2>
+                    </section>
+
+                    <section>
+                        <h4>
+                            <a href="https://www.amazon.com/Patterns-Enterprise-Application-Architecture-Martin/dp/0321127420/ref=sr_1_2?crid=26VEA8SI37JDU&keywords=patterns+of+enterprise+application+architecture&qid=1582110733&sprefix=patterns+of+en%2Caps%2C222&sr=8-2" target="_blank">
+                                Patterns of Enterprise Application Architecture
+                            </a>
+                        </h4>
+                    </section>
+
+                    <section>
+                        <p>Patterns of Enterprise Application Architecture</p>
+                        <h4>
+                            <a href="https://www.martinfowler.com/eaaCatalog/" target="_blank">
+                                Web Catalog
+                            </a>
+                        </h4>
+                    </section>
+
+                    <section>
+                        <h3>
+                            Data Transfer Object
+                        </h3>
+                        <ul>
+                            <li>
+                                <a href="https://www.martinfowler.com/eaaCatalog/dataTransferObject.html" target="_blank">
+                                    Definition
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://stash.dimensional.com/projects/IO/repos/operationsassistant/browse/OperationsAssistant/IntegrationTests/Database/Dimensional/ClientAccountDto.cs?at=refs%2Fheads%2Ffeature%2FAddReconFileImporter_TX_GlobalTests" target="_blank">
+                                    Example
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>
+                            Data Table Gateway
+                        </h3>
+                        <ul>
+                            <li>
+                                <a href="https://www.martinfowler.com/eaaCatalog/tableDataGateway.html" target="_blank">
+                                    Definition
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://stash.dimensional.com/projects/IO/repos/operationsassistant/browse/OperationsAssistant/IntegrationTests/Database/Dimensional/ClientAccountDataTableGateway.cs?at=feature/AddReconFileImporter_TX_GlobalTests" target="_blank">
+                                    Example
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+
+                </section>
+
+                <!-- TODO: Review Builder Pattern. -->
+                <!-- TODO: Talk about fluent assertions. -->
+                <!-- TODO: Talk about bogus. -->
+                <!-- TODO: Talk about dependencies such as the Outlook com object. -->
+                <!-- TODO: This style of testing will not work for ALL situations. -->
+
+            </div>
 
         </div>
 
