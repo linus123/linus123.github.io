@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Investment Ops - Deployment</title>
+
+	<link rel="stylesheet" href="../lib/reveal.js-3.4.1/css/reveal.css">
+	<link rel="stylesheet" href="../lib/reveal.js-3.4.1/css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+
+
+<div class="reveal">
+
+	<!-- Any section element inside of this container is displayed as a slide -->
+	<div class="slides">
+		<section>
+			<p>The Problem</p>
+			<h3>Deployments are getting complicated and are requiring an increasing amount of coordination</h3>
+		</section>
+
+		<section>
+			<h2>Getting Better</h2>
+			<ul>
+				<li>Then: 4 - 5 Changes a Month</li>
+				<li>Now: 3 - 4 Changes a Week</li>
+			</ul>
+		</section>
+
+		<section>
+			<small>The Problem</small>
+			<h3>Deployments are getting complicated and are requiring an increasing amount of coordination</h3>
+		</section>
+
+		<section>
+			<h2>Suggestions</h2>
+			<p>Open for Discussion</p>
+		</section>
+
+		<section>
+			<h2>Stop using Develop</h2>
+			<p>PR straight into master.</p>
+		</section>
+
+		<section>
+			<h2>Total Cost of Change</h2>
+			<ol>
+				<li>Requirements</li>
+				<li>Development / Developer Written Tests</li>
+				<li>BA Testing</li>
+				<li>Customer Approval Testing</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2>Less Cost of Change</h2>
+			<ol>
+				<li>Requirements</li>
+				<li>Development / Developer Written Tests</li>
+				<li>
+					<del>BA Testing</del>
+					- Upon Request
+				</li>
+				<li>
+					<del>Customer Approval Testing</del>
+					- Only if Requested
+				</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2>Definition of DONE</h2>
+			<p>Change is in Production</p>
+		</section>
+
+	</div>
+</div>
+
+<script src="../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+<script src="../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+<script>
+	// More info https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		history: true,
+
+		// More info https://github.com/hakimel/reveal.js#dependencies
+		dependencies: [
+			{ src: '../lib/reveal.js-3.4.1/plugin/markdown/marked.js' },
+			{ src: '../lib/reveal.js-3.4.1/plugin/markdown/markdown.js' },
+			{ src: '../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true },
+			{ src: '../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+		]
+	});
+</script>
+</body>
+</html>
