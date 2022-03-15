@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Operations Assistant - Testing Strategy</title>
+
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section>
+                    <h1>Operations Assistant</h1>
+                    <p>Developer Written Tests</p>
+                </section>
+
+                <section>
+
+                    <section>
+                        <h2>Feedback Cycle Time</h2>
+                        <p>The time between making a code change and the detection of that change having the intended effect.</p>
+                    </section>
+
+                    <section>
+                        <h3>Feedback Cycle Time</h3>
+                        <p>Short Cycle => Fast Development</p>
+                        <p>Long Cycle => Slow Development</p>
+                    </section>
+
+                    <section>
+                        <h3>"Code Rots"</h3>
+                        <p>-- Robert Martin</p>
+                    </section>
+
+                </section>
+
+                <section>
+                    <h3>developer written tests</h3>
+                    <p>helps ease these problems.</p>
+                </section>
+
+                <section>
+                    <h3>there are no tests</h3>
+                    <p>:(</p>
+                </section>
+
+                <section>
+
+                    <section>
+                        <h2>Adding Tests</h2>
+                    </section>
+
+                    <section>
+                        <img src="images/Slide1.PNG" />
+                    </section>
+
+                    <section>
+                        <p>Use the databases and file system to put the system into a "known state."</p>
+                    </section>
+
+                    <section>
+                        <p>The database, tests, and business logic all run on the local machine.</p>
+                    </section>
+
+                    <section>
+                        <img src="images/Slide2.PNG" />
+                    </section>
+
+                    <section>
+                        <img src="images/Slide3.PNG" />
+                    </section>
+
+                    <section>
+                        <img src="images/Slide4.PNG" />
+                    </section>
+
+                    <section>
+                        <img src="images/Slide5.PNG" />
+                    </section>
+
+                </section>
+
+                <section>
+                    <h2>All Tests run Locally</h2>
+                </section>
+
+                <section>
+
+                    <section>
+                        <h2>Test Anatomy</h2>
+                        <ol>
+                            <li>Setup</li>
+                            <li>Act</li>
+                            <li>Assert</li>
+                            <li>Teardown</li>
+                        </ol>
+                    </section>
+
+                    <section>
+                        <img src="images/TestSqlDiagram.png" />
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Patterns</h2>
+                    </section>
+
+                    <section>
+                        <p>Book</p>
+                        <h4>
+                            <a href="https://www.amazon.com/Patterns-Enterprise-Application-Architecture-Martin/dp/0321127420/ref=sr_1_2?crid=26VEA8SI37JDU&keywords=patterns+of+enterprise+application+architecture&qid=1582110733&sprefix=patterns+of+en%2Caps%2C222&sr=8-2" target="_blank">
+                                Patterns of Enterprise Application Architecture
+                            </a>
+                        </h4>
+                    </section>
+
+                    <section>
+                        <p>Patterns of Enterprise Application Architecture</p>
+                        <h4>
+                            <a href="https://www.martinfowler.com/eaaCatalog/" target="_blank">
+                                Web Catalog
+                            </a>
+                        </h4>
+                    </section>
+
+                    <section>
+                        <h3>
+                            Data Transfer Object
+                        </h3>
+                        <ul>
+                            <li>
+                                <a href="https://www.martinfowler.com/eaaCatalog/dataTransferObject.html" target="_blank">
+                                    Definition
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://stash.dimensional.com/projects/IO/repos/operationsassistant/browse/OperationsAssistant/IntegrationTests/Database/Dimensional/ClientAccountDto.cs?at=refs%2Fheads%2Ffeature%2FAddReconFileImporter_TX_GlobalTests" target="_blank">
+                                    Example
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>
+                            Data Table Gateway
+                        </h3>
+                        <ul>
+                            <li>
+                                <a href="https://www.martinfowler.com/eaaCatalog/tableDataGateway.html" target="_blank">
+                                    Definition
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://stash.dimensional.com/projects/IO/repos/operationsassistant/browse/OperationsAssistant/IntegrationTests/Database/Dimensional/ClientAccountDataTableGateway.cs?at=feature/AddReconFileImporter_TX_GlobalTests" target="_blank">
+                                    Example
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <p>Book</p>
+                        <h3>
+                            <a href="https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612/ref=asc_df_0201633612/?tag=hyprod-20&linkCode=df0&hvadid=312280575053&hvpos=1o1&hvnetw=g&hvrand=14998627228427308151&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9028293&hvtargid=aud-829758849484:pla-395340045790&psc=1" target="_blank">
+                                Design Patterns
+                            </a>
+                        </h3>
+                    </section>
+
+                    <section>
+                        <h3>
+                            Fluent Object Builder
+                        </h3>
+                        <ul>
+                            <li>
+                                <a href="https://stash.dimensional.com/projects/IO/repos/operationsassistant/browse/OperationsAssistant/IntegrationTests/Builders/Dimensional/ClientAccountDtoBuilder.cs?at=refs%2Fheads%2Ffeature%2FAddReconFileImporter_TX_GlobalTests" target="_blank">
+                                    Example
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+
+                </section>
+
+                <section>
+
+                    <section>
+                        <p>This style of testing will not work for ALL situations.</p>
+                    </section>
+
+                </section>
+
+                <!-- TODO: Talk about fluent assertions. -->
+                <!-- TODO: Talk about bogus. -->
+                <!-- TODO: Talk about dependencies such as the Outlook com object. -->
+                <!-- TODO: This style of testing will not work for ALL situations. -->
+
+            </div>
+
+        </div>
+
+        <script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+        <script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                history: true,
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: '../../lib/reveal.js-3.4.1/plugin/markdown/marked.js' },
+                    { src: '../../lib/reveal.js-3.4.1/plugin/markdown/markdown.js' },
+                    { src: '../../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true },
+                    { src: '../../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+        </script>
+    </body>
+</html>
