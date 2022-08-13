@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Getting Started with Developer Written Tests</title>
+
+	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+<body>
+
+<div class="reveal">
+
+	<!-- Any section element inside of this container is displayed as a slide -->
+	<div class="slides">
+		<section>
+			<h1>Developer Written Tests</h1>
+			<p>Getting Started</p>
+		</section>
+
+		<section>
+			<h2>Paul Herrera</h2>
+			<p>Engineering Services</p>
+		</section>
+
+		<section>
+			<p>All teams are at different levels of testing maturity.</p>
+		</section>
+
+		<section>
+			<h2>Team Testing Maturity</h2>
+			<ul>
+				<li>Have Never Written Tests</li>
+				<li>Start Testing on a New Project</li>
+				<li>Existing project with NO tests (Sad Day)</li>
+				<li>Try to Write Tests</li>
+				<li>Full Test Driven Development</li>
+			</ul>
+		</section>
+
+		<section>
+			<section>
+				<h2>Have Never Written Tests</h2>
+				<p>and don't plan to.</p>
+			</section>
+
+			<section>
+				<h3>start testing</h3>
+			</section>
+
+			<section>
+				<h3>Teams who write tests...</h3>
+				<ul>
+					<li>produce less bugs.</li>
+					<li>are more productive.</li>
+					<li>create systems with flexible architectures.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3>Don't write tests because...</h3>
+				<ul>
+					<li>we don't have time.</li>
+					<li>our boss or the customer will not let us.</li>
+					<li>we are expert manual testers.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3>you will get a slow start</h3>
+				<p>Test code is 3 to 5 times the production code.</p>
+				<small>[Diagram]</small>
+			</section>
+
+			<section>
+				<h3>Testing Techniques</h3>
+				<ul>
+					<li>Test First</li>
+					<li>Test Driven Development</li>
+					<li>Test Last</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3>Start with test last</h3>
+			</section>
+
+		</section>
+
+		<section>
+			<section>
+				<h2>Start Testing on a New Project</h2>
+			</section>
+
+			<section>
+				<h3>Bias Toward Behavioral Testing</h3>
+				<small>Diagram</small>
+			</section>
+
+		</section>
+
+	</div>
+
+</div>
+
+<script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+<script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {src: '../../lib/reveal.js-3.4.1/plugin/markdown/marked.js'},
+            {src: '../../lib/reveal.js-3.4.1/plugin/markdown/markdown.js'},
+            {src: '../../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true},
+            {
+                src: '../../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>

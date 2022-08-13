@@ -1,0 +1,342 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Intern Program Guide 2017</title>
+
+	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
+	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+
+
+<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Data Layer</h1>
+					<img src="http://d.fastcompany.net/multisite_files/codesign/imagecache/inline-large/post-inline/spinal-Tap-11.jpg"/>
+					<p>Turning it to 11.</p>
+				</section>
+
+				<section>
+					<h2>The Plan</h2>
+					<img src="http://ecx.images-amazon.com/images/I/51IuDvAU1CL.jpg" />
+					<p>Talking and looking at code.</p>
+				</section>
+
+				<section>
+					<h2>Sorry, no Javascript</h2>
+				</section>
+
+				<section>
+					<h3>We are going to crank up he volume dial.</h3>
+					<p>Smaller / Simple -> Larger / Complex</p>
+
+					<aside class="notes">
+						<ul>
+							<li>The higher the dial the more flexibility but also more complicated</li>
+							<li>Our data layer will evolove</li>
+						</ul>
+					</aside>
+
+				</section>
+
+				<section>
+					<p>Crank to 1</p>
+					<h2>Have a data layer</h2>
+
+					<aside class="notes">
+						<ul>
+							<li>Have some type of dll, module, or set of classes that abstract your database code.</li>
+						</ul>
+					</aside>
+
+				</section>
+
+				<section>
+					<section>
+						<p>Crank to 2</p>
+						<h2>Use an ORM</h2>
+
+						<aside class="notes">
+							<ul>
+								<li>An ORM is good if application is this simple</li>
+								<li>Have a sweet spot and they are...</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>ORMs - Work well when...</h3>
+						<ul>
+							<li>You own the database your are reading / writing.</li>
+							<li>Schema matches your business objects.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>ORMs - DO NOT Work well when...</h3>
+						<ul>
+							<li>Schema does not match your business objects.</li>
+							<li>Cannot change the database schema.</li>
+							<li>Require high control of the generated SQL.</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<p>Crank to 3</p>
+					<h2>Favor IDataReader</h2>
+					<p><a href="https://gist.github.com/linus123/0d74ac7ff994d1a5b0f6#file-datamethods-cs" target="_blank">To Code</a></p>
+
+					<aside class="notes">
+						<ul>
+							<li>IDataReader is easier to mock / replace.</li>
+							<li>DataSet are harder to mock.</li>
+							<li>Con:  IDataReader is forward only</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<p>Crank to 4</p>
+						<h2>Data Table Gateway</h2>
+						<p><a href="http://martinfowler.com/eaaCatalog/tableDataGateway.html" target="_blank">P of EAA Pattern</a></p>
+
+						<aside class="notes">
+							<ul>
+								<li>Wraps database code for a SINGLE table</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Data Table Gateway</h3>
+						<p><a href="https://gist.github.com/linus123/0d74ac7ff994d1a5b0f6#file-customerdatatablegateway-cs" target="_blank">To Code</a></p>
+
+						<aside class="notes">
+							<ul>
+								<li>Best way to explain this is to show you.</li>
+								<li>Use an interface rather that a concrete class</li>
+								<li>Allows for unit testing via test doubles</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<p>Data Table Gateway</p>
+						<h3>Limit to a Single Table</h3>
+
+						<aside class="notes">
+							<ul>
+								<li>Should only access a single table.</li>
+								<li>Only add another table access if related table is REALLY simple.  Like a lookup</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Row Data Gateway</h3>
+						<p><a href="http://martinfowler.com/eaaCatalog/rowDataGateway.html" target="_blank">P of EAA Pattern</a></p>
+						<p>NOT COVERING</p>
+
+						<aside class="notes">
+							<ul>
+								<li>Great when only dealing with single records</li>
+							</ul>
+						</aside>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<p>Crank to 5</p>
+						<h2>Micro ORMs</h2>
+
+						<aside class="notes">
+							<ul>
+								<li>Small light weight library code around data base access</li>
+								<li>While EF and NHibernate abstract you from SQL ...</li>
+							</ul>
+						</aside>
+
+					</section>
+
+					<section>
+						<h3>Philosophy</h3>
+						<p>SQL is a great DSL to read data.  EMBRACE IT!</p>
+					</section>
+
+					<section>
+						<h3>Micro ORMs</h3>
+						<ul>
+							<li><a href="https://github.com/StackExchange/dapper-dot-net" target="_blank">Dapper</a></li>
+							<li><a href="http://www.toptensoftware.com/petapoco/" target="_blank">PetaPoco</a></li>
+							<li><a href="https://github.com/FransBouma/Massive" target="_blank">Massive</a></li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>All Open source</li>
+								<li>Fits on a couple of pages of code</li>
+								<li>Before we look at an example we must under stand DTOs...</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Data Transfer Objects (DTOs)</h3>
+						<p><a href="http://martinfowler.com/eaaCatalog/dataTransferObject.html" target="_blank">P of EAA Pattern</a></p>
+						<aside class="notes">
+							<ul>
+								<li>Only responsibility it to hold data</li>
+								<li>No business rules</li>
+								<li>Will talk more about the DTO later</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Dapper</h3>
+						<p>Extension methods on connection class.</p>
+						<p><a href="https://gist.github.com/linus123/0d74ac7ff994d1a5b0f6#file-dapperexample-cs" target="_blank">To Code</a></p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<p>Crank to 6</p>
+						<h2>Active Record</h2>
+						<p><a href="http://martinfowler.com/eaaCatalog/activeRecord.html" target="_blank">P of EAA Pattern</a></p>
+
+						<aside class="notes">
+							<ul>
+								<li>Higher complexity => spot for business rules</li>
+								<li>Also contains business rules</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Active Record</h3>
+						<p><a href="https://gist.github.com/linus123/0d74ac7ff994d1a5b0f6#file-activerecrod-cs" target="_blank">To Code</a></p>
+
+						<aside class="notes">
+							<ul>
+								<li>Higher complexity => spot for business rules</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<p>Crank to 7</p>
+						<h2>Data Mapper</h2>
+						<p><a href="http://martinfowler.com/eaaCatalog/dataMapper.html" target="_blank">P of EAA Pattern</a></p>
+
+						<aside class="notes">
+							<ul>
+								<li>Here is where be begin to separate the business logic from the data access code</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Data Mapper</h3>
+						<p><a href="https://gist.github.com/linus123/0d74ac7ff994d1a5b0f6#file-datamapper-cs" target="_blank">To Code</a></p>
+
+						<aside class="notes">
+							<ul>
+								<li>Customer contains business logic and no knowledge of the database</li>
+								<li>Customer can now be considered a domain model</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Domain Model</h3>
+						<p><a href="http://martinfowler.com/eaaCatalog/domainModel.html " target="_blank">P of EAA Pattern</a></p>
+
+						<aside class="notes">
+							<ul>
+								<li>Customer contains business logic and no knowledge of the database</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<p>Crank to 9</p>
+						<h2>Repository</h2>
+						<p><a href="http://martinfowler.com/eaaCatalog/repository.html" target="_blank">P of EAA Pattern</a></p>
+
+						<aside class="notes">
+							<ul>
+								<li>Try to simulate a collection or stream</li>
+							</ul>
+						</aside>
+					</section>
+					
+					<section>
+						<h3>Example</h3>
+						<img src="../images/customerrepository.png">
+					</section>
+
+					<section>
+						<h3>Repository</h3>
+						<p><a href="https://gist.github.com/linus123/0d74ac7ff994d1a5b0f6#file-repository-cs" target="_blank">To Code</a></p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Finally!</h2>
+						<img src="https://pbs.twimg.com/profile_images/1884333162/Volume_Knob_Logo_500x500.jpg" />
+					</section>
+
+					<section>
+						<h2>Testing Your Code</h2>
+					</section>
+				</section>
+
+			</div>
+</div>
+
+<script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
+<script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
+
+<script>
+	// More info https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		history: true,
+
+		// More info https://github.com/hakimel/reveal.js#dependencies
+		dependencies: [
+			{ src: '../lib/reveal.js-3.4.1/plugin/markdown/marked.js' },
+			{ src: '../lib/reveal.js-3.4.1/plugin/markdown/markdown.js' },
+			{ src: '../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true },
+			{ src: '../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+		]
+	});
+</script>
+</body>
+</html>
