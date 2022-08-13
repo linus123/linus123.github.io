@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salsa Shines Random</title>
+
+    <style>
+        body {
+            background-color: black;
+            font-size: xxx-large;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="mainDiv">
+</div>
+
+<script language="JavaScript">
+
+    let numberOfMoves = 3;
+    let moves = ["Right Turn",
+        "Left Turn",
+        "Side Basic",
+        "Suzie Q",
+        "Half and Half",
+        "Broken Left Turn",
+        "Hook Turn",
+        "Push Step",
+        "Step Touch",
+        "Semi Circle (Taps)",
+        "Reverse Walks",
+        "Double Right Turn",
+        "Cliff Hanger",
+        "Mambo Taps",
+        "Spot Turn (Class Exercise)",
+        "Syncopated Step",
+        "In and Out",
+    ];
+
+    document.addEventListener('keydown', function(e){
+        let moveIndexes = [];
+
+        for (let i = 0; i < numberOfMoves; i++) {
+            let number = Math.floor(Math.random() * moves.length);
+
+            while (moveIndexes.indexOf(number) > -1){
+                number = Math.floor(Math.random() * moves.length);
+            }
+
+            moveIndexes.push(number);
+        }
+
+        console.log(moveIndexes);
+
+        let mainDiv = document.getElementById("mainDiv");
+
+        mainDiv.innerHTML = "";
+
+        for (let i = 0; i < moveIndexes.length; i++) {
+            mainDiv.innerHTML += moves[moveIndexes[i]];
+
+            if (i < (moveIndexes.length - 1)){
+                mainDiv.innerHTML += "</br>";
+            }
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
