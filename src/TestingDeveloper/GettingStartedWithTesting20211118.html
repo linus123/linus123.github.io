@@ -29,23 +29,14 @@
 	<div class="slides">
 		<section>
 			<h1>Developer Written Tests</h1>
-			<p>Getting Started</p>
-		</section>
-
-		<section>
-			<h2>Paul Herrera</h2>
-			<p>Engineering Services</p>
-		</section>
-
-		<section>
-			<p>All teams are at different levels of testing maturity.</p>
+			<p>Getting Started Part 2</p>
 		</section>
 
 		<section>
 			<h2>Team Testing Maturity</h2>
 			<ul>
-				<li>Have Never Written Tests</li>
-				<li>Start Testing on a New Project</li>
+				<li>Have Never Written Tests *</li>
+				<li>Start Testing on a New Project *</li>
 				<li>Existing project with NO tests (Sad Day)</li>
 				<li>Try to Write Tests</li>
 				<li>Full Test Driven Development</li>
@@ -54,61 +45,105 @@
 
 		<section>
 			<section>
-				<h2>Have Never Written Tests</h2>
-				<p>and don't plan to.</p>
+				<h2>Review</h2>
 			</section>
 
 			<section>
-				<h3>start testing</h3>
-			</section>
-
-			<section>
-				<h3>Teams who write tests...</h3>
+				<h3>Have Never Written Tests</h3>
 				<ul>
-					<li>produce less bugs.</li>
-					<li>are more productive.</li>
-					<li>create systems with flexible architectures.</li>
+					<li>Get started now.</li>
+					<li>Team who write test are more productive.</li>
+					<li>Start with Test Last if you must.</li>
 				</ul>
 			</section>
 
 			<section>
-				<h3>Don't write tests because...</h3>
+				<h3>Start Testing on a New Project</h3>
 				<ul>
-					<li>we don't have time.</li>
-					<li>our boss or the customer will not let us.</li>
-					<li>we are expert manual testers.</li>
+					<li>Tests have a slow start.</li>
+					<li>Have a bias toward Behavioral Testing</li>
 				</ul>
-			</section>
-
-			<section>
-				<h3>you will get a slow start</h3>
-				<p>Test code is 3 to 5 times the production code.</p>
-				<small>[Diagram]</small>
-			</section>
-
-			<section>
-				<h3>Testing Techniques</h3>
-				<ul>
-					<li>Test First</li>
-					<li>Test Driven Development</li>
-					<li>Test Last</li>
-				</ul>
-			</section>
-
-			<section>
-				<h3>Start with test last</h3>
 			</section>
 
 		</section>
 
 		<section>
 			<section>
-				<h2>Start Testing on a New Project</h2>
+				<h2>Existing project <br/> NO tests</h2>
 			</section>
 
 			<section>
-				<h3>Bias Toward Behavioral Testing</h3>
-				<small>Diagram</small>
+				<h3>Most Difficult Position</h3>
+				<p>Many teams are in this position.</p>
+			</section>
+
+			<section>
+				<img
+					src="https://memegenerator.net/img/instances/11500720/rewrite-all-the-things.jpg"
+					alt="Rewrite Meme"/>
+				<p>Rewrites are RISKY.</p>
+			</section>
+
+			<section>
+				<a
+					href="https://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052/ref=sr_1_1?crid=36HK3OPHOLFK7&keywords=working+effectively+with+legacy+code&qid=1637242344&qsid=139-8768826-7544843&sprefix=working+eff%2Caps%2C174&sr=8-1&sres=0131177052%2C711146625X%2C5845915309%2C032179320X%2C1691064130%2C1119704669%2CB08X8ZXT15%2C0135957052%2C0201633612%2C0134757599%2C0134494164%2C1617296201%2C0201835959%2CB00QS2HXUO%2C0321146530%2C1617295108&srpt=ABIS_BOOK"
+					target="_blank">
+					<img src="../images/WorkingEffectivelyWithLegacyCode.jpg" alt="Working Effectively" />
+				</a>
+			</section>
+
+			<section>
+				<h3>Legacy Code</h3>
+				<p>Code without tests.</p>
+			</section>
+
+			<section>
+				<h3>High Lights</h3>
+				<ul>
+					<li>Do not try with out tests.</li>
+					<li>Find a Seam</li>
+					<li>Common Problems</li>
+				</ul>
+			</section>
+
+		</section>
+
+		<section>
+			<section>
+				<h2>Try to Write Tests</h2>
+				<p>but not getting all the benefits</p>
+			</section>
+
+			<section>
+				<h3>Symptoms</h3>
+				<ul>
+					<li>Sometimes some tests fail.</li>
+					<li>Refactoring our code is REALLY hard.</li>
+					<li>New developers struggle to understand the mocking.</li>
+					<li>Our test suite takes FOREVER to run.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3>
+					<a href="http://xunitpatterns.com/index.html" target="_blank">
+						XUnit Test Patterns
+					</a>
+				</h3>
+			</section>
+
+			<section>
+				<h3>The problem with Mocking</h3>
+			</section>
+
+			<section>
+				<h3>Mocking Libraries</h3>
+				<p>They are complicated.</p>
+			</section>
+
+			<section>
+				<h3><a href="http://xunitpatterns.com/Test%20Double.html" target="_blank">Manual Mocks</a></h3>
+				<p>Minimizes Mocking</p>
 			</section>
 
 		</section>

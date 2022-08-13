@@ -1,342 +1,160 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-	<title>Intern Program Guide 2017</title>
+	<title>Data Access Patterns</title>
 
-	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/reveal.css">
-	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/css/theme/black.css">
+	<!-- Bootstrap core CSS -->
+	<link href="../../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Theme used for syntax highlighting of code -->
-	<link rel="stylesheet" href="../../lib/reveal.js-3.4.1/lib/css/zenburn.css">
+	<!-- Custom styles for this template -->
+	<link href="../starter-template.css" rel="stylesheet">
 
-	<!-- Printing and PDF exports -->
-	<script>
-		var link = document.createElement( 'link' );
-		link.rel = 'stylesheet';
-		link.type = 'text/css';
-		link.href = window.location.search.match( /print-pdf/gi ) ? '../../lib/reveal.js-3.4.1/css/print/pdf.css' : '../../lib/reveal.js-3.4.1/css/print/paper.css';
-		document.getElementsByTagName( 'head' )[0].appendChild( link );
-	</script>
+	<!--	<link rel="stylesheet" href="../../lib/highlight/styles/vs.css">-->
+	<!--	<script src="../../lib/highlight/highlight.pack.js"></script>-->
+
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/vs.min.css">
+	<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	<script>hljs.initHighlightingOnLoad();</script>
+
 </head>
+
 <body>
 
+<div class="container">
 
-<div class="reveal">
+	<div class="header clearfix">
+		<nav>
+			<ul class="nav nav-pills pull-right">
+				<li role="presentation" class="active"><a href="#">Home</a></li>
+			</ul>
+		</nav>
+		<h3 class="text-muted">Data Access Patterns</h3>
+	</div>
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>Data Layer</h1>
-					<img src="http://d.fastcompany.net/multisite_files/codesign/imagecache/inline-large/post-inline/spinal-Tap-11.jpg"/>
-					<p>Turning it to 11.</p>
-				</section>
+	<div class="row">
 
-				<section>
-					<h2>The Plan</h2>
-					<img src="http://ecx.images-amazon.com/images/I/51IuDvAU1CL.jpg" />
-					<p>Talking and looking at code.</p>
-				</section>
+		<div class="col-md-12">
+			<h3>Table to a File</h3>
+			<pre><code class="csharp">protected void ExportTextFile(object sender, EventArgs e)
+{
+    string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+    using (SqlConnection con = new SqlConnection(constr))
+    {
+        using (SqlCommand cmd = new SqlCommand("SELECT * FROM Customers"))
+        {
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = con;
+                sda.SelectCommand = cmd;
+                using (DataTable dt = new DataTable())
+                {
+                    sda.Fill(dt);
 
-				<section>
-					<h2>Sorry, no Javascript</h2>
-				</section>
+                    //Build the Text file data.
+                    string txt = string.Empty;
 
-				<section>
-					<h3>We are going to crank up he volume dial.</h3>
-					<p>Smaller / Simple -> Larger / Complex</p>
+                    foreach (DataColumn column in dt.Columns)
+                    {
+                        //Add the Header row for Text file.
+                        txt += column.ColumnName + "\t\t";
+                    }
 
-					<aside class="notes">
-						<ul>
-							<li>The higher the dial the more flexibility but also more complicated</li>
-							<li>Our data layer will evolove</li>
-						</ul>
-					</aside>
+                    //Add new line.
+                    txt += "\r\n";
 
-				</section>
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        foreach (DataColumn column in dt.Columns)
+                        {
+                            //Add the Data rows.
+                            txt += row[column.ColumnName].ToString() + "\t\t";
+                        }
 
-				<section>
-					<p>Crank to 1</p>
-					<h2>Have a data layer</h2>
+                        //Add new line.
+                        txt += "\r\n";
+                    }
 
-					<aside class="notes">
-						<ul>
-							<li>Have some type of dll, module, or set of classes that abstract your database code.</li>
-						</ul>
-					</aside>
+                    // write DataTable to file
+                }
+            }
+        }
+    }
+}</code></pre>
+		</div><div class="col-md-12">
+			<h3>File to table</h3>
+			<pre><code class="csharp">static void Main(string[] args)
+        {
 
-				</section>
+            try
+            {
 
-				<section>
-					<section>
-						<p>Crank to 2</p>
-						<h2>Use an ORM</h2>
+                //Declare Variable and set values
+                //provide input folder
+                string SourceFolder = @"C:\Source\";
+                //provide file name
+                string SourceFileName = "TechBrothersIT.txt";
+                //provide the table name in which you would like to load data
+                string TableName = "dbo.TechBrothersITCourse";
+                //provide the file delimiter such as comma,pipe
+                string filedelimiter = ",";
+                //provide the Archive folder where you would like to move file
+                string ArchiveFodler = @"C:\Archive\";
 
-						<aside class="notes">
-							<ul>
-								<li>An ORM is good if application is this simple</li>
-								<li>Have a sweet spot and they are...</li>
-							</ul>
-						</aside>
-					</section>
+                //Create Connection to SQL Server
+                 SqlConnection SQLConnection = new SqlConnection();
+                 SQLConnection.ConnectionString = "Data Source = (local); Initial Catalog =TechBrothersIT; "
+                   + "Integrated Security=true;";
 
-					<section>
-						<h3>ORMs - Work well when...</h3>
-						<ul>
-							<li>You own the database your are reading / writing.</li>
-							<li>Schema matches your business objects.</li>
-						</ul>
-					</section>
+                System.IO.StreamReader SourceFile =
+                new System.IO.StreamReader(SourceFolder+SourceFileName);
 
-					<section>
-						<h3>ORMs - DO NOT Work well when...</h3>
-						<ul>
-							<li>Schema does not match your business objects.</li>
-							<li>Cannot change the database schema.</li>
-							<li>Require high control of the generated SQL.</li>
-						</ul>
-					</section>
-				</section>
+                string line = "";
+                Int32 counter = 0;
 
-				<section>
-					<p>Crank to 3</p>
-					<h2>Favor IDataReader</h2>
-					<p><a href="https://gist.github.com/linus123/0d74ac7ff994d1a5b0f6#file-datamethods-cs" target="_blank">To Code</a></p>
+                SQLConnection.Open();
+                while ((line = SourceFile.ReadLine()) != null)
+                {
+                    //skip the header row
+                    if (counter > 0)
+                    {
+                        //prepare insert query
+                        string query = "Insert into " + TableName +
+                               " Values ('" + line.Replace(filedelimiter, "','") + "')";
 
-					<aside class="notes">
-						<ul>
-							<li>IDataReader is easier to mock / replace.</li>
-							<li>DataSet are harder to mock.</li>
-							<li>Con:  IDataReader is forward only</li>
-						</ul>
-					</aside>
-				</section>
+                        //execute sqlcommand to insert record
+                        SqlCommand myCommand = new SqlCommand(query, SQLConnection);
+                        myCommand.ExecuteNonQuery();
+                    }
+                    counter++;
+                }
 
-				<section>
-					<section>
-						<p>Crank to 4</p>
-						<h2>Data Table Gateway</h2>
-						<p><a href="http://martinfowler.com/eaaCatalog/tableDataGateway.html" target="_blank">P of EAA Pattern</a></p>
+                SourceFile.Close();
+                SQLConnection.Close();
 
-						<aside class="notes">
-							<ul>
-								<li>Wraps database code for a SINGLE table</li>
-							</ul>
-						</aside>
-					</section>
+                //Move the file to Archive folder
+                File.Move(SourceFolder+SourceFileName, ArchiveFodler + SourceFileName);
 
-					<section>
-						<h3>Data Table Gateway</h3>
-						<p><a href="https://gist.github.com/linus123/0d74ac7ff994d1a5b0f6#file-customerdatatablegateway-cs" target="_blank">To Code</a></p>
+            }
+            catch(IOException Exception)
+            {
+                Console.Write(Exception);
+            }
+            }
 
-						<aside class="notes">
-							<ul>
-								<li>Best way to explain this is to show you.</li>
-								<li>Use an interface rather that a concrete class</li>
-								<li>Allows for unit testing via test doubles</li>
-							</ul>
-						</aside>
-					</section>
+    }</code></pre>
+		</div>
+	</div>
 
-					<section>
-						<p>Data Table Gateway</p>
-						<h3>Limit to a Single Table</h3>
+</div><!-- /.container -->
 
-						<aside class="notes">
-							<ul>
-								<li>Should only access a single table.</li>
-								<li>Only add another table access if related table is REALLY simple.  Like a lookup</li>
-							</ul>
-						</aside>
-					</section>
-
-					<section>
-						<h3>Row Data Gateway</h3>
-						<p><a href="http://martinfowler.com/eaaCatalog/rowDataGateway.html" target="_blank">P of EAA Pattern</a></p>
-						<p>NOT COVERING</p>
-
-						<aside class="notes">
-							<ul>
-								<li>Great when only dealing with single records</li>
-							</ul>
-						</aside>
-					</section>
-
-				</section>
-
-				<section>
-					<section>
-						<p>Crank to 5</p>
-						<h2>Micro ORMs</h2>
-
-						<aside class="notes">
-							<ul>
-								<li>Small light weight library code around data base access</li>
-								<li>While EF and NHibernate abstract you from SQL ...</li>
-							</ul>
-						</aside>
-
-					</section>
-
-					<section>
-						<h3>Philosophy</h3>
-						<p>SQL is a great DSL to read data.  EMBRACE IT!</p>
-					</section>
-
-					<section>
-						<h3>Micro ORMs</h3>
-						<ul>
-							<li><a href="https://github.com/StackExchange/dapper-dot-net" target="_blank">Dapper</a></li>
-							<li><a href="http://www.toptensoftware.com/petapoco/" target="_blank">PetaPoco</a></li>
-							<li><a href="https://github.com/FransBouma/Massive" target="_blank">Massive</a></li>
-						</ul>
-						<aside class="notes">
-							<ul>
-								<li>All Open source</li>
-								<li>Fits on a couple of pages of code</li>
-								<li>Before we look at an example we must under stand DTOs...</li>
-							</ul>
-						</aside>
-					</section>
-
-					<section>
-						<h3>Data Transfer Objects (DTOs)</h3>
-						<p><a href="http://martinfowler.com/eaaCatalog/dataTransferObject.html" target="_blank">P of EAA Pattern</a></p>
-						<aside class="notes">
-							<ul>
-								<li>Only responsibility it to hold data</li>
-								<li>No business rules</li>
-								<li>Will talk more about the DTO later</li>
-							</ul>
-						</aside>
-					</section>
-
-					<section>
-						<h3>Dapper</h3>
-						<p>Extension methods on connection class.</p>
-						<p><a href="https://gist.github.com/linus123/0d74ac7ff994d1a5b0f6#file-dapperexample-cs" target="_blank">To Code</a></p>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<p>Crank to 6</p>
-						<h2>Active Record</h2>
-						<p><a href="http://martinfowler.com/eaaCatalog/activeRecord.html" target="_blank">P of EAA Pattern</a></p>
-
-						<aside class="notes">
-							<ul>
-								<li>Higher complexity => spot for business rules</li>
-								<li>Also contains business rules</li>
-							</ul>
-						</aside>
-					</section>
-
-					<section>
-						<h3>Active Record</h3>
-						<p><a href="https://gist.github.com/linus123/0d74ac7ff994d1a5b0f6#file-activerecrod-cs" target="_blank">To Code</a></p>
-
-						<aside class="notes">
-							<ul>
-								<li>Higher complexity => spot for business rules</li>
-							</ul>
-						</aside>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<p>Crank to 7</p>
-						<h2>Data Mapper</h2>
-						<p><a href="http://martinfowler.com/eaaCatalog/dataMapper.html" target="_blank">P of EAA Pattern</a></p>
-
-						<aside class="notes">
-							<ul>
-								<li>Here is where be begin to separate the business logic from the data access code</li>
-							</ul>
-						</aside>
-					</section>
-
-					<section>
-						<h3>Data Mapper</h3>
-						<p><a href="https://gist.github.com/linus123/0d74ac7ff994d1a5b0f6#file-datamapper-cs" target="_blank">To Code</a></p>
-
-						<aside class="notes">
-							<ul>
-								<li>Customer contains business logic and no knowledge of the database</li>
-								<li>Customer can now be considered a domain model</li>
-							</ul>
-						</aside>
-					</section>
-
-					<section>
-						<h3>Domain Model</h3>
-						<p><a href="http://martinfowler.com/eaaCatalog/domainModel.html " target="_blank">P of EAA Pattern</a></p>
-
-						<aside class="notes">
-							<ul>
-								<li>Customer contains business logic and no knowledge of the database</li>
-							</ul>
-						</aside>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<p>Crank to 9</p>
-						<h2>Repository</h2>
-						<p><a href="http://martinfowler.com/eaaCatalog/repository.html" target="_blank">P of EAA Pattern</a></p>
-
-						<aside class="notes">
-							<ul>
-								<li>Try to simulate a collection or stream</li>
-							</ul>
-						</aside>
-					</section>
-					
-					<section>
-						<h3>Example</h3>
-						<img src="../images/customerrepository.png">
-					</section>
-
-					<section>
-						<h3>Repository</h3>
-						<p><a href="https://gist.github.com/linus123/0d74ac7ff994d1a5b0f6#file-repository-cs" target="_blank">To Code</a></p>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h2>Finally!</h2>
-						<img src="https://pbs.twimg.com/profile_images/1884333162/Volume_Knob_Logo_500x500.jpg" />
-					</section>
-
-					<section>
-						<h2>Testing Your Code</h2>
-					</section>
-				</section>
-
-			</div>
-</div>
-
-<script src="../../lib/reveal.js-3.4.1/lib/js/head.min.js"></script>
-<script src="../../lib/reveal.js-3.4.1/js/reveal.js"></script>
-
-<script>
-	// More info https://github.com/hakimel/reveal.js#configuration
-	Reveal.initialize({
-		history: true,
-
-		// More info https://github.com/hakimel/reveal.js#dependencies
-		dependencies: [
-			{ src: '../lib/reveal.js-3.4.1/plugin/markdown/marked.js' },
-			{ src: '../lib/reveal.js-3.4.1/plugin/markdown/markdown.js' },
-			{ src: '../lib/reveal.js-3.4.1/plugin/notes/notes.js', async: true },
-			{ src: '../lib/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-		]
-	});
-</script>
+<script src="../../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </body>
 </html>
